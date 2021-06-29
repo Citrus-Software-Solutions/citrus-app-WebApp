@@ -1,11 +1,27 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
-import Home from '../views/Home.vue'
+import Jobs from '../views/Jobs.vue'
+import AddJob from '../views/AddJob.vue'
+import JobDetails from '../views/JobDetails.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    name: 'Home',
-    component: Home,
+    redirect: '/jobs',
+  },
+  {
+    path: '/jobs',
+    name: 'Jobs',
+    component: Jobs,
+  },
+  {
+    path: '/jobs/add',
+    name: 'AddJob',
+    component: AddJob,
+  },
+  {
+    path: '/jobs/:id',
+    name: 'JobDetails',
+    component: JobDetails,
   },
 ]
 

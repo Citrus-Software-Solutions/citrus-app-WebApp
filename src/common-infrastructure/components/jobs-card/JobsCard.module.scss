@@ -1,0 +1,34 @@
+.jobs-card {
+  border-radius: 5px;
+  border: 1px solid var(--color-gray-02);
+  display: flex;
+  margin: 1.6rem auto;
+  padding: 2.5rem;
+  background-color: var(--color-white);
+
+  &_img {
+    height: 8rem;
+    object-fit: cover;
+    width: 8rem;
+  }
+
+  &_content {
+    margin-left: 5rem;
+    width: 90%;
+
+    &_title {
+      color: var(--color-orange-01);
+      font-size: 2.2rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+      text-transform: capitalize;
+    }
+
+    &_description {
+      color: var(--color-gray-03);
+      font-size: 1.5rem;
+      font-weight: 300;
+      line-height: 2.4rem;
+    }
+  }
+}

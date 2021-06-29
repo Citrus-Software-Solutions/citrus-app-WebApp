@@ -1,0 +1,66 @@
+/* Color variables */
+:root {
+  --color-white: #ffffff;
+  --color-orange-01: #f29711;
+  --color-gray-01: #fafafb;
+  --color-gray-02: #e9ebef;
+  --color-gray-03: #a5a5a5;
+  --color-gray-04: #3b3d44;
+  --color-gray-05: #cfcfd4;
+}
+/* fonts */
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('../assets/fonts/Poppins-Light.ttf') format('ttf');
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('../assets/fonts/Poppins-Regular.ttf') format('ttf');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('../assets/fonts/Poppins-SemiBold.ttf') format('ttf');
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('../assets/fonts/Poppins-Bold.ttf') format('ttf');
+  font-weight: 600;
+}
+
+/* General Resets */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+a {
+  text-decoration: none;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+  font-family: 'Poppins';
+  color: var(--color-gray-04);
+}
+
+body {
+  min-height: 100vh;
+  background: var(--color-gray-01);
+}
+
+/* CSS of libraries */
+@import 'prime-vue.css';
