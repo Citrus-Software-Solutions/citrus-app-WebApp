@@ -18,6 +18,9 @@ import Button from 'primevue/button'
 import Layout from '../components/layout/Layout.vue'
 import JobsList from '../components/jobs-list/JobsList.vue'
 import { breadCrumbTypes } from '../types/index'
+import { GetOfferGUI } from '../../job-offer/infrastructure/driven-adapters/gui/GetOfferGUI'
+import { GetOfferService } from '../../job-offer/application/services/GetOfferService'
+import { Http } from '../../job-offer/infrastructure/driven-adapters/in/http/GetOfferAdapter'
 
 interface JobsStateTypes {
   breadCrumbLinks: breadCrumbTypes[]
@@ -27,6 +30,13 @@ export default defineComponent({
     return {
       breadCrumbLinks: [{ label: 'Ofertas', to: '/jobs' }],
     }
+  },
+  mounted() {
+    this.$nextTick(async () => {
+      const getOfferGUI = new GetOfferGUI(new GetOfferService(new Http()))
+      const res = await getOfferGUI.getOffersData('ID')
+      this.$store.commit('setJobOffers', res)
+    })
   },
   components: {
     Button,

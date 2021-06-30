@@ -1,10 +1,9 @@
 import { createStore } from 'vuex'
-import { jobOffers } from '../mocks/data'
 
 export const store = createStore({
   state() {
     return {
-      jobOffers: jobOffers,
+      jobOffers: [],
     }
   },
   mutations: {

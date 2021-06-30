@@ -3,7 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "serve": "concurrently \"npm run start\" \"npm run server\"",
+    "start": "vue-cli-service serve",
+    "server": "json-server --watch ./db/db.json --delay 3000",
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "test:e2e": "vue-cli-service test:e2e",
@@ -11,6 +13,7 @@
   },
   "dependencies": {
     "core-js": "^3.6.5",
+    "json-server": "^0.16.3",
     "primeicons": "^4.1.0",
     "primevue": "^3.5.1",
     "vue": "^3.0.0",
