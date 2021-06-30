@@ -1,3 +1,3 @@
-interface PostOfferUseCase {
+export interface PostOfferUseCase {
   PostOffer(offer: any): any
 }

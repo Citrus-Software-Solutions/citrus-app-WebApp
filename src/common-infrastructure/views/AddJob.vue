@@ -12,8 +12,6 @@ import { defineComponent } from 'vue'
 import JobsForm from '../components/jobs-form/JobsForm.vue'
 import Layout from '../components/layout/Layout.vue'
 import { breadCrumbTypes } from '../types/index'
-import { PostOfferService } from '../../employer/application/ports/in/services/PostOfferService'
-
 interface AddJobStateTypes {
   breadCrumbLinks: breadCrumbTypes[]
 }
@@ -26,13 +24,6 @@ export default defineComponent({
         { label: 'Nueva Oferta', to: '/jobs/add' },
       ],
     }
-  },
-
-  methods: {
-    something() {
-      let a = new PostOfferService()
-      a.PostOffer({ v1: 'a', v2: 'b', v3: 'c' })
-    },
   },
 
   components: {
