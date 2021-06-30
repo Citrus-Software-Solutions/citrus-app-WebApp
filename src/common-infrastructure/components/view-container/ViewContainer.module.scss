@@ -1,0 +1,16 @@
+$navbar-width: 6rem;
+
+.view-container {
+  background-color: var(--color-gray-01);
+
+  &_side__left {
+    width: $navbar-width;
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+
+  &_side__right {
+    padding: 2rem 2rem 2rem calc(#{$navbar-width} + 2rem);
+  }
+}
