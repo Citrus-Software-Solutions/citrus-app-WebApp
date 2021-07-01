@@ -5,10 +5,20 @@
         <h2 class="jobs-form_form_section_title">Título del trabajo</h2>
         <InputText
           type="text"
-          v-model="title"
-          name="title"
+          v-model="name"
+          name="name"
           required
           placeholder="Obreros para construcción"
+        />
+      </div>
+      <div class="jobs-form_form_section">
+        <h2 class="jobs-form_form_section_title">Ubicación</h2>
+        <InputText
+          type="text"
+          v-model="location"
+          name="location"
+          required
+          placeholder="Caracas - Venezuela"
         />
       </div>
       <div class="jobs-form_form_section">
@@ -25,22 +35,22 @@
       </div>
       <div class="jobs-form_form_section">
         <h2 class="jobs-form_form_section_title">Duración del trabajo</h2>
-        <label class="jobs-form_form_section_label" for="start_date">
+        <label class="jobs-form_form_section_label" for="date_begin">
           Desde
         </label>
         <Calendar
-          id="start_date"
-          v-model="start_date"
+          id="date_begin"
+          v-model="date_begin"
           dateFormat="dd/mm/yy"
           class="jobs-form_form_section_input__medium"
           placeholder="- / - / -"
           :manualInput="false"
           required
         />
-        <label class="jobs-form_form_section_label" for="end_date">Hasta</label>
+        <label class="jobs-form_form_section_label" for="date_end">Hasta</label>
         <Calendar
-          id="end_date"
-          v-model="end_date"
+          id="date_end"
+          v-model="date_end"
           dateFormat="dd/mm/yy"
           class="jobs-form_form_section_input__medium"
           placeholder="- / - / -"
@@ -52,9 +62,9 @@
         <h2 class="jobs-form_form_section_title">Género del empleado</h2>
         <RadioButton
           id="femenine"
-          name="sex"
+          name="gender"
           value="femenino"
-          v-model="sex"
+          v-model="gender"
           required
         />
         <label class="jobs-form_form_section_label" for="femenine">
@@ -62,9 +72,9 @@
         </label>
         <RadioButton
           id="masculine"
-          name="sex"
+          name="gender"
           value="masculino"
-          v-model="sex"
+          v-model="gender"
           required
         />
         <label class="jobs-form_form_section_label" for="masculine">
@@ -85,18 +95,6 @@
           class="jobs-form_form_section_input__small"
           placeholder="min"
         />
-        <label class="jobs-form_form_section_label" for="max_age">
-          Edad máxima
-        </label>
-        <InputNumber
-          name="max_age"
-          v-model="max_age"
-          :min="0"
-          :max="100"
-          required
-          class="jobs-form_form_section_input__small"
-          placeholder="max"
-        />
       </div>
       <div class="jobs-form_form_section jobs-form_form_section__double-row">
         <div>
@@ -115,12 +113,12 @@
         </div>
         <div>
           <h2 class="jobs-form_form_section_title">Vacantes disponibles</h2>
-          <label class="jobs-form_form_section_label" for="vacancy">
+          <label class="jobs-form_form_section_label" for="available_vacans">
             Núm. de personas
           </label>
           <InputNumber
-            name="vacancy"
-            v-model="vacancy"
+            name="available_vacans"
+            v-model="available_vacans"
             :min="0"
             required
             class="jobs-form_form_section_input__small"
@@ -148,29 +146,29 @@ import Textarea from 'primevue/textarea'
 import Button from 'primevue/button'
 
 interface formTypes {
-  title: string
+  name: string
   description: string
-  start_date: Date | null
-  end_date: Date | null
-  sex: string
+  date_begin: Date | null
+  date_end: Date | null
+  gender: string
   min_age: number | null
-  max_age: number | null
   salary: number | null
-  vacancy: number | null
+  available_vacans: number | null
+  location: string | null
 }
 
 export default defineComponent({
   data(): formTypes {
     return {
-      title: '',
+      name: '',
       description: '',
-      start_date: null,
-      end_date: null,
-      sex: '',
+      date_begin: new Date(),
+      date_end: new Date(),
+      gender: '',
       min_age: null,
-      max_age: null,
       salary: null,
-      vacancy: null,
+      available_vacans: null,
+      location: null,
     }
   },
   methods: {
@@ -178,16 +176,16 @@ export default defineComponent({
       return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`
     },
     handleSubmit(): void {
-      console.log({
-        title: this.title,
+      this.$emit('postJob', {
+        name: this.name,
         description: this.description,
-        start_date: this.yearFormatter(this.start_date as Date),
-        end_date: this.yearFormatter(this.end_date as Date),
-        sex: this.sex,
+        date_begin: this.yearFormatter(this.date_begin as Date),
+        date_end: this.yearFormatter(this.date_end as Date),
+        gender: this.gender,
         min_age: this.min_age,
-        max_age: this.max_age,
         salary: this.salary,
-        vacancy: this.vacancy,
+        available_vacans: this.available_vacans,
+        location: this.location,
       })
     },
   },

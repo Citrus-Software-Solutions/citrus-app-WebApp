@@ -2,7 +2,7 @@
   <Layout :breadCrumbLinks="breadCrumbLinks">
     <template v-slot:content>
       <h1 class="title">Agregar una nueva oferta</h1>
-      <JobsForm />
+      <JobsForm @postJob="handleSubmit" />
     </template>
   </Layout>
 </template>
@@ -15,6 +15,8 @@ import { defineComponent } from 'vue'
 import JobsForm from '../components/jobs-form/JobsForm.vue'
 import Layout from '../components/layout/Layout.vue'
 import { breadCrumbTypes } from '../types/index'
+import { JobOffer } from '../../job-offer/domain/JobOffer'
+
 interface AddJobStateTypes {
   breadCrumbLinks: breadCrumbTypes[]
 }
@@ -30,11 +32,11 @@ export default defineComponent({
   },
 
   methods: {
-    handleSubmit() {
+    handleSubmit(jobOfferFields: JobOffer) {
       const addJobGui = new AddJobGUI(
         new PostOfferService(new PostOfferAdapter())
       )
-      addJobGui.SubmitJobOffer({ id: '2', title: 'Titulo 2' })
+      addJobGui.SubmitJobOffer(jobOfferFields)
     },
   },
   components: {

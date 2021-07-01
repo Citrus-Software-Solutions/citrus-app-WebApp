@@ -4,14 +4,11 @@ import { JobOffer } from '../../../domain/JobOffer'
 export class AddJobGUI {
   public postOfferUseCase: PostOfferUseCase
 
-  //DIP
   public constructor(useCase: PostOfferUseCase) {
     this.postOfferUseCase = useCase
   }
 
-  //implement interface event methods
-
-  public SubmitJobOffer(jobOffer: JobOffer) {
+  public SubmitJobOffer(jobOffer: JobOffer): void {
     this.postOfferUseCase.PostOffer(jobOffer)
   }
 }

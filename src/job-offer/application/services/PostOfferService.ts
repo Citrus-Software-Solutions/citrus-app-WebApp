@@ -1,7 +1,7 @@
 import { PostOfferPort } from '../ports/out/PostOfferPort'
 import { JobOffer } from '../../domain/JobOffer'
-import { BasicJobOfferDTO } from '@/job-offer/domain/DTO/JobOfferDTO'
 import { PostOfferUseCase } from '../ports/in/use-cases/PostOfferUseCase'
+import { PostOfferCommand } from '../ports/in/PostOfferCommand'
 
 export class PostOfferService implements PostOfferUseCase {
   postOfferPort: PostOfferPort
@@ -10,9 +10,13 @@ export class PostOfferService implements PostOfferUseCase {
     this.postOfferPort = postOfferPort
   }
 
-  public PostOffer(jobOffer: JobOffer): Promise<BasicJobOfferDTO> {
-    const response = this.postOfferPort.postOfferApi(jobOffer)
-    console.log(response)
-    return response
+  public PostOffer(jobOffer: JobOffer): void {
+    const postOfferCommand = new PostOfferCommand(jobOffer)
+
+    if (postOfferCommand.isValid()) {
+      this.postOfferPort.postOfferApi(jobOffer)
+    } else {
+      console.log('error')
+    }
   }
 }
