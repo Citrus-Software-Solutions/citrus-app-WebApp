@@ -1,4 +1,5 @@
 import { PostOfferUseCase } from '../../../application/ports/in/use-cases/PostOfferUseCase'
+import { JobOffer } from '../../../domain/JobOffer'
 
 export class AddJobGUI {
   public postOfferUseCase: PostOfferUseCase
@@ -10,7 +11,7 @@ export class AddJobGUI {
 
   //implement interface event methods
 
-  public SubmitJobOffer() {
-    this.postOfferUseCase.PostOffer({ v1: 'att 1', v2: 'v2' })
+  public SubmitJobOffer(jobOffer: JobOffer) {
+    this.postOfferUseCase.PostOffer(jobOffer)
   }
 }

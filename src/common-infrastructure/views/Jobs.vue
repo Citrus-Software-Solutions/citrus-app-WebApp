@@ -38,6 +38,7 @@ export default defineComponent({
       this.$store.commit('setJobOffers', res)
     })
   },
+
   components: {
     Button,
     JobsList,
