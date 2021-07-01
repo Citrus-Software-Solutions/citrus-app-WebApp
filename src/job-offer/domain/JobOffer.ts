@@ -37,18 +37,31 @@ export type Status = {
   title: Title
   description: Description
 }
+// export interface JobOffer {
+// id: Id
+// title: Title
+// employer: Employer
+// location: Location
+// deadline: Date
+// schedules: Date[]
+// skills: Skill[]
+// specialRequeriments: Name
+// certifications: Certification[]
+// duration: Duration
+// hourlyRate: HourlyRate
+// employee: Employee
+// status: Status
+// }
+
 export interface JobOffer {
-  id: Id
-  title: Title
-  // employer: Employer
-  // location: Location
-  // deadline: Date
-  // schedules: Date[]
-  // skills: Skill[]
-  // specialRequeriments: Name
-  // certifications: Certification[]
-  // duration: Duration
-  // hourlyRate: HourlyRate
-  // employee: Employee
-  // status: Status
+  id: string
+  name: string
+  description: string
+  date_begin: Date
+  date_end: Date
+  gender: string
+  min_age: number
+  salary: number
+  available_vacans: number
+  location: string
 }

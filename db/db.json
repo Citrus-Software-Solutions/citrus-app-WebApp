@@ -10,9 +10,9 @@
       "salary": "1000000",
       "gender": "m",
       "min_age": 18,
-      "max_age": 25,
       "applicants": 5,
-      "status": "open"
+      "status": "open",
+      "location": "caracas, venezuela"
     },
     {
       "id": "2",
@@ -26,7 +26,7 @@
       "salary": "1000000",
       "gender": "m",
       "min_age": 18,
-      "max_age": 25
+      "location": "caracas, venezuela"
     },
     {
       "id": "3",
@@ -38,7 +38,7 @@
       "salary": "1000000",
       "gender": "m",
       "min_age": 18,
-      "max_age": 25
+      "location": "caracas, venezuela"
     },
     {
       "id": "4",
@@ -50,7 +50,13 @@
       "salary": "1000000",
       "gender": "m",
       "min_age": 18,
-      "max_age": 25
+      "location": "caracas, venezuela"
+    },
+    {
+      "id": "aTax5RA"
+    },
+    {
+      "id": "JXHb_TY"
     }
   ]
 }
