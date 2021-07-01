@@ -8,6 +8,9 @@
 </template>
 
 <script lang="ts">
+import { PostOfferService } from '@/job-offer/application/services/PostOfferService'
+import { AddJobGUI } from '@/job-offer/infrastructure/driven-adapters/gui/AddJobGUI'
+import { PostOfferAdapter } from '@/job-offer/infrastructure/driven-adapters/out/http/PostOfferAdapter'
 import { defineComponent } from 'vue'
 import JobsForm from '../components/jobs-form/JobsForm.vue'
 import Layout from '../components/layout/Layout.vue'
@@ -26,6 +29,14 @@ export default defineComponent({
     }
   },
 
+  methods: {
+    handleSubmit() {
+      const addJobGui = new AddJobGUI(
+        new PostOfferService(new PostOfferAdapter())
+      )
+      addJobGui.SubmitJobOffer({ id: '2', title: 'Titulo 2' })
+    },
+  },
   components: {
     Layout,
     JobsForm,

@@ -21,9 +21,6 @@ import { breadCrumbTypes } from '../types/index'
 import { GetOfferGUI } from '../../job-offer/infrastructure/driven-adapters/gui/GetOfferGUI'
 import { GetOfferService } from '../../job-offer/application/services/GetOfferService'
 import { Http } from '../../job-offer/infrastructure/driven-adapters/in/http/GetOfferAdapter'
-import { PostOfferService } from '@/job-offer/application/services/PostOfferService'
-import { PostOfferAdapter } from '../../job-offer/infrastructure/driven-adapters/out/http/PostOfferAdapter'
-import { AddJobGUI } from '../../job-offer/infrastructure/driven-adapters/gui/AddJobGUI'
 
 interface JobsStateTypes {
   breadCrumbLinks: breadCrumbTypes[]
@@ -33,12 +30,6 @@ export default defineComponent({
     return {
       breadCrumbLinks: [{ label: 'Ofertas', to: '/jobs' }],
     }
-  },
-  methods: {
-    handleSubmit() {
-      const idk = new AddJobGUI(new PostOfferService(new PostOfferAdapter()))
-      idk.SubmitJobOffer({ id: '2', title: 'asd' })
-    },
   },
   mounted() {
     this.$nextTick(async () => {

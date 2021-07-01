@@ -16,10 +16,7 @@ export class PostOfferAdapter implements PostOfferPort {
       .then((data) => {
         console.log(data)
       }))
-    // .catch((err) => {
-    //   throw new Exception()
 
-    // })
     return jobOfferResponse
   }
 }
