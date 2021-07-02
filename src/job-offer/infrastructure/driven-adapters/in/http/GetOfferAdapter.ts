@@ -6,15 +6,17 @@ export class Http implements GetOfferPort {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': 'http://localhost:8081',
       },
-      credentials: 'same-origin',
     })
+    console.log(response)
     return (await response.json()) as T
   }
 
   async requestHandler(id: any): Promise<any> {
-    const response = await this.fetchData<any>('http://localhost:3000/JobOffer')
+    const response = await this.fetchData<any>(
+      `${process.env.VUE_APP_BASEURL}/JobOffer`
+    )
+    console.log(response)
     return response
   }
 }
