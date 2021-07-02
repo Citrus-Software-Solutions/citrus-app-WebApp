@@ -3,9 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "concurrently \"npm run start\" \"npm run server\"",
+    "serve": "concurrently \"npm run start\" \"npm run springserver\"",
     "start": "vue-cli-service serve",
-    "server": "json-server --watch ./db/db.json --delay 3000",
+    "jsonserver": "json-server --watch ./db/db.json --delay 3000",
+    "springserver":"java -jar ./spring-api/spring-api-v-0.0.1.sanpshot.jar",
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "test:e2e": "vue-cli-service test:e2e",

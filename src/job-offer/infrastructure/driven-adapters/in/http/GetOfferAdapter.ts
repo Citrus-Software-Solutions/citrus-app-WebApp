@@ -8,11 +8,15 @@ export class Http implements GetOfferPort {
         'Content-Type': 'application/json',
       },
     })
+    console.log(response)
     return (await response.json()) as T
   }
 
   async requestHandler(id: any): Promise<any> {
-    const response = await this.fetchData<any>('http://localhost:3000/jobs')
+    const response = await this.fetchData<any>(
+      `${process.env.VUE_APP_BASEURL}/JobOffer`
+    )
+    console.log(response)
     return response
   }
 }
