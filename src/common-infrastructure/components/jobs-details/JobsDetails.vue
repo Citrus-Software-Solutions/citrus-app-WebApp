@@ -14,14 +14,16 @@
       <p>{{ job.available_vacans }}</p>
       <p class="jobs-details_section_sub-title">Género:</p>
       <p>{{ job.gender }}</p>
-      <p class="jobs-details_section_sub-title">Edad mínima:</p>
+      <p class="jobs-details_section_sub-title">Rango de Edad:</p>
       <p>{{ job.min_age }}</p>
+      <p class="jobs-details_section_divider">-</p>
+      <p>{{ job.max_age }}</p>
       <p>años</p>
     </div>
     <div class="jobs-details_section">
       <i class="pi pi-map-marker jobs-details_section_icon"></i>
       <p class="jobs-details_section_sub-title">Ubicación:</p>
-      <p>{{ job.location }}</p>
+      <p>{{ job.location.name }}</p>
     </div>
     <div class="jobs-details_section">
       <i class="pi pi-money-bill jobs-details_section_icon"></i>
@@ -35,7 +37,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import { RouteParams } from 'vue-router'
-import { JobOffer } from '../../../job-offer/domain/JobOffer'
+import { JobOfferDTO } from '../../../job-offer/domain/DTO/JobOfferDTO'
 
 export default defineComponent({
   data(): RouteParams {
@@ -44,9 +46,9 @@ export default defineComponent({
     }
   },
   computed: {
-    job() {
+    job(): JobOfferDTO {
       return this.$store.getters.getJobOffers.filter(
-        (job: JobOffer) => job.id === this.jobId
+        (job: JobOfferDTO) => job.id === this.jobId
       )[0]
     },
   },

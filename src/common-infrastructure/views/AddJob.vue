@@ -5,7 +5,11 @@
         {{ operationStatus.message }}
       </Message>
       <h1 class="title">Agregar una nueva oferta</h1>
-      <JobsForm @postJob="handleSubmit" :errors="jobFormErrors" />
+      <JobsForm
+        @postJob="handleSubmit"
+        :errors="jobFormErrors"
+        :user="userInfo"
+      />
     </template>
   </Layout>
 </template>
@@ -19,7 +23,7 @@ import { defineComponent } from 'vue'
 import JobsForm from '../components/jobs-form/JobsForm.vue'
 import Layout from '../components/layout/Layout.vue'
 import { breadCrumbTypes } from '../types/index'
-import { JobOffer } from '../../job-offer/domain/JobOffer'
+import { JobOfferDTO } from '../../job-offer/domain/DTO/JobOfferDTO'
 import { PostOfferValidationExceptionsAdapter } from '@/job-offer/infrastructure/driven-adapters/out/validation-exceptions/PostOfferValidationExceptionsAdapter'
 import { OperationStatusNotificationAdapter } from '@/job-offer/infrastructure/driven-adapters/out/operation-status/OperationStatusNotificationAdapter'
 
@@ -40,7 +44,7 @@ export default defineComponent({
     this.resetErrors()
   },
   methods: {
-    handleSubmit(jobOfferFields: JobOffer) {
+    handleSubmit(jobOfferFields: JobOfferDTO) {
       this.resetErrors()
       const opStatusNotifAdapter = new OperationStatusNotificationAdapter()
       const postOfferExcepAdapter = new PostOfferValidationExceptionsAdapter()
@@ -62,6 +66,9 @@ export default defineComponent({
     },
     operationStatus(): any {
       return this.$store.getters.getOperationStatus
+    },
+    userInfo(): any {
+      return this.$store.getters.getUser
     },
   },
   components: {

@@ -1,5 +1,5 @@
 import { PostOfferPort } from '@/job-offer/application/ports/out/PostOfferPort'
-import { JobOffer } from '@/job-offer/domain/JobOffer'
+import { JobOfferDTO } from '@/job-offer/domain/DTO/JobOfferDTO'
 import { NotificationsPort } from '@/job-offer/application/ports/out/NotificationsPort'
 
 export class PostOfferAdapter implements PostOfferPort {
@@ -11,10 +11,13 @@ export class PostOfferAdapter implements PostOfferPort {
     this.notificationsPort = notificationsPort
   }
 
-  async postOfferApi(jobOffer: JobOffer): Promise<void> {
-    await fetch('http://localhost:8081/JobOffer', {
+  async postOfferApi(jobOffer: JobOfferDTO): Promise<void> {
+    await fetch('http://localhost:3000/jobs', {
       //se debe cambiar a la ruta para post
       method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
       body: JSON.stringify(jobOffer),
     })
       .then((res) => res.json())

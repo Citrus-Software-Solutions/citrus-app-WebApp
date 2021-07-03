@@ -1,8 +1,8 @@
 import { PostOfferPort } from '../ports/out/PostOfferPort'
-import { JobOffer } from '../../domain/JobOffer'
 import { PostOfferUseCase } from '../ports/in/use-cases/PostOfferUseCase'
 import { PostOfferValidator } from '../validators/PostOfferValidator'
 import { NotificationsPort } from '../ports/out/NotificationsPort'
+import { JobOfferDTO } from '../../domain/DTO/JobOfferDTO'
 
 export class PostOfferService implements PostOfferUseCase {
   postOfferPort: PostOfferPort
@@ -16,7 +16,7 @@ export class PostOfferService implements PostOfferUseCase {
     this.notificationsPort = notificationsPort
   }
 
-  public PostOffer(jobOffer: JobOffer): void {
+  public PostOffer(jobOffer: JobOfferDTO): void {
     const postOfferValidator = new PostOfferValidator(jobOffer)
 
     if (postOfferValidator.isValid()) {

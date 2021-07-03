@@ -1,5 +1,5 @@
 import { PostOfferUseCase } from '../../../application/ports/in/use-cases/PostOfferUseCase'
-import { JobOffer } from '../../../domain/JobOffer'
+import { JobOfferDTO } from '../../../domain/DTO/JobOfferDTO'
 
 export class AddJobController {
   public postOfferUseCase: PostOfferUseCase
@@ -8,7 +8,7 @@ export class AddJobController {
     this.postOfferUseCase = useCase
   }
 
-  public SubmitJobOffer(jobOffer: JobOffer): void {
+  public SubmitJobOffer(jobOffer: JobOfferDTO): void {
     this.postOfferUseCase.PostOffer(jobOffer)
   }
 }

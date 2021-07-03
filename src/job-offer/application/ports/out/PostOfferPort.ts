@@ -1,5 +1,5 @@
-import { JobOffer } from '@/job-offer/domain/JobOffer'
+import { JobOfferDTO } from '@/job-offer/domain/DTO/JobOfferDTO'
 
 export interface PostOfferPort {
-  postOfferApi(joboffer: JobOffer): void
+  postOfferApi(joboffer: JobOfferDTO): void
 }

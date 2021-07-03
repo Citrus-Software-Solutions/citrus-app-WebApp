@@ -3,6 +3,10 @@ import { createStore } from 'vuex'
 export const store = createStore({
   state() {
     return {
+      user: {
+        name: 'Citrus App',
+        id: '101010',
+      },
       jobOffers: [],
       errors: {
         addJobForm: {},
@@ -41,6 +45,9 @@ export const store = createStore({
     },
     getOperationStatus(state) {
       return state.operationStatus
+    },
+    getUser(state) {
+      return state.user
     },
   },
 })
