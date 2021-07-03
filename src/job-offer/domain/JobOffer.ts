@@ -7,13 +7,13 @@ export type Description = string
 export type Day = number
 export type Month = number
 export type Year = number
-export type Date = {
-  day: Day
-  month: Month
-  year: Year
+// export type Date = {
+//   day: Day
+//   month: Month
+//   year: Year
 
-  //Metodos para validar el value object
-}
+//   //Metodos para validar el value object
+// }
 export type Duration = number
 export type HourlyRate = number
 export type Name = string

@@ -1,7 +1,7 @@
 import { PostOfferUseCase } from '../../../application/ports/in/use-cases/PostOfferUseCase'
 import { JobOffer } from '../../../domain/JobOffer'
 
-export class AddJobGUI {
+export class AddJobController {
   public postOfferUseCase: PostOfferUseCase
 
   public constructor(useCase: PostOfferUseCase) {

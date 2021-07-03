@@ -1,6 +1,6 @@
 import { GetOfferUseCase } from '../../../application/ports/in/use-cases/GetOfferUseCase'
 
-export class GetOfferGUI {
+export class GetOfferController {
   getOfferUseCase: GetOfferUseCase
 
   constructor(getOfferUseCase: GetOfferUseCase) {
