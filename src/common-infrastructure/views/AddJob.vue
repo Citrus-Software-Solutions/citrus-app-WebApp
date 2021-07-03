@@ -1,21 +1,27 @@
 <template>
   <Layout :breadCrumbLinks="breadCrumbLinks">
     <template v-slot:content>
+      <Message v-if="operationStatus.message" :severity="operationStatus.type">
+        {{ operationStatus.message }}
+      </Message>
       <h1 class="title">Agregar una nueva oferta</h1>
-      <JobsForm @postJob="handleSubmit" />
+      <JobsForm @postJob="handleSubmit" :errors="jobFormErrors" />
     </template>
   </Layout>
 </template>
 
 <script lang="ts">
+import Message from 'primevue/message'
 import { PostOfferService } from '@/job-offer/application/services/PostOfferService'
-import { AddJobGUI } from '@/job-offer/infrastructure/driven-adapters/gui/AddJobGUI'
+import { AddJobController } from '@/job-offer/infrastructure/driven-adapters/controller/AddJobController'
 import { PostOfferAdapter } from '@/job-offer/infrastructure/driven-adapters/out/http/PostOfferAdapter'
 import { defineComponent } from 'vue'
 import JobsForm from '../components/jobs-form/JobsForm.vue'
 import Layout from '../components/layout/Layout.vue'
 import { breadCrumbTypes } from '../types/index'
 import { JobOffer } from '../../job-offer/domain/JobOffer'
+import { PostOfferValidationExceptionsAdapter } from '@/job-offer/infrastructure/driven-adapters/out/validation-exceptions/PostOfferValidationExceptionsAdapter'
+import { OperationStatusNotificationAdapter } from '@/job-offer/infrastructure/driven-adapters/out/operation-status/OperationStatusNotificationAdapter'
 
 interface AddJobStateTypes {
   breadCrumbLinks: breadCrumbTypes[]
@@ -30,18 +36,38 @@ export default defineComponent({
       ],
     }
   },
-
+  mounted() {
+    this.resetErrors()
+  },
   methods: {
     handleSubmit(jobOfferFields: JobOffer) {
-      const addJobGui = new AddJobGUI(
-        new PostOfferService(new PostOfferAdapter())
+      this.resetErrors()
+      const opStatusNotifAdapter = new OperationStatusNotificationAdapter()
+      const postOfferExcepAdapter = new PostOfferValidationExceptionsAdapter()
+      const postOfferAdapter = new PostOfferAdapter(opStatusNotifAdapter)
+      const postOfferService = new PostOfferService(
+        postOfferAdapter,
+        postOfferExcepAdapter
       )
-      addJobGui.SubmitJobOffer(jobOfferFields)
+      const addJobController = new AddJobController(postOfferService)
+      addJobController.SubmitJobOffer(jobOfferFields)
+    },
+    resetErrors() {
+      this.$store.commit('resetErrors')
+    },
+  },
+  computed: {
+    jobFormErrors(): any {
+      return this.$store.getters.getErrors.addJobForm
+    },
+    operationStatus(): any {
+      return this.$store.getters.getOperationStatus
     },
   },
   components: {
     Layout,
     JobsForm,
+    Message,
   },
 })
 </script>

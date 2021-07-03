@@ -10,6 +10,9 @@
           required
           placeholder="Obreros para construcción"
         />
+        <InlineMessage v-if="errors?.name">
+          {{ errors.name }}
+        </InlineMessage>
       </div>
       <div class="jobs-form_form_section">
         <h2 class="jobs-form_form_section_title">Ubicación</h2>
@@ -20,6 +23,9 @@
           required
           placeholder="Caracas - Venezuela"
         />
+        <InlineMessage v-if="errors?.location">
+          {{ errors.location }}
+        </InlineMessage>
       </div>
       <div class="jobs-form_form_section">
         <h2 class="jobs-form_form_section_title">Descripción</h2>
@@ -32,6 +38,9 @@
           required
           placeholder="Cuéntanos todos los detalles del trabajo"
         />
+        <InlineMessage v-if="errors?.description">
+          {{ errors.description }}
+        </InlineMessage>
       </div>
       <div class="jobs-form_form_section">
         <h2 class="jobs-form_form_section_title">Duración del trabajo</h2>
@@ -47,6 +56,9 @@
           :manualInput="false"
           required
         />
+        <InlineMessage v-if="errors?.date_begin">
+          {{ errors.date_begin }}
+        </InlineMessage>
         <label class="jobs-form_form_section_label" for="date_end">Hasta</label>
         <Calendar
           id="date_end"
@@ -57,6 +69,9 @@
           :manualInput="false"
           required
         />
+        <InlineMessage v-if="errors?.date_end">
+          {{ errors.date_end }}
+        </InlineMessage>
       </div>
       <div class="jobs-form_form_section">
         <h2 class="jobs-form_form_section_title">Género del empleado</h2>
@@ -80,6 +95,9 @@
         <label class="jobs-form_form_section_label" for="masculine">
           Masculino
         </label>
+        <InlineMessage v-if="errors?.gender">
+          {{ errors.gender }}
+        </InlineMessage>
       </div>
       <div class="jobs-form_form_section">
         <h2 class="jobs-form_form_section_title">Rango de Edad</h2>
@@ -95,6 +113,9 @@
           class="jobs-form_form_section_input__small"
           placeholder="min"
         />
+        <InlineMessage v-if="errors?.min_age">
+          {{ errors.min_age }}
+        </InlineMessage>
       </div>
       <div class="jobs-form_form_section jobs-form_form_section__double-row">
         <div>
@@ -110,6 +131,9 @@
             class="jobs-form_form_section_input__medium"
             placeholder="1.000.000"
           />
+          <InlineMessage v-if="errors?.salary">
+            {{ errors.salary }}
+          </InlineMessage>
         </div>
         <div>
           <h2 class="jobs-form_form_section_title">Vacantes disponibles</h2>
@@ -124,6 +148,9 @@
             class="jobs-form_form_section_input__small"
             placeholder="5"
           />
+          <InlineMessage v-if="errors?.available_vacans">
+            {{ errors.available_vacans }}
+          </InlineMessage>
         </div>
       </div>
       <Button
@@ -144,6 +171,7 @@ import InputNumber from 'primevue/inputnumber'
 import InputText from 'primevue/inputtext'
 import Textarea from 'primevue/textarea'
 import Button from 'primevue/button'
+import InlineMessage from 'primevue/inlinemessage'
 
 interface formTypes {
   name: string
@@ -172,15 +200,12 @@ export default defineComponent({
     }
   },
   methods: {
-    yearFormatter(date: Date): string {
-      return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`
-    },
     handleSubmit(): void {
       this.$emit('postJob', {
         name: this.name,
         description: this.description,
-        date_begin: this.yearFormatter(this.date_begin as Date),
-        date_end: this.yearFormatter(this.date_end as Date),
+        date_begin: this.date_begin,
+        date_end: this.date_end,
         gender: this.gender,
         min_age: this.min_age,
         salary: this.salary,
@@ -189,6 +214,7 @@ export default defineComponent({
       })
     },
   },
+  props: ['errors'],
   components: {
     Calendar,
     RadioButton,
@@ -196,6 +222,7 @@ export default defineComponent({
     InputText,
     Textarea,
     Button,
+    InlineMessage,
   },
 })
 </script>

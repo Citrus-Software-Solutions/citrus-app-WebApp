@@ -1,6 +1,6 @@
 import { GetOfferPort } from '../../../../application/ports/out/GetOfferPort'
 
-export class Http implements GetOfferPort {
+export class GetOfferAdapter implements GetOfferPort {
   async fetchData<T>(url: string): Promise<any> {
     const response = await fetch(url, {
       method: 'GET',
@@ -14,7 +14,8 @@ export class Http implements GetOfferPort {
 
   async requestHandler(id: any): Promise<any> {
     const response = await this.fetchData<any>(
-      `${process.env.VUE_APP_BASEURL}/JobOffer`
+      // `${process.env.VUE_APP_BASEURL}/JobOffer`
+      'http://localhost:3000/jobs'
     )
     console.log(response)
     return response
