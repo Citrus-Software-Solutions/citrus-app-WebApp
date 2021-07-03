@@ -7,7 +7,7 @@
     "serve:dev": "concurrently \"npm run start\" \"npm run jsonserver\"",
     "start": "vue-cli-service serve",
     "jsonserver": "json-server --watch ./db/db.json --delay 3000",
-    "springserver":"java -jar ./spring-api/spring-api-v-0.0.1.sanpshot.jar",
+    "springserver": "java -jar ./spring-api/spring-api-v-0.0.1.sanpshot.jar",
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "test:e2e": "vue-cli-service test:e2e",

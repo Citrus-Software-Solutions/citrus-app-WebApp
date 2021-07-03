@@ -1,17 +1,6 @@
-import { JobOffer } from '../JobOffer'
-import { Employer } from '../Employer'
+import { JobOffer } from '../model/JobOffer'
 
 export type BasicJobOfferDTO = Pick<
   JobOffer,
-  | 'location'
-  | 'duration'
-  | 'certifications'
-  | 'title'
-  | 'deadline'
-  | 'specialRequeriments'
-  | 'hourlyRate'
+  'id' | 'name' | 'description' | 'status'
 >
-
-export interface JobOfferDTO extends JobOffer {
-  employer: Employer
-}

@@ -1,5 +1,7 @@
 import { GetOfferUseCase } from '../ports/in/use-cases/GetOfferUseCase'
 import { GetOfferPort } from '../ports/out/GetOfferPort'
+import { Id } from '../../domain/model/Shared'
+import { JobOffer } from '../../domain/model/JobOffer'
 
 export class GetOfferService implements GetOfferUseCase {
   getOfferPort: GetOfferPort
@@ -8,7 +10,7 @@ export class GetOfferService implements GetOfferUseCase {
     this.getOfferPort = getOfferPort
   }
 
-  getOffers(userId: any): void {
+  getOffers(userId: Id): Promise<JobOffer> {
     return this.getOfferPort.requestHandler(userId)
   }
 }
