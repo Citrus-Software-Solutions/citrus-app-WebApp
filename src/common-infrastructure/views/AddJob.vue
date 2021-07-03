@@ -23,9 +23,9 @@ import { defineComponent } from 'vue'
 import JobsForm from '../components/jobs-form/JobsForm.vue'
 import Layout from '../components/layout/Layout.vue'
 import { breadCrumbTypes } from '../types/index'
-import { JobOfferDTO } from '../../job-offer/domain/DTO/JobOfferDTO'
 import { PostOfferValidationExceptionsAdapter } from '@/job-offer/infrastructure/driven-adapters/out/validation-exceptions/PostOfferValidationExceptionsAdapter'
 import { OperationStatusNotificationAdapter } from '@/job-offer/infrastructure/driven-adapters/out/operation-status/OperationStatusNotificationAdapter'
+import { JobOffer } from '@/job-offer/domain/model/JobOffer'
 
 interface AddJobStateTypes {
   breadCrumbLinks: breadCrumbTypes[]
@@ -44,7 +44,7 @@ export default defineComponent({
     this.resetErrors()
   },
   methods: {
-    handleSubmit(jobOfferFields: JobOfferDTO) {
+    handleSubmit(jobOfferFields: JobOffer) {
       this.resetErrors()
       const opStatusNotifAdapter = new OperationStatusNotificationAdapter()
       const postOfferExcepAdapter = new PostOfferValidationExceptionsAdapter()
@@ -64,10 +64,10 @@ export default defineComponent({
     jobFormErrors(): any {
       return this.$store.getters.getErrors.addJobForm
     },
-    operationStatus(): any {
+    operationStatus(): { message: string; type: string } {
       return this.$store.getters.getOperationStatus
     },
-    userInfo(): any {
+    userInfo(): { name: string; id: string } {
       return this.$store.getters.getUser
     },
   },

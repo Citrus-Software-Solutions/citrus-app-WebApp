@@ -187,20 +187,7 @@ import InputText from 'primevue/inputtext'
 import Textarea from 'primevue/textarea'
 import Button from 'primevue/button'
 import InlineMessage from 'primevue/inlinemessage'
-import { JobOfferDTO } from '@/job-offer/domain/DTO/JobOfferDTO'
-
-// interface formTypes {
-//   name: string
-//   description: string
-//   date_begin: Date
-//   date_end: Date
-//   gender: string
-//   min_age: number | null
-//   max_age: number | null
-//   salary: number | null
-//   available_vacans: number | null
-//   location: string | null
-// }
+import { JobOffer } from '@/job-offer/domain/model/JobOffer'
 
 export default defineComponent({
   data() {
@@ -219,7 +206,7 @@ export default defineComponent({
   },
   methods: {
     handleSubmit(): void {
-      const JobOfferData: JobOfferDTO = {
+      const JobOfferData: JobOffer = {
         name: this.name,
         description: this.description,
         date_begin: this.date_begin,
