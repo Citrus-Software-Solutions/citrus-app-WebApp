@@ -78,7 +78,7 @@
         <RadioButton
           id="femenine"
           name="gender"
-          value="femenino"
+          value="f"
           v-model="gender"
           required
         />
@@ -88,7 +88,7 @@
         <RadioButton
           id="masculine"
           name="gender"
-          value="masculino"
+          value="m"
           v-model="gender"
           required
         />
@@ -115,6 +115,21 @@
         />
         <InlineMessage v-if="errors?.min_age">
           {{ errors.min_age }}
+        </InlineMessage>
+        <label class="jobs-form_form_section_label" for="max_age">
+          Edad máxima
+        </label>
+        <InputNumber
+          name="max_age"
+          v-model="max_age"
+          :min="0"
+          :max="100"
+          required
+          class="jobs-form_form_section_input__small"
+          placeholder="max"
+        />
+        <InlineMessage v-if="errors?.max_age">
+          {{ errors.max_age }}
         </InlineMessage>
       </div>
       <div class="jobs-form_form_section jobs-form_form_section__double-row">
@@ -172,49 +187,61 @@ import InputText from 'primevue/inputtext'
 import Textarea from 'primevue/textarea'
 import Button from 'primevue/button'
 import InlineMessage from 'primevue/inlinemessage'
+import { JobOfferDTO } from '@/job-offer/domain/DTO/JobOfferDTO'
 
-interface formTypes {
-  name: string
-  description: string
-  date_begin: Date | null
-  date_end: Date | null
-  gender: string
-  min_age: number | null
-  salary: number | null
-  available_vacans: number | null
-  location: string | null
-}
+// interface formTypes {
+//   name: string
+//   description: string
+//   date_begin: Date
+//   date_end: Date
+//   gender: string
+//   min_age: number | null
+//   max_age: number | null
+//   salary: number | null
+//   available_vacans: number | null
+//   location: string | null
+// }
 
 export default defineComponent({
-  data(): formTypes {
+  data() {
     return {
       name: '',
       description: '',
       date_begin: new Date(),
       date_end: new Date(),
       gender: '',
-      min_age: null,
-      salary: null,
-      available_vacans: null,
-      location: null,
+      min_age: null as unknown as number,
+      max_age: null as unknown as number,
+      salary: null as unknown as number,
+      available_vacans: null as unknown as number,
+      location: '',
     }
   },
   methods: {
     handleSubmit(): void {
-      this.$emit('postJob', {
+      const JobOfferData: JobOfferDTO = {
         name: this.name,
         description: this.description,
         date_begin: this.date_begin,
         date_end: this.date_end,
         gender: this.gender,
         min_age: this.min_age,
+        max_age: this.max_age,
         salary: this.salary,
         available_vacans: this.available_vacans,
-        location: this.location,
-      })
+        status: 'abierto',
+        location: {
+          id: '202020',
+          name: this.location,
+          type: 'Specific Direction',
+        },
+        employer: this.user,
+      }
+
+      this.$emit('postJob', JobOfferData)
     },
   },
-  props: ['errors'],
+  props: ['errors', 'user'],
   components: {
     Calendar,
     RadioButton,

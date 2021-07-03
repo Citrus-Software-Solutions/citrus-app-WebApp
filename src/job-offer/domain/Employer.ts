@@ -14,12 +14,17 @@ type Address = {
 //URL TO IMAGE
 type Logo = string
 
+// export interface Employer {
+//   companyName: Name
+//   address: Address
+//   contacts: User[]
+//   logo: Logo
+//   skills: Skill[]
+//   specialRequeriments: Name
+//   status: Status
+// }
+
 export interface Employer {
-  companyName: Name
-  address: Address
-  contacts: User[]
-  logo: Logo
-  skills: Skill[]
-  specialRequeriments: Name
-  status: Status
+  id: string
+  name: string
 }

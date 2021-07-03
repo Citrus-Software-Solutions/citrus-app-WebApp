@@ -54,14 +54,20 @@ export type Status = {
 // }
 
 export interface JobOffer {
-  id: string
+  id?: string
   name: string
   description: string
   date_begin: Date
   date_end: Date
   gender: string
   min_age: number
+  max_age: number
   salary: number
   available_vacans: number
-  location: string
+  status: string
+  location: {
+    id: string
+    name: string
+    type: string
+  }
 }

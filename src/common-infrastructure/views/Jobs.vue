@@ -36,11 +36,15 @@ export default defineComponent({
       const getOfferController = new GetOfferController(
         new GetOfferService(new GetOfferAdapter())
       )
-      const res = await getOfferController.getOffersData('ID')
+      const res = await getOfferController.getOffersData(this.userInfo.id)
       this.$store.commit('setJobOffers', res)
     })
   },
-
+  computed: {
+    userInfo(): any {
+      return this.$store.getters.getUser
+    },
+  },
   components: {
     Button,
     JobsList,

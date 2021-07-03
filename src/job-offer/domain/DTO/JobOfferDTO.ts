@@ -1,4 +1,5 @@
 import { JobOffer } from '../JobOffer'
+import { Employer } from '../Employer'
 
 export type BasicJobOfferDTO = Pick<
   JobOffer,
@@ -10,3 +11,7 @@ export type BasicJobOfferDTO = Pick<
   | 'specialRequeriments'
   | 'hourlyRate'
 >
+
+export interface JobOfferDTO extends JobOffer {
+  employer: Employer
+}

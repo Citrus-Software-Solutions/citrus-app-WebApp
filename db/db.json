@@ -1,62 +1,26 @@
 {
   "jobs": [
     {
-      "id": "1",
       "name": "technical interview",
       "description": "rerum, beatae qui odio pariatur repudiandae. Error excepturi repellendus commodi minima ducimus! Quam quis animi molestias, praesentium tempora excepturi exercitationem doloribus, atque nemorecusandae quos. Quidem enim amet, doloribus nostrum quo in sapiente! Accusamus harum hic quia fugit facilis adipisci temporibus aspernatur?",
-      "available_vacans": 5,
-      "date_begin": "10/2/2021",
-      "date_end": "10/3/2021",
-      "salary": "1000000",
-      "gender": "m",
-      "min_age": 18,
-      "applicants": 5,
-      "status": "open",
-      "location": "caracas, venezuela"
-    },
-    {
-      "id": "2",
-      "name": "construction worker",
-      "description": "rerum, beatae qui odio pariatur repudiandae. Error excepturi repellendus commodi minima ducimus! Quam quis animi molestias, praesentium tempora excepturi exercitationem doloribus, atque nemorecusandae quos. Quidem enim amet, doloribus nostrum quo in sapiente! Accusamus harum hic quia fugit facilis adipisci temporibus aspernatur?",
-      "applicants": 2,
-      "status": "closed",
-      "available_vacans": 5,
-      "date_begin": "10/2/2021",
-      "date_end": "10/3/2021",
-      "salary": "1000000",
-      "gender": "m",
-      "min_age": 18,
-      "location": "caracas, venezuela"
-    },
-    {
-      "id": "3",
-      "name": "front end senior angular",
-      "description": "rerum, beatae qui odio pariatur repudiandae. Error excepturi repellendus commodi minima ducimus! Quam quis animi molestias, praesentium tempora excepturi exercitationem doloribus, atque nemorecusandae quos. Quidem enim amet, doloribus nostrum quo in sapiente! Accusamus harum hic quia fugit facilis adipisci temporibus aspernatur?",
-      "available_vacans": 5,
-      "date_begin": "10/2/2021",
-      "date_end": "10/3/2021",
-      "salary": "1000000",
-      "gender": "m",
-      "min_age": 18,
-      "location": "caracas, venezuela"
-    },
-    {
-      "id": "4",
-      "name": "backend junior",
-      "description": "rerum, beatae qui odio pariatur repudiandae. Error excepturi repellendus commodi minima ducimus! Quam quis animi molestias, praesentium tempora excepturi exercitationem doloribus, atque nemorecusandae quos. Quidem enim amet, doloribus nostrum quo in sapiente! Accusamus harum hic quia fugit facilis adipisci temporibus aspernatur?",
-      "available_vacans": 5,
-      "date_begin": "10/2/2021",
-      "date_end": "10/3/2021",
-      "salary": "1000000",
-      "gender": "m",
-      "min_age": 18,
-      "location": "caracas, venezuela"
-    },
-    {
-      "id": "aTax5RA"
-    },
-    {
-      "id": "JXHb_TY"
+      "date_begin": "2021-07-03T16:52:14.779Z",
+      "date_end": "2021-07-03T16:52:14.779Z",
+      "gender": "f",
+      "min_age": 20,
+      "max_age": 60,
+      "salary": 3000000,
+      "available_vacans": 3,
+      "status": "abierto",
+      "location": {
+        "id": "202020",
+        "name": "asdf",
+        "type": "Specific Direction"
+      },
+      "employer": {
+        "id": "101010",
+        "name": "Citrus App"
+      },
+      "id": "aJXYBx1"
     }
   ]
 }

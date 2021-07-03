@@ -28,7 +28,7 @@ export class PostOfferValidator {
     )
     const age = new Age(this.jobOfferFields.min_age)
     const description = new Description(this.jobOfferFields.description)
-    const location = new Location(this.jobOfferFields.location)
+    const location = new Location(this.jobOfferFields.location.name)
     const name = new Name(this.jobOfferFields.name)
     const salary = new Salary(this.jobOfferFields.salary)
     const vacancy = new Vacancy(this.jobOfferFields.available_vacans)
