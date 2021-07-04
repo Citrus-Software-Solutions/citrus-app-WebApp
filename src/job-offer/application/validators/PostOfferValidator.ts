@@ -1,4 +1,4 @@
-import { JobOffer } from '../../domain/JobOffer'
+import { JobOffer } from '../../domain/model/JobOffer'
 import { DateRange } from '../../domain/value-objects/DateRange'
 import { Age } from '../../domain/value-objects/Age'
 import { Description } from '../../domain/value-objects/Description'

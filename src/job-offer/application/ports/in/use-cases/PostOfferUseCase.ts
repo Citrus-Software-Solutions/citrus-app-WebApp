@@ -1,5 +1,5 @@
-import { JobOfferDTO } from '../../../../domain/DTO/JobOfferDTO'
+import { JobOffer } from '../../../../domain/model/JobOffer'
 
 export interface PostOfferUseCase {
-  PostOffer(jobOffer: JobOfferDTO): void
+  PostOffer(jobOffer: JobOffer): void
 }
