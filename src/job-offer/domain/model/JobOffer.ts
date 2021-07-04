@@ -1,11 +1,11 @@
 import { Employer } from './Employer'
 import { Location } from './Location'
-import { Id } from './Shared'
+import { Id } from './Identifier'
 
 export type Status = string
 
 export interface JobOffer {
-  id?: Id
+  id: Id
   name: string
   description: string
   available_vacans: number

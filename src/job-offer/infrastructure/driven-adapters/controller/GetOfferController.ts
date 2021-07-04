@@ -1,4 +1,4 @@
-import { Id } from '@/job-offer/domain/model/Shared'
+import { Id } from '@/job-offer/domain/model/Identifier'
 import { GetOfferUseCase } from '../../../application/ports/in/use-cases/GetOfferUseCase'
 import { JobOffer } from '../../../domain/model/JobOffer'
 

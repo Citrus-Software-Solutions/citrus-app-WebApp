@@ -207,6 +207,7 @@ export default defineComponent({
   methods: {
     handleSubmit(): void {
       const JobOfferData: JobOffer = {
+        id: '',
         name: this.name,
         description: this.description,
         date_begin: this.date_begin,

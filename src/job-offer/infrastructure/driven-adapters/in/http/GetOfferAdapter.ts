@@ -1,6 +1,6 @@
 import { BasicJobOfferDTO } from '@/job-offer/domain/DTO/JobOfferDTO'
 import { GetOfferPort } from '../../../../application/ports/out/GetOfferPort'
-import { Id } from '../../../../domain/model/Shared'
+import { Id } from '../../../../domain/model/Identifier'
 import { JobOffer } from '../../../../domain/model/JobOffer'
 
 export class GetOfferAdapter implements GetOfferPort {
