@@ -21,18 +21,6 @@ describe('Post Offer use case', () => {
         'have.value',
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras a dolor vitae augue gravida sagittis. Nullam eget gravida mi, a sodales urna. Cras nec est eget libero iaculis vehicula. Vestibulum facilisis efficitur enim, vitae fringilla dui tristique non. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer porta, dui ac dignissim viverra, ligula ligula hendrerit erat, nec ultrices est elit sit amet ipsum. Nam sagittis enim ut mauris tristique gravida. Quisque vel augue commodo mi laoreet vulputate quis ac nisl. Fusce congue sapien at elit cursus efficitur.'
       )
-    // cy.get('#date_begin').should('exist')
-    // cy.get('#date_begin')
-    //   .invoke('val')
-    //   .then((text) => {
-    //     expect(new Date()).to.equal(text)
-    //   })
-    // cy.get('#date_end').should('exist')
-    // cy.get('#date_end')
-    //   .invoke('val')
-    //   .then((text) => {
-    //     expect('23/12/2021').to.equal(text)
-    //   })
     cy.get(':nth-child(2) > .p-radiobutton-box').should('exist')
     cy.get('[type="radio"]').first().check({ force: true })
     cy.get('input[name="min_age"]').should('exist')

@@ -15,10 +15,7 @@ export class GetOfferAdapter implements GetOfferPort {
   }
 
   async requestHandler(id: Id): Promise<JobOffer> {
-    const response = await this.fetchData<any>(
-      // `${process.env.VUE_APP_BASEURL}/JobOffer`
-      'http://localhost:3000/jobs'
-    )
+    const response = await this.fetchData<any>('http://localhost:3000/jobs')
     return response
   }
 }

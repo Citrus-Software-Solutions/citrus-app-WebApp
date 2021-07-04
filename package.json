@@ -10,7 +10,7 @@
     "springserver": "java -jar ./spring-api/spring-api-v-0.0.1.sanpshot.jar",
     "build": "vue-cli-service build",
     "test": "jest",
-    "test:unit": "vue-cli-service test:unit",
+    "test:unit": "npm run test ./tests/unit",
     "test:e2e": "vue-cli-service test:e2e",
     "test:int": "npm run test DataBaseIntegration.test.ts",
     "lint": "vue-cli-service lint"

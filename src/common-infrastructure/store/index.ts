@@ -18,7 +18,6 @@ export const store = createStore({
     }
   },
   mutations: {
-    // TODO: set proper type
     setJobOffers(state: any, payload) {
       state.jobOffers = payload
     },

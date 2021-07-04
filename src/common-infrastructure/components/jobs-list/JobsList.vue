@@ -18,7 +18,6 @@ import JobsCard from '../jobs-card/JobsCard.vue'
 
 export default defineComponent({
   computed: {
-    // TODO: add types
     jobOffers() {
       return this.$store.getters.getJobOffers
     },

@@ -29,8 +29,8 @@ const jobOfferMock = {
   id: offerID,
 }
 
-describe('Post offer service test', () => {
-  it('spying on post method', () => {
+describe('testing post offer method to see if it invokes the PostOffer method implemented in the service', () => {
+  it('spying on post method of PostOfferService', () => {
     const notifications = new PostOfferValidationExceptionsAdapter()
     const postOfferAdapter = new PostOfferAdapter(notifications)
     const service = new PostOfferService(postOfferAdapter, notifications)
