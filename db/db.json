@@ -21,6 +21,28 @@
         "name": "Citrus App"
       },
       "id": "aJXYBx1"
+    },
+    {
+      "name": "Example Job 1",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras a dolor vitae augue gravida sagittis. Nullam eget gravida mi, a sodales urna. Cras nec est eget libero iaculis vehicula. Vestibulum facilisis efficitur enim, vitae fringilla dui tristique non. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer porta, dui ac dignissim viverra, ligula ligula hendrerit erat, nec ultrices est elit sit amet ipsum. Nam sagittis enim ut mauris tristique gravida. Quisque vel augue commodo mi laoreet vulputate quis ac nisl. Fusce congue sapien at elit cursus efficitur.",
+      "date_begin": "2021-07-04T05:37:21.182Z",
+      "date_end": "2021-07-04T05:37:21.182Z",
+      "gender": "f",
+      "min_age": 21,
+      "max_age": 35,
+      "salary": 1250,
+      "available_vacans": 2,
+      "status": "abierto",
+      "location": {
+        "id": "202020",
+        "name": "Somewhere",
+        "type": "Specific Direction"
+      },
+      "employer": {
+        "name": "Citrus App",
+        "id": "101010"
+      },
+      "id": "hxv3CDB"
     }
   ]
 }
