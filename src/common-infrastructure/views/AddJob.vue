@@ -16,16 +16,18 @@
 
 <script lang="ts">
 import Message from 'primevue/message'
-import { PostOfferService } from '@/job-offer/application/services/PostOfferService'
-import { AddJobController } from '@/job-offer/infrastructure/driven-adapters/controller/AddJobController'
-import { PostOfferAdapter } from '@/job-offer/infrastructure/driven-adapters/out/http/PostOfferAdapter'
 import { defineComponent } from 'vue'
 import JobsForm from '../components/jobs-form/JobsForm.vue'
 import Layout from '../components/layout/Layout.vue'
 import { breadCrumbTypes } from '../types/index'
+import { PostOfferService } from '@/job-offer/application/services/PostOfferService'
+import { AddJobController } from '@/job-offer/infrastructure/driven-adapters/controller/AddJobController'
+import { PostOfferAdapter } from '@/job-offer/infrastructure/driven-adapters/out/http/PostOfferAdapter'
 import { PostOfferValidationExceptionsAdapter } from '@/job-offer/infrastructure/driven-adapters/out/validation-exceptions/PostOfferValidationExceptionsAdapter'
 import { OperationStatusNotificationAdapter } from '@/job-offer/infrastructure/driven-adapters/out/operation-status/OperationStatusNotificationAdapter'
 import { JobOffer } from '@/job-offer/domain/model/JobOffer'
+import { IdGeneratorService } from '@/job-offer/application/services/IdGeneratorService'
+import { UuidGenerator } from '@/job-offer/infrastructure/driven-adapters/in/UuidGenerator'
 
 interface AddJobStateTypes {
   breadCrumbLinks: breadCrumbTypes[]
@@ -46,6 +48,8 @@ export default defineComponent({
   methods: {
     handleSubmit(jobOfferFields: JobOffer) {
       this.resetErrors()
+      const idGenerator = new IdGeneratorService(new UuidGenerator())
+      const id = idGenerator.createId()
       const opStatusNotifAdapter = new OperationStatusNotificationAdapter()
       const postOfferExcepAdapter = new PostOfferValidationExceptionsAdapter()
       const postOfferAdapter = new PostOfferAdapter(opStatusNotifAdapter)
@@ -54,7 +58,7 @@ export default defineComponent({
         postOfferExcepAdapter
       )
       const addJobController = new AddJobController(postOfferService)
-      addJobController.SubmitJobOffer(jobOfferFields)
+      addJobController.SubmitJobOffer({ ...jobOfferFields, id: id })
     },
     resetErrors() {
       this.$store.commit('resetErrors')

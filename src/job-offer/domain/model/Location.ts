@@ -1,4 +1,4 @@
-import { Id } from './Shared'
+import { Id } from './Identifier'
 
 export interface Location {
   id: Id

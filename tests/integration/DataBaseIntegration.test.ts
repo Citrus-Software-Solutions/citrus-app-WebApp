@@ -1,10 +1,13 @@
 import { GetOfferAdapter } from '@/job-offer/infrastructure/driven-adapters/in/http/GetOfferAdapter'
 import { PostOfferAdapter } from '@/job-offer/infrastructure/driven-adapters/out/http/PostOfferAdapter'
 import { PostOfferValidationExceptionsAdapter } from '@/job-offer/infrastructure/driven-adapters/out/validation-exceptions/PostOfferValidationExceptionsAdapter'
+import { IdGeneratorService } from '@/job-offer/application/services/IdGeneratorService'
+import { UuidGenerator } from '@/job-offer/infrastructure/driven-adapters/in/uuidGenerator'
 require('isomorphic-fetch')
 
-const offerID = new Date().toString()
-const employerId = 'testId'
+const idGenerator = new IdGeneratorService(new UuidGenerator())
+const offerID = idGenerator.createId()
+const employerId = idGenerator.createId()
 
 const mockJobOffer = {
   name: 'test',
