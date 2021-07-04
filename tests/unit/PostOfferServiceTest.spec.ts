@@ -1,7 +1,6 @@
 import { PostOfferAdapter } from '@/job-offer/infrastructure/driven-adapters/out/http/PostOfferAdapter'
 import { PostOfferValidationExceptionsAdapter } from '@/job-offer/infrastructure/driven-adapters/out/validation-exceptions/PostOfferValidationExceptionsAdapter'
 import { PostOfferService } from '@/job-offer/application/services/PostOfferService'
-import { JobOffer } from '@/job-offer/domain/model/JobOffer'
 require('isomorphic-fetch')
 
 const offerID = new Date().toString()

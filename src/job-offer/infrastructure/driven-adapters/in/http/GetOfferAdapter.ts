@@ -11,7 +11,6 @@ export class GetOfferAdapter implements GetOfferPort {
         'Content-Type': 'application/json',
       },
     })
-    console.log(response)
     return (await response.json()) as T
   }
 
@@ -20,7 +19,6 @@ export class GetOfferAdapter implements GetOfferPort {
       // `${process.env.VUE_APP_BASEURL}/JobOffer`
       'http://localhost:3000/jobs'
     )
-    console.log(response)
     return response
   }
 }

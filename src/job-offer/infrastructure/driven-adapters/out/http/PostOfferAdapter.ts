@@ -21,7 +21,6 @@ export class PostOfferAdapter implements PostOfferPort {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data)
         this.notificationsPort.notificationHandler({
           message: 'Oferta agregada exitosamente',
           type: 'success',
@@ -32,7 +31,6 @@ export class PostOfferAdapter implements PostOfferPort {
           message: 'Hubo un error durante la creación',
           type: 'error',
         })
-        console.log(err)
       })
   }
 }
