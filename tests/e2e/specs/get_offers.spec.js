@@ -1,11 +1,11 @@
-describe("Get job offers and it's details", () => {
+describe('Get offer use case and get an offer details', () => {
   it('visits main page and gets the list of job offers as well as the detail of the first element in the list', () => {
     cy.visit('http://localhost:8081')
     cy.log('Getting informaion from the server')
     cy.get('.title').contains('Consulta de ofertas')
     cy.log('finding the first element (paused, press resume to continue)')
     cy.get('.jobs-list').find('li').first().as('first-job-offer')
-    cy.pause()
+    cy.wait(1500)
     cy.get('@first-job-offer').click()
     cy.log('checking for existence of elements in the DOM')
     cy.get('h1').should('exist')
