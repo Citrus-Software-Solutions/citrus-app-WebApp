@@ -1,4 +1,4 @@
-import { Id } from '@/job-offer/domain/model/Identifier'
+import { Id } from '@/job-offer/domain/value-objects/Identifier'
 import { GetOfferUseCase } from '../../../application/ports/in/use-cases/GetOfferUseCase'
 import { JobOffer } from '../../../domain/model/JobOffer'
 

@@ -1,5 +1,5 @@
 import { IdGeneratorPort } from '../ports/in/IdGeneratorPort'
-import { Id } from '../../domain/model/Identifier'
+import { Id } from '../../domain/value-objects/Identifier'
 
 export class IdGeneratorService {
   idGenerator: IdGeneratorPort<Id>

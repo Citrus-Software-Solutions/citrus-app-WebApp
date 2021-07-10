@@ -1,70 +1,98 @@
-import { JobOffer } from '../../domain/model/JobOffer'
-import { DateRange } from '../../domain/value-objects/DateRange'
-import { Age } from '../../domain/value-objects/Age'
-import { Description } from '../../domain/value-objects/Description'
-import { Location } from '../../domain/value-objects/Location'
-import { Name } from '../../domain/value-objects/Name'
-import { Salary } from '../../domain/value-objects/Salary'
-import { Vacancy } from '../../domain/value-objects/Vacancy'
+import { CreateOfferDTO } from '../../domain/DTO/CreateOfferDto'
+import { Text, _Text } from '../../domain/value-objects/Text'
+import { Employer, _Employer } from '../../domain/model/Employer'
+import { Location, _Location } from '../../domain/model/Location'
+import { Hours, _Hours } from '@/job-offer/domain/value-objects/Hours'
+import { Cost, _Cost } from '@/job-offer/domain/value-objects/Cost'
+import { Deadline, _Deadline } from '@/job-offer/domain/value-objects/Deadline'
 
 export class PostOfferValidator {
-  jobOfferFields: JobOffer
-  formErrors: { [name: string]: any }
+  private createJobOfferFields: CreateOfferDTO
+  private createJobOfferErrors: { [name: string]: any }
 
-  constructor(jobOfferFields: JobOffer) {
-    this.jobOfferFields = jobOfferFields
-    this.formErrors = {}
+  constructor(createJobOfferFields: CreateOfferDTO) {
+    this.createJobOfferFields = createJobOfferFields
+    this.createJobOfferErrors = {}
   }
 
-  getformErrors(): { [name: string]: any } {
-    return this.formErrors
+  public get errors(): { [name: string]: any } {
+    return this.createJobOfferErrors
   }
 
-  isValid(): boolean {
-    let isValid = true
-    const dateRange = new DateRange(
-      this.jobOfferFields.date_begin,
-      this.jobOfferFields.date_end
+  private instanceCreator<T>(
+    valueObj: any,
+    fieldContent: any,
+    fieldName: string
+  ): T | null {
+    try {
+      return new valueObj(fieldContent as T)
+    } catch (error) {
+      this.createJobOfferErrors[fieldName] = error.message
+      return null
+    }
+  }
+
+  public isValid(): boolean {
+    const titleOrError = this.instanceCreator<_Text>(
+      Text,
+      this.createJobOfferFields.title,
+      'title'
     )
-    const age = new Age(this.jobOfferFields.min_age)
-    const description = new Description(this.jobOfferFields.description)
-    const location = new Location(this.jobOfferFields.location.name)
-    const name = new Name(this.jobOfferFields.name)
-    const salary = new Salary(this.jobOfferFields.salary)
-    const vacancy = new Vacancy(this.jobOfferFields.available_vacans)
 
-    if (!dateRange.getIsValid()) {
-      this.formErrors.date_begin =
-        'La fecha de inicio debe ser inferior a la de fin'
-      this.formErrors.date_end =
-        'La fecha de inicio debe ser inferior a la de fin'
-      isValid = false
-    }
-    if (!age.getIsValid()) {
-      this.formErrors.min_age = 'La edad introducida es inválida'
-    }
-    if (!description.getIsValid()) {
-      this.formErrors.description = 'La descripción introducida es inválida'
-      isValid = false
-    }
-    if (!location.getIsValid()) {
-      this.formErrors.location = 'La ubicación introducida es inválida'
-      isValid = false
-    }
-    if (!name.getIsValid()) {
-      this.formErrors.name = 'El nombre introducido es inválido'
-      isValid = false
-    }
-    if (!salary.getIsValid()) {
-      this.formErrors.salary = 'El salario introducido es inválida'
-      isValid = false
-    }
-    if (!vacancy.getIsValid()) {
-      this.formErrors.available_vacans =
-        'El numero de vacantes introducido es inválido'
-      isValid = false
-    }
+    const employerOrError = this.instanceCreator<_Employer>(
+      Employer,
+      this.createJobOfferFields.employer,
+      'employer'
+    )
 
-    return isValid
+    const locationOrError = this.instanceCreator<_Location>(
+      Location,
+      this.createJobOfferFields.location,
+      'location'
+    )
+
+    const deadlineOrError = this.instanceCreator<_Deadline>(
+      Deadline,
+      this.createJobOfferFields.deadline,
+      'deadline'
+    )
+
+    // // const schedulesOrError = new Schedules() //FIXME: lista de schedules
+
+    // // const skillsOrError = new Skills()  //FIXME: lista de skills
+
+    const specialRequirementsOrError = this.instanceCreator<_Text>(
+      Text,
+      this.createJobOfferFields.specialRequirements,
+      'specialRequirements'
+    )
+
+    // // const certificationsOrError = new Certifications() //FIXME: lista de certificaciones
+
+    const durationOrError = this.instanceCreator<_Hours>(
+      Hours,
+      this.createJobOfferFields.duration,
+      'duration'
+    )
+
+    const hourlyRateOrError = this.instanceCreator<_Cost>(
+      Cost,
+      this.createJobOfferFields.hourlyRate,
+      'hourlyRate'
+    )
+
+    // const statusOrError = new Status() //FIXME: status value object
+
+    const areValueObjectsOk = Boolean(
+      titleOrError &&
+        employerOrError &&
+        locationOrError &&
+        deadlineOrError &&
+        specialRequirementsOrError &&
+        durationOrError &&
+        hourlyRateOrError
+    )
+
+    return areValueObjectsOk
   }
 }

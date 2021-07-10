@@ -37,7 +37,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import { RouteParams } from 'vue-router'
-import { JobOffer } from '@/job-offer/domain/model/JobOffer'
+import { _JobOffer } from '@/job-offer/domain/model/JobOffer'
 
 export default defineComponent({
   data(): RouteParams {
@@ -46,9 +46,9 @@ export default defineComponent({
     }
   },
   computed: {
-    job(): JobOffer {
+    job(): _JobOffer {
       return this.$store.getters.getJobOffers.filter(
-        (job: JobOffer) => job.id === this.jobId
+        (job: _JobOffer) => job.id === this.jobId
       )[0]
     },
   },
