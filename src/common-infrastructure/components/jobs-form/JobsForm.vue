@@ -187,7 +187,7 @@ import InputText from 'primevue/inputtext'
 import Textarea from 'primevue/textarea'
 import Button from 'primevue/button'
 import InlineMessage from 'primevue/inlinemessage'
-import { JobOffer } from '@/job/domain/JobOffer'
+import { CreateOfferDTO } from '@/job/domain/DTO/CreateOfferDto'
 
 export default defineComponent({
   data() {
@@ -206,18 +206,17 @@ export default defineComponent({
   },
   methods: {
     handleSubmit(): void {
-      const JobOfferData: JobOffer = {
-        id: '',
-        name: this.name,
-        description: this.description,
-        date_begin: this.date_begin,
-        date_end: this.date_end,
-        gender: this.gender,
-        min_age: this.min_age,
-        max_age: this.max_age,
-        salary: this.salary,
-        available_vacans: this.available_vacans,
-        status: 'abierto',
+      // FIXME: Agregar todo al form
+      const JobOfferData: CreateOfferDTO = {
+        title: this.name,
+        status: 0,
+        deadline: new Date(),
+        schedules: [new Date(), new Date()],
+        skills: ['skill1', 'skill2'],
+        specialRequirements: 'text',
+        certifications: [],
+        duration: 8,
+        hourlyRate: 4,
         location: {
           id: '202020',
           name: this.location,

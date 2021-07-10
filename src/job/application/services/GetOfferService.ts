@@ -1,7 +1,7 @@
-import { GetOfferUseCase } from '../use-cases/in/GetOfferUseCase'
-import { GetOfferPort } from '../use-cases/out/GetOfferPort'
-import { Id } from '../../domain/Identifier'
-import { JobOffer } from '../../domain/JobOffer'
+import { GetOfferUseCase } from '@/job/application/use-cases/in/GetOfferUseCase'
+import { GetOfferPort } from '@/job/application/use-cases/out/GetOfferPort'
+import { Id } from '@/job/domain/value-objects/Identifier'
+import { JobOffer } from '@/job/domain/JobOffer'
 
 export class GetOfferService implements GetOfferUseCase {
   getOfferPort: GetOfferPort
