@@ -1,6 +1,6 @@
-import { PostOfferPort } from '@/job-offer/application/ports/out/PostOfferPort'
-import { JobOffer } from '@/job-offer/domain/model/JobOffer'
-import { NotificationsPort } from '@/job-offer/application/ports/out/NotificationsPort'
+import { PostOfferPort } from '@/job/application/use-cases/out/PostOfferPort'
+import { JobOffer } from '@/job/domain/JobOffer'
+import { NotificationsPort } from '@/job/application/use-cases/out/NotificationsPort'
 
 export class PostOfferAdapter implements PostOfferPort {
   notificationsPort: NotificationsPort<{ message: string; type: string }>

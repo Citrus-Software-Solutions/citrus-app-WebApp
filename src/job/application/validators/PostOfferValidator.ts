@@ -1,4 +1,4 @@
-import { JobOffer } from '../../domain/model/JobOffer'
+import { JobOffer } from '../../domain/JobOffer'
 import { DateRange } from '../../domain/value-objects/DateRange'
 import { Age } from '../../domain/value-objects/Age'
 import { Description } from '../../domain/value-objects/Description'
@@ -6,6 +6,8 @@ import { Location } from '../../domain/value-objects/Location'
 import { Name } from '../../domain/value-objects/Name'
 import { Salary } from '../../domain/value-objects/Salary'
 import { Vacancy } from '../../domain/value-objects/Vacancy'
+
+/*Arreglar validacion de post offer para que este en PostOfferService Para eliminar la carpeta validnators*/
 
 export class PostOfferValidator {
   jobOfferFields: JobOffer

@@ -187,7 +187,7 @@ import InputText from 'primevue/inputtext'
 import Textarea from 'primevue/textarea'
 import Button from 'primevue/button'
 import InlineMessage from 'primevue/inlinemessage'
-import { JobOffer } from '@/job-offer/domain/model/JobOffer'
+import { JobOffer } from '@/job/domain/JobOffer'
 
 export default defineComponent({
   data() {

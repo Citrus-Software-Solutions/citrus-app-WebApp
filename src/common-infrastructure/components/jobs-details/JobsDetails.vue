@@ -37,7 +37,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import { RouteParams } from 'vue-router'
-import { JobOffer } from '@/job-offer/domain/model/JobOffer'
+import { JobOffer } from '@/job/domain/JobOffer'
 
 export default defineComponent({
   data(): RouteParams {

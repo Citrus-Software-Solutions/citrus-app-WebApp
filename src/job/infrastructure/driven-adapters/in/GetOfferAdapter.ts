@@ -1,7 +1,6 @@
-import { BasicJobOfferDTO } from '@/job-offer/domain/DTO/JobOfferDTO'
-import { GetOfferPort } from '../../../../application/ports/out/GetOfferPort'
-import { Id } from '../../../../domain/model/Identifier'
-import { JobOffer } from '../../../../domain/model/JobOffer'
+import { GetOfferPort } from '../../../application/use-cases/out/GetOfferPort'
+import { Id } from '../../../domain/Identifier'
+import { JobOffer } from '../../../domain/JobOffer'
 
 export class GetOfferAdapter implements GetOfferPort {
   async fetchData<T>(url: string): Promise<any> {

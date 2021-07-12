@@ -18,9 +18,9 @@ import Button from 'primevue/button'
 import Layout from '../components/layout/Layout.vue'
 import JobsList from '../components/jobs-list/JobsList.vue'
 import { breadCrumbTypes } from '../types/index'
-import { GetOfferController } from '../../job-offer/infrastructure/driven-adapters/controller/GetOfferController'
-import { GetOfferService } from '../../job-offer/application/services/GetOfferService'
-import { GetOfferAdapter } from '../../job-offer/infrastructure/driven-adapters/in/http/GetOfferAdapter'
+import { GetOfferController } from '../../job/infrastructure/controllers/GetOfferController'
+import { GetOfferService } from '../../job/application/services/GetOfferService'
+import { GetOfferAdapter } from '../../job/infrastructure/driven-adapters/in/GetOfferAdapter'
 
 interface JobsStateTypes {
   breadCrumbLinks: breadCrumbTypes[]

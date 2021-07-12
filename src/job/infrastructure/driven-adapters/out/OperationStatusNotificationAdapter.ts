@@ -1,4 +1,4 @@
-import { NotificationsPort } from '@/job-offer/application/ports/out/NotificationsPort'
+import { NotificationsPort } from '@/job/application/use-cases/out/NotificationsPort'
 import { store } from '@/common-infrastructure/store'
 
 export class OperationStatusNotificationAdapter
