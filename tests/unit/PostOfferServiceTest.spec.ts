@@ -1,8 +1,8 @@
-import { PostOfferAdapter } from '@/job-offer/infrastructure/driven-adapters/out/http/PostOfferAdapter'
-import { PostOfferValidationExceptionsAdapter } from '@/job-offer/infrastructure/driven-adapters/out/validation-exceptions/PostOfferValidationExceptionsAdapter'
-import { PostOfferService } from '@/job-offer/application/services/PostOfferService'
-import { IdGeneratorService } from '@/job-offer/application/services/IdGeneratorService'
-import { UuidGenerator } from '@/job-offer/infrastructure/driven-adapters/in/uuidGenerator'
+import { PostOfferAdapter } from '@/job/infrastructure/driven-adapters/out/PostOfferAdapter'
+import { PostOfferValidationExceptionsAdapter } from '@/job/infrastructure/driven-adapters/out/PostOfferValidationExceptionsAdapter'
+import { PostOfferService } from '@/job/application/services/PostOfferService'
+import { IdGeneratorService } from '@/job/application/services/IdGeneratorService'
+import { UuidGenerator } from '@/job/infrastructure/driven-adapters/in/uuidGenerator'
 require('isomorphic-fetch')
 
 const idGenerator = new IdGeneratorService(new UuidGenerator())

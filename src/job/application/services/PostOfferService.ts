@@ -1,8 +1,8 @@
-import { PostOfferPort } from '../ports/out/PostOfferPort'
-import { JobOffer } from '../../domain/model/JobOffer'
-import { PostOfferUseCase } from '../ports/in/use-cases/PostOfferUseCase'
+import { PostOfferPort } from '../use-cases/out/PostOfferPort'
+import { JobOffer } from '../../domain/JobOffer'
+import { PostOfferUseCase } from '../use-cases/in/PostOfferUseCase'
 import { PostOfferValidator } from '../validators/PostOfferValidator'
-import { NotificationsPort } from '../ports/out/NotificationsPort'
+import { NotificationsPort } from '../use-cases/out/NotificationsPort'
 
 export class PostOfferService implements PostOfferUseCase {
   postOfferPort: PostOfferPort

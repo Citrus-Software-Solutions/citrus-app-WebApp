@@ -1,6 +1,6 @@
-import { Id } from '@/job-offer/domain/model/Identifier'
-import { GetOfferUseCase } from '../../../application/ports/in/use-cases/GetOfferUseCase'
-import { JobOffer } from '../../../domain/model/JobOffer'
+import { Id } from '@/job/domain/Identifier'
+import { GetOfferUseCase } from '../../application/use-cases/in/GetOfferUseCase'
+import { JobOffer } from '../../domain/JobOffer'
 
 export class GetOfferController {
   getOfferUseCase: GetOfferUseCase

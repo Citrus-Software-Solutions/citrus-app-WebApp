@@ -1,5 +1,5 @@
-import { PostOfferUseCase } from '../../../application/ports/in/use-cases/PostOfferUseCase'
-import { JobOffer } from '../../../domain/model/JobOffer'
+import { PostOfferUseCase } from '../../application/use-cases/in/PostOfferUseCase'
+import { JobOffer } from '../../domain/JobOffer'
 
 export class AddJobController {
   public postOfferUseCase: PostOfferUseCase

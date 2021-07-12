@@ -1,4 +1,4 @@
-import { JobOffer } from '../../../../domain/model/JobOffer'
+import { JobOffer } from '../../../domain/JobOffer'
 
 export interface PostOfferUseCase {
   PostOffer(jobOffer: JobOffer): void
