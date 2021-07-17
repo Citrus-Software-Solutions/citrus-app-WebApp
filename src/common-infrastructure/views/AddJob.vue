@@ -1,5 +1,6 @@
 <template>
   <Layout :breadCrumbLinks="breadCrumbLinks">
+    <button @click="toggle">CLICKME</button>
     <template v-slot:content>
       <Message v-if="operationStatus.message" :severity="operationStatus.type">
         {{ operationStatus.message }}
@@ -20,17 +21,18 @@ import { defineComponent } from 'vue'
 import JobsForm from '../components/jobs-form/JobsForm.vue'
 import Layout from '../components/layout/Layout.vue'
 import { breadCrumbTypes } from '../types/index'
-import { PostOfferService } from '@/job/application/services/PostOfferService'
-import { AddJobController } from '@/job/infrastructure/controllers/AddJobController'
-import { PostOfferAdapter } from '@/job/infrastructure/driven-adapters/out/PostOfferAdapter'
-import { PostOfferValidationExceptionsAdapter } from '@/job/infrastructure/driven-adapters/out/PostOfferValidationExceptionsAdapter'
-import { OperationStatusNotificationAdapter } from '@/job/infrastructure/driven-adapters/out/OperationStatusNotificationAdapter'
+import { CreateOfferService } from '@/job/application/services/CreateOfferService'
+import { CreateOfferController } from '@/job/infrastructure/controllers/CreateOfferController'
+import { PostOfferAdapter } from '@/job/infrastructure/driven-adapters/out/CreateOfferAdapter'
+import { CreateOfferErrorsAdapter } from '@/job/infrastructure/driven-adapters/out/CreateOfferErrorsAdapter'
 import { JobOffer } from '@/job/domain/JobOffer'
 import { IdGeneratorService } from '@/job/application/services/IdGeneratorService'
 import { UuidGenerator } from '@/job/infrastructure/driven-adapters/in/UuidGenerator'
+import { CreateOfferStatusAdapter } from '@/job/infrastructure/driven-adapters/out/CreateOfferStatusAdapter'
 
 interface AddJobStateTypes {
   breadCrumbLinks: breadCrumbTypes[]
+  show: boolean
 }
 
 export default defineComponent({
@@ -40,6 +42,7 @@ export default defineComponent({
         { label: 'Ofertas', to: '/jobs' },
         { label: 'Nueva Oferta', to: '/jobs/add' },
       ],
+      show: false,
     }
   },
   mounted() {
@@ -50,18 +53,22 @@ export default defineComponent({
       this.resetErrors()
       const idGenerator = new IdGeneratorService(new UuidGenerator())
       const id = idGenerator.createId()
-      const opStatusNotifAdapter = new OperationStatusNotificationAdapter()
-      const postOfferExcepAdapter = new PostOfferValidationExceptionsAdapter()
-      const postOfferAdapter = new PostOfferAdapter(opStatusNotifAdapter)
-      const postOfferService = new PostOfferService(
+      const createOfferErrorsAdapter = new CreateOfferErrorsAdapter()
+      const postOfferAdapter = new PostOfferAdapter()
+      const updateStatusAdapter = new CreateOfferStatusAdapter()
+      const postOfferService = new CreateOfferService(
         postOfferAdapter,
-        postOfferExcepAdapter
+        createOfferErrorsAdapter,
+        updateStatusAdapter
       )
-      const addJobController = new AddJobController(postOfferService)
-      addJobController.SubmitJobOffer({ ...jobOfferFields, id: id })
+      const createOfferController = new CreateOfferController(postOfferService)
+      createOfferController.executeImpl({ ...jobOfferFields, id: id })
     },
     resetErrors() {
       this.$store.commit('resetErrors')
+    },
+    toggle() {
+      this.show = !this.show
     },
   },
   computed: {

@@ -1,14 +1,14 @@
 {
   "jobs": [
     {
-      "name": "technical interview",
+      "name": "technical",
       "description": "rerum, beatae qui odio pariatur repudiandae. Error excepturi repellendus commodi minima ducimus! Quam quis animi molestias, praesentium tempora excepturi exercitationem doloribus, atque nemorecusandae quos. Quidem enim amet, doloribus nostrum quo in sapiente! Accusamus harum hic quia fugit facilis adipisci temporibus aspernatur?",
       "date_begin": "2021-07-03T16:52:14.779Z",
       "date_end": "2021-07-03T16:52:14.779Z",
       "gender": "f",
-      "min_age": 20,
-      "max_age": 60,
-      "salary": 3000000,
+      "min_age": 200,
+      "max_age": 600,
+      "salary": 30000000,
       "available_vacans": 3,
       "status": "abierto",
       "location": {
@@ -18,7 +18,7 @@
       },
       "employer": {
         "id": "101010",
-        "name": "Citrus App"
+        "name": "Citrus Appasdasdasdasd"
       },
       "id": "aJXYBx1"
     }

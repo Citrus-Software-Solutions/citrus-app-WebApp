@@ -18,9 +18,11 @@ import Button from 'primevue/button'
 import Layout from '../components/layout/Layout.vue'
 import JobsList from '../components/jobs-list/JobsList.vue'
 import { breadCrumbTypes } from '../types/index'
-import { GetOfferController } from '../../job/infrastructure/controllers/GetOfferController'
-import { GetOfferService } from '../../job/application/services/GetOfferService'
-import { GetOfferAdapter } from '../../job/infrastructure/driven-adapters/in/GetOfferAdapter'
+import { GetOfferController } from '../../job/infrastructure/controllers/ConsultOfferController'
+import { ConsultOfferService } from '../../job/application/services/ConsultOfferService'
+import { ConsultOfferAdapter } from '../../job/infrastructure/driven-adapters/in/ConsultOfferAdapter'
+import { ConsultOfferStateAdapter } from '@/job/infrastructure/driven-adapters/out/ConsultOfferStateAdapter'
+import { ConsultOfferStatusAdapter } from '@/job/infrastructure/driven-adapters/out/ConsultOfferStatusAdapter'
 
 interface JobsStateTypes {
   breadCrumbLinks: breadCrumbTypes[]
@@ -32,12 +34,15 @@ export default defineComponent({
     }
   },
   mounted() {
-    this.$nextTick(async () => {
+    this.$nextTick(() => {
       const getOfferController = new GetOfferController(
-        new GetOfferService(new GetOfferAdapter())
+        new ConsultOfferService(
+          new ConsultOfferAdapter(),
+          new ConsultOfferStateAdapter(),
+          new ConsultOfferStatusAdapter()
+        )
       )
-      const res = await getOfferController.getOffersData(this.userInfo.id)
-      this.$store.commit('setJobOffers', res)
+      getOfferController.executeImpl(this.userInfo.id)
     })
   },
   computed: {
