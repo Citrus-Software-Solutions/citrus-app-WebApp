@@ -1,5 +1,5 @@
-import { GetOfferService } from '../../src/job/application/services/GetOfferService'
-import { GetOfferAdapter } from '../../src/job/infrastructure/driven-adapters/in/GetOfferAdapter'
+import { GetOfferService } from '../../src/job/application/services/ConsultOfferService'
+import { GetOfferAdapter } from '../../src/job/infrastructure/driven-adapters/in/ConsultOfferAdapter'
 import { IdGeneratorService } from '@/job/application/services/IdGeneratorService'
 import { UuidGenerator } from '@/job/infrastructure/driven-adapters/in/uuidGenerator'
 require('isomorphic-fetch')

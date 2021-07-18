@@ -1,6 +1,6 @@
-import { GetOfferAdapter } from '@/job/infrastructure/driven-adapters/in/GetOfferAdapter'
-import { PostOfferAdapter } from '@/job/infrastructure/driven-adapters/out/PostOfferAdapter'
-import { PostOfferValidationExceptionsAdapter } from '@/job/infrastructure/driven-adapters/out/PostOfferValidationExceptionsAdapter'
+import { GetOfferAdapter } from '@/job/infrastructure/driven-adapters/in/ConsultOfferAdapter'
+import { PostOfferAdapter } from '@/job/infrastructure/driven-adapters/out/CreateOfferAdapter'
+import { PostOfferValidationExceptionsAdapter } from '@/job/infrastructure/driven-adapters/out/CreateOfferErrorsAdapter'
 import { IdGeneratorService } from '@/job/application/services/IdGeneratorService'
 import { UuidGenerator } from '@/job/infrastructure/driven-adapters/in/uuidGenerator'
 require('isomorphic-fetch')
