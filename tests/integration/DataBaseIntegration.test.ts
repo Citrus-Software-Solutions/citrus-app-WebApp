@@ -1,4 +1,4 @@
-import { GetOfferAdapter } from '@/job/infrastructure/driven-adapters/in/ConsultOfferAdapter'
+import { GetOfferAdapter } from '@/job/infrastructure/driven-adapters/in/ConsultAllOffersAdapter'
 import { PostOfferAdapter } from '@/job/infrastructure/driven-adapters/out/CreateOfferAdapter'
 import { PostOfferValidationExceptionsAdapter } from '@/job/infrastructure/driven-adapters/out/CreateOfferErrorsAdapter'
 import { IdGeneratorService } from '@/job/application/services/IdGeneratorService'

@@ -7,7 +7,7 @@
     </template>
     <template v-slot:content>
       <h1 class="title">Consulta de ofertas</h1>
-      <JobsList />
+      <JobsList @removeOffer="deleteOffer" />
     </template>
   </Layout>
 </template>
@@ -18,11 +18,15 @@ import Button from 'primevue/button'
 import Layout from '../components/layout/Layout.vue'
 import JobsList from '../components/jobs-list/JobsList.vue'
 import { breadCrumbTypes } from '../types/index'
-import { GetOfferController } from '../../job/infrastructure/controllers/ConsultOfferController'
-import { ConsultOfferService } from '../../job/application/services/ConsultOfferService'
-import { ConsultOfferAdapter } from '../../job/infrastructure/driven-adapters/in/ConsultOfferAdapter'
-import { ConsultOfferStateAdapter } from '@/job/infrastructure/driven-adapters/out/ConsultOfferStateAdapter'
+import { ConsultAllOffersController } from '../../job/infrastructure/controllers/ConsultAllOffersController'
+import { ConsultAllOffersService } from '../../job/application/services/ConsultAllOffersService'
+import { ConsultAllOffersAdapter } from '../../job/infrastructure/driven-adapters/in/ConsultAllOffersAdapter'
+import { ConsultAllOffersStateAdapter } from '@/job/infrastructure/driven-adapters/out/ConsultAllOffersStateAdapter'
 import { ConsultOfferStatusAdapter } from '@/job/infrastructure/driven-adapters/out/ConsultOfferStatusAdapter'
+import { DeleteOfferController } from '@/job/infrastructure/controllers/DeleteOfferController'
+import { DeleteOfferService } from '@/job/application/services/DeleteOfferService'
+import { DeleteOfferAdapter } from '@/job/infrastructure/driven-adapters/out/DeleteOfferAdapter'
+import { DeleteOfferStatusAdapter } from '@/job/infrastructure/driven-adapters/out/DeleteOfferStatusAdapter'
 
 interface JobsStateTypes {
   breadCrumbLinks: breadCrumbTypes[]
@@ -35,15 +39,29 @@ export default defineComponent({
   },
   mounted() {
     this.$nextTick(() => {
-      const getOfferController = new GetOfferController(
-        new ConsultOfferService(
-          new ConsultOfferAdapter(),
-          new ConsultOfferStateAdapter(),
+      const getOfferController = new ConsultAllOffersController(
+        new ConsultAllOffersService(
+          new ConsultAllOffersAdapter(),
+          new ConsultAllOffersStateAdapter(),
           new ConsultOfferStatusAdapter()
         )
       )
       getOfferController.executeImpl(this.userInfo.id)
     })
+  },
+  methods: {
+    deleteOffer(offerId: string) {
+      const deleteOfferStatusAdapter = new DeleteOfferStatusAdapter()
+      const deleteOfferAdapter = new DeleteOfferAdapter()
+      const deleteOfferService = new DeleteOfferService(
+        deleteOfferAdapter,
+        deleteOfferStatusAdapter
+      )
+      const deleteOfferController = new DeleteOfferController(
+        deleteOfferService
+      )
+      deleteOfferController.executeImpl(offerId)
+    },
   },
   computed: {
     userInfo(): any {
