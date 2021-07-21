@@ -2,11 +2,12 @@
   <ul class="jobs-list">
     <li v-for="(job, index) in jobOffers" :key="index">
       <JobsCard
-        :name="job.name"
-        :description="job.description"
+        :title="job.title"
+        :specialRequirements="job.specialRequirements"
         :applicants="job.applicants"
         :status="job.status"
         :id="job.id"
+        v-bind="$attrs"
       />
     </li>
   </ul>
@@ -19,7 +20,7 @@ import JobsCard from '../jobs-card/JobsCard.vue'
 export default defineComponent({
   computed: {
     jobOffers() {
-      return this.$store.getters.getJobOffers
+      return this.$store.getters.getAllJobOffers
     },
   },
   components: {

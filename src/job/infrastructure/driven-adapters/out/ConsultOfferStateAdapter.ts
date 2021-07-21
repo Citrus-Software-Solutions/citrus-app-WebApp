@@ -5,6 +5,6 @@ export class ConsultOfferStateAdapter
   implements UpdateStatePort<{ [name: string]: any }>
 {
   public setState(payload: { [name: string]: any }): void {
-    store.commit('setJobOffers', payload)
+    store.commit('setJobOffer', payload)
   }
 }

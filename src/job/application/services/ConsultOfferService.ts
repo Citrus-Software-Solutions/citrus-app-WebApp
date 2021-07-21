@@ -19,9 +19,10 @@ export class ConsultOfferService implements ConsultOfferUseCase {
     this.updateStatusPort = updateStatusPort
   }
 
-  public async execute(employerId: Id): Promise<void> {
+  public async execute(offerId: Id): Promise<void> {
     this.updateStatusPort.inProgress()
-    const response = await this.consultOfferPort.requestHandler(employerId)
+    this.updateStatePort.setState({})
+    const response = await this.consultOfferPort.requestHandler(offerId)
 
     if (response.success) {
       this.updateStatePort.setState(response.body)

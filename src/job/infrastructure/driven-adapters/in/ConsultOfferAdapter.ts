@@ -5,13 +5,13 @@ import { req } from '@/shared/infrastructure/http'
 
 export class ConsultOfferAdapter implements ConsultOfferPort {
   public async requestHandler(
-    employerId: Id
+    offerId: Id
   ): Promise<
     | { status?: never; body?: never; success: boolean; error: Error }
     | { status: number; body: JobOffer; success: boolean; error?: never }
   > {
     const response = await req<JobOffer>({
-      url: 'http://localhost:3000/jobs',
+      url: `http://localhost:3000/jobs/${offerId}`,
       method: 'GET',
     })
     return response

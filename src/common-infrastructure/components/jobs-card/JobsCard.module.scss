@@ -6,6 +6,11 @@
   padding: 2.5rem;
   background-color: var(--color-white);
 
+  &_icon {
+    font-size: 1.6rem;
+    padding: 0.5rem;
+  }
+
   &_img {
     height: 8rem;
     object-fit: cover;
