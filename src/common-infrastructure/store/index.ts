@@ -7,7 +7,8 @@ export const store = createStore({
         name: 'Citrus App',
         id: '101010',
       },
-      jobOffers: [],
+      allJobOffers: [],
+      jobOffer: {},
       errors: {
         addJobForm: {},
       },
@@ -18,8 +19,11 @@ export const store = createStore({
     }
   },
   mutations: {
-    setJobOffers(state: any, payload) {
-      state.jobOffers = payload
+    setAllJobOffers(state: any, payload) {
+      state.allJobOffers = payload
+    },
+    setJobOffer(state: any, payload) {
+      state.jobOffer = payload
     },
     setAddJobFormError(state: any, payload) {
       state.errors.addJobForm = payload
@@ -36,8 +40,11 @@ export const store = createStore({
     },
   },
   getters: {
-    getJobOffers(state) {
-      return state.jobOffers
+    getAllJobOffers(state) {
+      return state.allJobOffers
+    },
+    getJobOffer(state) {
+      return state.jobOffer
     },
     getErrors(state) {
       return state.errors

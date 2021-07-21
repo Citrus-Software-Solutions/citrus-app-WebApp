@@ -7,11 +7,13 @@ import 'primevue/resources/primevue.min.css'
 import 'primeicons/primeicons.css'
 import Tooltip from 'primevue/tooltip'
 import { store } from './common-infrastructure/store'
+import ToastService from 'primevue/toastservice'
 
 const app = createApp(App)
 
 app.use(router)
 app.use(store)
 app.use(PrimeVue)
+app.use(ToastService)
 app.directive('tooltip', Tooltip)
 app.mount('#app')
