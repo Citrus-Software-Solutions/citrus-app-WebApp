@@ -1,0 +1,25 @@
+.schedule-list {
+  &_list {
+    list-style: none;
+    margin-top: 3rem;
+
+    &_item {
+      margin: 1rem 0;
+    }
+  }
+
+  &_btn {
+    &__add {
+      background-color: transparent !important;
+      color: #689f38 !important;
+      border: 1px solid !important;
+    }
+
+    &__del {
+      background-color: transparent !important;
+      color: #d32f2f !important;
+      border: 1px solid !important;
+      margin-right: 0.5rem;
+    }
+  }
+}

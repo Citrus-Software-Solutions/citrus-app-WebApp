@@ -5,13 +5,13 @@
         <h2 class="jobs-form_form_section_title">Título del trabajo</h2>
         <InputText
           type="text"
-          v-model="name"
-          name="name"
+          v-model="title"
+          name="title"
           required
           placeholder="Obreros para construcción"
         />
-        <InlineMessage v-if="errors?.name">
-          {{ errors.name }}
+        <InlineMessage v-if="errors?.title">
+          {{ errors.title }}
         </InlineMessage>
       </div>
       <div class="jobs-form_form_section">
@@ -28,149 +28,126 @@
         </InlineMessage>
       </div>
       <div class="jobs-form_form_section">
-        <h2 class="jobs-form_form_section_title">Descripción</h2>
+        <h2 class="jobs-form_form_section_title">Requerimientos Especiales</h2>
         <Textarea
-          v-model="description"
+          v-model="specialRequirements"
           :autoResize="true"
           rows="5"
           cols="30"
-          name="description"
+          name="specialRequirements"
           required
           placeholder="Cuéntanos todos los detalles del trabajo"
         />
-        <InlineMessage v-if="errors?.description">
-          {{ errors.description }}
+        <InlineMessage v-if="errors?.specialRequirements">
+          {{ errors.specialRequirements }}
         </InlineMessage>
       </div>
       <div class="jobs-form_form_section">
-        <h2 class="jobs-form_form_section_title">Duración del trabajo</h2>
-        <label class="jobs-form_form_section_label" for="date_begin">
-          Desde
-        </label>
+        <h2 class="jobs-form_form_section_title">
+          Fecha de cierre de la oferta
+        </h2>
+        <label class="jobs-form_form_section_label" for="deadline">Hasta</label>
         <Calendar
-          id="date_begin"
-          v-model="date_begin"
+          id="deadline"
+          v-model="deadline"
           dateFormat="dd/mm/yy"
-          class="jobs-form_form_section_input__medium"
-          placeholder="- / - / -"
           :manualInput="false"
+          hourFormat="12"
           required
         />
-        <InlineMessage v-if="errors?.date_begin">
-          {{ errors.date_begin }}
-        </InlineMessage>
-        <label class="jobs-form_form_section_label" for="date_end">Hasta</label>
-        <Calendar
-          id="date_end"
-          v-model="date_end"
-          dateFormat="dd/mm/yy"
-          class="jobs-form_form_section_input__medium"
-          placeholder="- / - / -"
-          :manualInput="false"
-          required
-        />
-        <InlineMessage v-if="errors?.date_end">
-          {{ errors.date_end }}
+        <InlineMessage v-if="errors?.deadline">
+          {{ errors.deadline }}
         </InlineMessage>
       </div>
       <div class="jobs-form_form_section">
-        <h2 class="jobs-form_form_section_title">Género del empleado</h2>
-        <RadioButton
-          id="femenine"
-          name="gender"
-          value="f"
-          v-model="gender"
-          required
-        />
-        <label class="jobs-form_form_section_label" for="femenine">
-          Femenino
+        <h2 class="jobs-form_form_section_title">Días de trabajo</h2>
+        <label class="jobs-form_form_section_label" for="schedules">
+          Seleccionar:
         </label>
-        <RadioButton
-          id="masculine"
-          name="gender"
-          value="m"
-          v-model="gender"
-          required
+        <ScheduleList
+          @updSchedules="updateSchedules"
+          id="schedules"
+          :list="schedules"
         />
-        <label class="jobs-form_form_section_label" for="masculine">
-          Masculino
-        </label>
-        <InlineMessage v-if="errors?.gender">
-          {{ errors.gender }}
+        <InlineMessage v-if="errors?.schedules">
+          {{ errors.schedules }}
         </InlineMessage>
       </div>
       <div class="jobs-form_form_section">
-        <h2 class="jobs-form_form_section_title">Rango de Edad</h2>
-        <label class="jobs-form_form_section_label" for="min_age">
-          Edad mínima
+        <h2 class="jobs-form_form_section_title">Habilidades que buscas</h2>
+        <label class="jobs-form_form_section_label" for="skills">
+          Seleccionar:
         </label>
-        <InputNumber
-          name="min_age"
-          v-model="min_age"
-          :min="0"
-          :max="100"
-          required
-          class="jobs-form_form_section_input__small"
-          placeholder="min"
+        <MultiSelect
+          v-model="skills"
+          :options="listOfSkills"
+          optionLabel="name"
+          placeholder="Selecciona las habilidades que buscas"
+          display="chip"
+          name="skills"
+          :loading="false"
         />
-        <InlineMessage v-if="errors?.min_age">
-          {{ errors.min_age }}
+        <InlineMessage v-if="errors?.skills">
+          {{ errors.skills }}
         </InlineMessage>
-        <label class="jobs-form_form_section_label" for="max_age">
-          Edad máxima
+      </div>
+      <div class="jobs-form_form_section">
+        <h2 class="jobs-form_form_section_title">Certificados requeridos</h2>
+        <label class="jobs-form_form_section_label" for="skills">
+          Seleccionar:
         </label>
-        <InputNumber
-          name="max_age"
-          v-model="max_age"
-          :min="0"
-          :max="100"
-          required
-          class="jobs-form_form_section_input__small"
-          placeholder="max"
+        <MultiSelect
+          v-model="certifications"
+          :options="listOfCertifications"
+          optionLabel="name"
+          placeholder="Selecciona los certificados necesarios"
+          display="chip"
+          name="skills"
+          :loading="false"
         />
-        <InlineMessage v-if="errors?.max_age">
-          {{ errors.max_age }}
+        <InlineMessage v-if="errors?.skills">
+          {{ errors.schedules }}
         </InlineMessage>
       </div>
       <div class="jobs-form_form_section jobs-form_form_section__double-row">
         <div>
-          <h2 class="jobs-form_form_section_title">Salario</h2>
-          <label class="jobs-form_form_section_label" for="salary">
+          <h2 class="jobs-form_form_section_title">Salario por hora</h2>
+          <label class="jobs-form_form_section_label" for="hourlyRate">
             Cantidad
           </label>
           <InputNumber
-            name="salary"
-            v-model="salary"
+            name="hourlyRate"
+            v-model="hourlyRate"
             :min="0"
             required
             class="jobs-form_form_section_input__medium"
             placeholder="1.000.000"
           />
-          <InlineMessage v-if="errors?.salary">
-            {{ errors.salary }}
+          <InlineMessage v-if="errors?.hourlyRate">
+            {{ errors.hourlyRate }}
           </InlineMessage>
         </div>
         <div>
-          <h2 class="jobs-form_form_section_title">Vacantes disponibles</h2>
-          <label class="jobs-form_form_section_label" for="available_vacans">
-            Núm. de personas
+          <h2 class="jobs-form_form_section_title">Duración del trabajo</h2>
+          <label class="jobs-form_form_section_label" for="duration">
+            Total de horas
           </label>
           <InputNumber
-            name="available_vacans"
-            v-model="available_vacans"
+            name="duration"
+            v-model="duration"
             :min="0"
             required
             class="jobs-form_form_section_input__small"
             placeholder="5"
           />
-          <InlineMessage v-if="errors?.available_vacans">
-            {{ errors.available_vacans }}
+          <InlineMessage v-if="errors?.duration">
+            {{ errors.duration }}
           </InlineMessage>
         </div>
       </div>
       <Button
         type="submit"
-        label="Agregar Oferta"
+        :label="btn"
         icon="pi pi-plus"
         class="jobs-form_form_btn"
       />
@@ -181,43 +158,71 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import Calendar from 'primevue/calendar'
-import RadioButton from 'primevue/radiobutton'
+import MultiSelect from 'primevue/multiselect'
 import InputNumber from 'primevue/inputnumber'
 import InputText from 'primevue/inputtext'
 import Textarea from 'primevue/textarea'
 import Button from 'primevue/button'
 import InlineMessage from 'primevue/inlinemessage'
 import { CreateOfferDTO } from '@/job/domain/DTO/CreateOfferDto'
+import ScheduleList from '../schedule-list/ScheduleList.vue'
 
 export default defineComponent({
   data() {
     return {
-      name: '',
-      description: '',
-      date_begin: new Date(),
-      date_end: new Date(),
-      gender: '',
-      min_age: null as unknown as number,
-      max_age: null as unknown as number,
-      salary: null as unknown as number,
-      available_vacans: null as unknown as number,
-      location: '',
+      title: !this.formData ? '' : this.formData.title,
+      specialRequirements: !this.formData
+        ? ''
+        : this.formData.specialRequirements,
+      schedules: !this.formData
+        ? (null as unknown as Date[])
+        : this.formData.schedules.map((el: string) => new Date(el)),
+      deadline: !this.formData ? new Date() : new Date(this.formData.deadline),
+      hourlyRate: !this.formData
+        ? (null as unknown as number)
+        : this.formData.hourlyRate,
+      duration: !this.formData
+        ? (null as unknown as number)
+        : this.formData.duration,
+      location: !this.formData ? '' : this.formData.location.name,
+      skills: !this.formData
+        ? (null as unknown as { name: string; value: string }[])
+        : this.formData.skills.map((el: string) => {
+            return { name: el, value: el }
+          }),
+      certifications: !this.formData
+        ? (null as unknown as { name: string; value: string }[])
+        : this.formData.certifications.map((el: string) => {
+            return { name: el, value: el }
+          }),
+      listOfCertifications: [
+        { name: 'Experto en diseño', value: 'Experto en diseño' },
+        { name: 'Manejo de UX', value: 'Manejo de UX' },
+        { name: 'Manejo de Tiempo', value: 'Manejo de Tiempo' },
+      ],
+      listOfSkills: [
+        { name: 'Diseño', value: 'Diseño' },
+        { name: 'Desarrollo', value: 'Desarrollo' },
+        { name: 'Limpieza', value: 'Limpieza' },
+        { name: 'Trabajo en equipo', value: 'Trabajo en equipo' },
+      ],
     }
   },
   methods: {
     handleSubmit(): void {
-      // FIXME: Agregar todo al form
+      // FIXME: Definir como se maneja estatus
       const JobOfferData: CreateOfferDTO = {
-        title: this.name,
+        title: this.title,
         status: 0,
-        deadline: new Date(),
-        schedules: [new Date(), new Date()],
-        skills: ['skill1', 'skill2'],
-        specialRequirements: 'text',
-        certifications: [],
-        duration: 8,
-        hourlyRate: 4,
+        deadline: this.deadline,
+        schedules: this.schedules,
+        skills: this.skills.map((el: any) => el.name),
+        specialRequirements: this.specialRequirements,
+        certifications: this.certifications.map((el: any) => el.name),
+        duration: this.duration,
+        hourlyRate: this.hourlyRate,
         location: {
+          //TODO: definir esto
           id: '202020',
           name: this.location,
           type: 'Specific Direction',
@@ -225,18 +230,23 @@ export default defineComponent({
         employer: this.user,
       }
 
-      this.$emit('postJob', JobOfferData)
+      this.$emit('submitHandler', JobOfferData)
+    },
+    updateSchedules(schedules: Date[]) {
+      this.schedules = schedules
     },
   },
-  props: ['errors', 'user'],
+  emits: ['submitHandler'],
+  props: ['errors', 'user', 'offer', 'btn', 'formData'],
   components: {
     Calendar,
-    RadioButton,
+    MultiSelect,
     InputNumber,
     InputText,
     Textarea,
     Button,
     InlineMessage,
+    ScheduleList,
   },
 })
 </script>
