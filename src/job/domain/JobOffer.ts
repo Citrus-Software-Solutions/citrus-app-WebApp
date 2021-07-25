@@ -6,29 +6,11 @@ import { Employee } from './Employee'
 import { Text } from './value-objects/Text'
 import { Id } from './value-objects/Identifier'
 import { Hours } from './value-objects/Hours'
-import { Cost } from './value-objects/Cost'
-
-// export type Status = string
-
-// export interface JobOffer {
-//   id: Id
-//   name: string
-//   description: string
-//   available_vacans: number
-//   date_begin: Date
-//   date_end: Date
-//   status: Status
-//   gender?: string
-//   salary: number
-//   min_age: number
-//   max_age: number
-//   employer: Employer
-//   location: Location
-// }
-
+import { Title } from './value-objects/Title'
+import { JobOfferStatus } from './value-objects/JobOfferStatus'
 export interface _JobOffer {
   id: Id
-  title: Text
+  title: Title
   employer: Employer
   location: Location
   deadline: Date
@@ -39,13 +21,57 @@ export interface _JobOffer {
   duration: Hours // total de horas para el trabajo
   hourlyRate: Cost
   employee: Employee
-  status: number // FIXME:
+  status: JobOfferStatus // FIXME:
 }
 
+type Cost = number
 export class JobOffer {
-  constructor(props: _JobOffer) {
+  id: Id
+  title: Title
+  employer: Employer
+  location: Location
+  deadline: Date
+  schedules: Date[]
+  skills: Skill[]
+  specialRequirements: Text
+  certifications: Certification[]
+  duration: Hours
+  hourlyRate: Cost
+  employee: Employee //No debería ser opcional?
+  status: JobOfferStatus
+
+  constructor(props: _JobOffer, dateNow: Date) {
     // business Validations
     // domain events
-    return props
+    this.id = props.id
+    this.title = props.title
+    this.employer = props.employer
+    this.location = props.location
+    this.deadline = props.deadline
+    this.schedules = props.schedules
+    this.skills = props.skills
+    this.specialRequirements = props.specialRequirements
+    this.certifications = props.certifications
+    this.duration = props.duration
+    this.hourlyRate = this.validateCost(props.hourlyRate)
+    this.employee = props.employee
+    this.status = props.status
+  }
+
+  private validateCost(cost: Cost): Cost {
+    if (cost > 0 && cost < 1000) {
+      return cost
+    } else {
+      throw new Error('El monto debe ser mayor a 0 y menor a 1000')
+    }
+  }
+
+  public isDeletable(): boolean | Error {
+    if (this.status.jobOfferStatus !== 0) {
+      throw new Error(
+        'La oferta de trabajo no puede eliminarse ya que se encuentra en curso'
+      )
+    }
+    return true
   }
 }
