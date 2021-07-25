@@ -40,21 +40,14 @@ export class JobOffer {
   employee: Employee //No debería ser opcional?
   status: JobOfferStatus
 
-  //Como haremos para importar la fecha actual ?
-  datenow: Date
-
   constructor(props: _JobOffer, dateNow: Date) {
     // business Validations
     // domain events
     this.id = props.id
     this.title = props.title
-
-    this.employer = this.validateEmployerStatus(props.employer)
-
+    this.employer = props.employer
     this.location = props.location
-    //Acomodar esta fecha
-    this.datenow = dateNow
-    this.deadline = this.validateDate(props.deadline, this.datenow)
+    this.deadline = props.deadline
     this.schedules = props.schedules
     this.skills = props.skills
     this.specialRequirements = props.specialRequirements
@@ -73,23 +66,12 @@ export class JobOffer {
     }
   }
 
-  private validateDate(date: Date, dateNow: Date): Date {
-    if (date <= dateNow) {
+  public isDeletable(): boolean | Error {
+    if (this.status.jobOfferStatus !== 0) {
       throw new Error(
-        'La fecha de la oferta de trabajo no puede ser menor a la fecha actual'
+        'La oferta de trabajo no puede eliminarse ya que se encuentra en curso'
       )
     }
-    return date
+    return true
   }
-
-  private validateEmployerStatus(employer: Employer): Employer {
-    if (employer.status.EmployerStatus == 1) {
-      throw new Error(
-        'El usuario se encuentra suspendido, no se puede crear oferta'
-      )
-    }
-    return employer
-  }
-
-  // public addDateToSchedule(date: Date[]): void {}
 }

@@ -1,4 +1,5 @@
 import { Id } from './value-objects/Identifier'
+
 export interface _Location {
   id: Id
   name: string

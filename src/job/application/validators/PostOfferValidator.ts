@@ -1,6 +1,5 @@
 import { CreateOfferDTO } from '@/job/domain/DTO/CreateOfferDto'
 import { Text, _Text } from '@/job/domain/value-objects/Text'
-import { Employer, _Employer } from '@/job/domain/Employer'
 import { Location, _Location } from '@/job/domain/Location'
 import { Hours, _Hours } from '@/job/domain/value-objects/Hours'
 import { Cost, _Cost } from '@/job/domain/value-objects/Cost'
@@ -39,12 +38,6 @@ export class PostOfferValidator {
       Text,
       this.createJobOfferFields.title,
       'title'
-    )
-
-    const employerOrError = this.instanceCreator<_Employer>(
-      Employer,
-      this.createJobOfferFields.employer,
-      'employer'
     )
 
     const locationOrError = this.instanceCreator<_Location>(
@@ -87,7 +80,6 @@ export class PostOfferValidator {
 
     const areValueObjectsOk = Boolean(
       titleOrError &&
-        employerOrError &&
         locationOrError &&
         deadlineOrError &&
         specialRequirementsOrError &&

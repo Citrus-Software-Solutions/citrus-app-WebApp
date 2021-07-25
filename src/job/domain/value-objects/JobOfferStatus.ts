@@ -9,12 +9,17 @@ enum _JobOfferStatus {
 }
 
 export class JobOfferStatus {
-  jobofferStatus: _JobOfferStatus
+  private _jobOfferStatus: _JobOfferStatus
+
   constructor(jobofferstatus: _JobOfferStatus) {
-    this.jobofferStatus = jobofferstatus
+    this._jobOfferStatus = jobofferstatus
   }
 
   get jobOfferStatus() {
-    return this.jobofferStatus
+    return this._jobOfferStatus
+  }
+
+  set jobOfferStatus(jobofferstatus: _JobOfferStatus) {
+    this._jobOfferStatus = jobofferstatus
   }
 }

@@ -44,4 +44,13 @@ export class Employer {
   set status(status: EmployerStatus) {
     this.status = status
   }
+
+  public validateEmployerStatus(): boolean | Error {
+    if (this.status.EmployerStatus == 1) {
+      throw new Error(
+        'El usuario se encuentra suspendido, no se puede crear oferta'
+      )
+    }
+    return true
+  }
 }
