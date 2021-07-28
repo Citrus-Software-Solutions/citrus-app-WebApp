@@ -19,7 +19,10 @@ export class JobOfferStatus {
     return this._jobOfferStatus
   }
 
-  set jobOfferStatus(jobofferstatus: _JobOfferStatus) {
-    this._jobOfferStatus = jobofferstatus
+  public setToCanceled(): any {
+    if (this.jobOfferStatus === _JobOfferStatus['Canceled']) {
+      throw new Error('Ya la oferta se encuentra cancelada')
+    }
+    this._jobOfferStatus = _JobOfferStatus['Canceled']
   }
 }

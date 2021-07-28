@@ -120,4 +120,8 @@ export class JobOffer {
     }
     return true
   }
+
+  public suspendOffer() {
+    this.status.setToCanceled()
+  }
 }

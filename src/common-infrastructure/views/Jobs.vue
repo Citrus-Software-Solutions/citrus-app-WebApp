@@ -7,7 +7,11 @@
     </template>
     <template v-slot:content>
       <h1 class="title">Consulta de ofertas</h1>
-      <JobsList @removeOffer="deleteOffer" @dupOffer="duplicateOffer" />
+      <JobsList
+        @deleteOffer="deleteOfferHandler"
+        @duplicateOffer="duplicateOfferHandler"
+        @suspendOffer="suspendOfferHandler"
+      />
     </template>
   </Layout>
 </template>
@@ -37,6 +41,11 @@ import { ConsultOfferAdapter } from '../../job/infrastructure/driven-adapters/in
 import { CreateOfferAdapter } from '../../job/infrastructure/driven-adapters/out/CreateOfferAdapter'
 import { DuplicateOfferStatusAdapter } from '../../job/infrastructure/driven-adapters/out/DuplicateOfferStatusAdapter'
 import { DuplicateOfferAdapter } from '@/job/infrastructure/driven-adapters/out/DuplicateOfferAdapter'
+// suspend
+import { SuspendOfferService } from '../../job/application/services/SuspendOfferService'
+import { SuspendOfferController } from '@/job/infrastructure/controllers/SuspendOfferController'
+import { SuspendOfferAdapter } from '../../job/infrastructure/driven-adapters/out/SuspendOfferAdapter'
+import { SuspendOfferStatusAdapter } from '../../job/infrastructure/driven-adapters/out/SuspendOfferStatusAdapter'
 
 interface JobsStateTypes {
   breadCrumbLinks: breadCrumbTypes[]
@@ -60,7 +69,7 @@ export default defineComponent({
     })
   },
   methods: {
-    deleteOffer(offerId: DeleteOfferDTOUi) {
+    deleteOfferHandler(offerId: DeleteOfferDTOUi) {
       const deleteOfferStatusAdapter = new DeleteOfferStatusAdapter()
       const deleteOfferAdapter = new DeleteOfferAdapter()
       const deleteOfferStateAdapter = new DeleteOfferStateAdapter()
@@ -74,7 +83,7 @@ export default defineComponent({
       )
       deleteOfferController.executeImpl(offerId)
     },
-    duplicateOffer(offerId: DuplicateOfferDTOUi) {
+    duplicateOfferHandler(offerId: DuplicateOfferDTOUi) {
       const duplicateOfferStatusAdapter = new DuplicateOfferStatusAdapter()
       const consultOfferAdapter = new ConsultOfferAdapter()
       const duplicateOfferAdapter = new DuplicateOfferAdapter()
@@ -87,6 +96,20 @@ export default defineComponent({
         duplicateOfferService
       )
       duplicateOfferController.executeImpl(offerId)
+    },
+    suspendOfferHandler(offerId: DuplicateOfferDTOUi) {
+      const suspendOfferStatusAdapter = new SuspendOfferStatusAdapter()
+      const consultOfferAdapter = new ConsultOfferAdapter()
+      const suspendOfferAdapter = new SuspendOfferAdapter()
+      const suspendOfferService = new SuspendOfferService(
+        consultOfferAdapter,
+        suspendOfferStatusAdapter,
+        suspendOfferAdapter
+      )
+      const suspendOfferController = new SuspendOfferController(
+        suspendOfferService
+      )
+      suspendOfferController.executeImpl(offerId)
     },
   },
   computed: {

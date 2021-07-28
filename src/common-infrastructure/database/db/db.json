@@ -1,32 +1,43 @@
 {
   "jobs": [
     {
-      "id": "2021-07-24T00:49:29.499Z",
-      "title": "julio",
-      "location": {
-        "city": "julio",
-        "state": "julio",
-        "street1": "julio",
-        "street2": "julio",
-        "_zip": 9999
+      "id": "f35zQ2-",
+      "title": "asdf",
+      "employer": {
+        "id": "101010"
       },
-      "deadline": "2021-12-31",
+      "location": {
+        "city": "asdf",
+        "state": "asdf",
+        "street1": "asdf",
+        "street2": "asdf",
+        "_zip": 123
+      },
+      "deadline": "2021-7-30",
       "schedules": [
         {
-          "init_date": "2021-07-24T00:49:24.619Z",
-          "end_date": "2021-07-24T00:49:24.619Z"
+          "init_date": "2021-07-28T21:09:11.941Z",
+          "end_date": "2021-07-28T21:09:11.941Z"
+        },
+        {
+          "init_date": "2021-07-28T21:09:20.455Z",
+          "end_date": "2021-07-28T21:09:20.455Z"
         }
       ],
       "skills": [
         {
-          "name": "Limpieza",
+          "name": "Diseño",
+          "category": "1"
+        },
+        {
+          "name": "Desarrollo",
           "category": "1"
         }
       ],
-      "specialRequirements": "julio",
-      "duration": 99,
-      "hourlyRate": 99,
-      "status": 0,
+      "specialRequirements": "asdf",
+      "duration": 23,
+      "hourlyRate": 32,
+      "status": 6,
       "employee": {}
     }
   ]

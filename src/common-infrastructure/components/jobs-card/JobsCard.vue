@@ -37,7 +37,7 @@ export default defineComponent({
     applicants: String,
     status: String,
   },
-  emits: ['removeOffer', 'dupOffer'],
+  emits: ['deleteOffer', 'duplicateOffer', 'suspendOffer'],
   setup(props, context) {
     const menu = ref()
     const items = ref([
@@ -45,7 +45,7 @@ export default defineComponent({
         label: 'Eliminar',
         icon: 'pi pi-trash',
         command: () => {
-          context.emit('removeOffer', props.id)
+          context.emit('deleteOffer', props.id)
         },
       },
       {
@@ -59,7 +59,14 @@ export default defineComponent({
         label: 'Duplicar',
         icon: 'pi pi-copy',
         command: () => {
-          context.emit('dupOffer', props.id)
+          context.emit('duplicateOffer', props.id)
+        },
+      },
+      {
+        label: 'Suspender',
+        icon: 'pi pi-copy',
+        command: () => {
+          context.emit('suspendOffer', props.id)
         },
       },
     ])
