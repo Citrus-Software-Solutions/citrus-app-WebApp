@@ -32,7 +32,7 @@ export class CreateOfferService implements CreateOfferUseCase {
     try {
       jobOffer = new JobOffer(postOfferValidator.offerValues)
     } catch (error) {
-      this.updateStatusPort.error() //FIXME: add custom msg
+      this.updateStatusPort.error(error.message)
       return
     }
 

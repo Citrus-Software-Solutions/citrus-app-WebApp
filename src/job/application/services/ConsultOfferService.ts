@@ -27,7 +27,7 @@ export class ConsultOfferService implements ConsultOfferUseCase {
     try {
       id = new Id(offerId)
     } catch (error) {
-      this.updateStatusPort.error() //FIXME: Ver esto
+      this.updateStatusPort.error(error.message)
       return
     }
 

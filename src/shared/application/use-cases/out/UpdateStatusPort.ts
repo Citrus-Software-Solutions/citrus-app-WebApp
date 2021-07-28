@@ -1,6 +1,6 @@
 export interface UpdateStatusPort {
-  error(): void
+  error(msg?: string): void
   inProgress(): void
-  success(): void
+  success(msg?: string): void
   idle(): void
 }

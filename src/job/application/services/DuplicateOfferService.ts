@@ -29,7 +29,7 @@ export class DuplicateOfferService implements DuplicateOfferUseCase {
     try {
       id = new Id(offerId)
     } catch (error) {
-      this.updateStatusPort.error() //FIXME: Ver esto
+      this.updateStatusPort.error(error.message)
       return
     }
 
@@ -47,7 +47,7 @@ export class DuplicateOfferService implements DuplicateOfferUseCase {
     try {
       jobOffer = new JobOffer(OfferValidator.offerValues)
     } catch (error) {
-      this.updateStatusPort.error() //FIXME: Ver esto
+      this.updateStatusPort.error(error.message)
       return
     }
 

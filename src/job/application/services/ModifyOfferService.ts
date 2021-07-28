@@ -33,8 +33,8 @@ export class ModifyOfferService implements ModifyOfferUseCase {
     try {
       jobOffer = new JobOffer(postOfferValidator.offerValues)
     } catch (error) {
-      // handle error on creation
-      console.log(error)
+      this.updateStatusPort.error(error.message)
+      return
     }
 
     this.updateStatusPort.inProgress()

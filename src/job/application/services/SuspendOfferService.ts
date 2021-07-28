@@ -29,7 +29,7 @@ export class SuspendOfferService implements SuspendOfferUseCase {
     try {
       id = new Id(offerId)
     } catch (error) {
-      this.updateStatusPort.error() //FIXME: Ver esto
+      this.updateStatusPort.error(error.message)
       return
     }
 
@@ -46,8 +46,7 @@ export class SuspendOfferService implements SuspendOfferUseCase {
       jobOffer = new JobOffer(OfferValidator.offerValues)
       jobOffer.suspendOffer()
     } catch (error) {
-      console.log(error.message)
-      this.updateStatusPort.error() //FIXME: Ver esto
+      this.updateStatusPort.error(error.message)
       return
     }
 
