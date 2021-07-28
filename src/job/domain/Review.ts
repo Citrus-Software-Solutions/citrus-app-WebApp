@@ -14,8 +14,21 @@ export interface _Review {
 }
 
 export class Review {
+  private id
+  private questions
+  private scores
+  private totalScore
+  private employee
+  private application
+  private employer
+
   constructor(props: _Review) {
-    //   validations
-    return props
+    this.id = props.id
+    this.questions = props.questions
+    this.scores = props.scores
+    this.totalScore = props.totalScore
+    this.employee = props.employee
+    this.application = props.application
+    this.employer = props.employer
   }
 }

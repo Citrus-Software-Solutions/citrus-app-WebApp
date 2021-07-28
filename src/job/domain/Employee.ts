@@ -23,8 +23,35 @@ export interface _Employee {
 }
 
 export class Employee {
+  private id
+  private firstName
+  private middleName
+  private lastName
+  private phoneNumber
+  private dateOfBirth
+  private address
+  private ssn
+  private educationLevel
+  private workExperience
+  private skills
+  private references
+  private rating
+  private status
+
   constructor(props: _Employee) {
-    //   validations
-    return props
+    this.id = props.id
+    this.firstName = props.firstName
+    this.middleName = props.middleName
+    this.lastName = props.lastName
+    this.phoneNumber = props.phoneNumber
+    this.dateOfBirth = props.dateOfBirth
+    this.address = props.address
+    this.ssn = props.ssn
+    this.educationLevel = props.educationLevel
+    this.workExperience = props.workExperience
+    this.skills = props.skills
+    this.references = props.references
+    this.rating = props.rating
+    this.status = props.status
   }
 }

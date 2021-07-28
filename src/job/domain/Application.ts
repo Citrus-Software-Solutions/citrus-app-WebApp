@@ -11,8 +11,17 @@ export interface _Application {
 }
 
 export class Application {
+  private id
+  private date
+  private employee
+  private jobOffer
+  private status
+
   constructor(props: _Application) {
-    //   validations
-    return props
+    this.id = props.id
+    this.date = props.date
+    this.employee = props.employee
+    this.jobOffer = props.jobOffer
+    this.status = props.status
   }
 }

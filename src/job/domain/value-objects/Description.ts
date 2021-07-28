@@ -1,13 +1,7 @@
 export class Description {
-  value: string
-  isValid: boolean
+  private description
 
-  constructor(val: string) {
-    this.value = val
-    this.isValid = true
-  }
-
-  getIsValid(): boolean {
-    return this.isValid
+  constructor(props: string) {
+    this.description = props
   }
 }

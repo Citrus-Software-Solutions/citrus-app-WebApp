@@ -9,8 +9,17 @@ export interface _BackgroundCheck {
 }
 
 export class BackgroundCheck {
+  private id
+  private status
+  private statusDetails
+  private reportURL
+  private alerts
+
   constructor(props: _BackgroundCheck) {
-    //   validations
-    return props
+    this.id = props.id
+    this.status = props.status
+    this.statusDetails = props.statusDetails
+    this.reportURL = props.reportURL
+    this.alerts = props.alerts
   }
 }
