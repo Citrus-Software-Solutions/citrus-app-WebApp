@@ -21,10 +21,8 @@ import { CreateOfferService } from '@/job/application/services/CreateOfferServic
 import { CreateOfferController } from '@/job/infrastructure/controllers/CreateOfferController'
 import { CreateOfferAdapter } from '@/job/infrastructure/driven-adapters/out/CreateOfferAdapter'
 import { CreateOfferErrorsAdapter } from '@/job/infrastructure/driven-adapters/out/CreateOfferErrorsAdapter'
-import { JobOffer } from '@/job/domain/JobOffer'
-import { IdGeneratorService } from '@/job/application/services/IdGeneratorService'
-import { UuidGenerator } from '@/job/infrastructure/driven-adapters/in/UuidGenerator'
 import { CreateOfferStatusAdapter } from '@/job/infrastructure/driven-adapters/out/CreateOfferStatusAdapter'
+import { CreateOfferDTOUi } from '@/job/domain/DTO/CreateOfferDto'
 
 interface AddJobStateTypes {
   breadCrumbLinks: breadCrumbTypes[]
@@ -43,10 +41,8 @@ export default defineComponent({
     this.resetErrors()
   },
   methods: {
-    handleSubmit(jobOfferFields: JobOffer) {
+    handleSubmit(jobOfferFields: CreateOfferDTOUi) {
       this.resetErrors()
-      const idGenerator = new IdGeneratorService(new UuidGenerator())
-      const id = idGenerator.createId()
       const createOfferErrorsAdapter = new CreateOfferErrorsAdapter()
       const postOfferAdapter = new CreateOfferAdapter()
       const updateStatusAdapter = new CreateOfferStatusAdapter()
@@ -56,7 +52,7 @@ export default defineComponent({
         updateStatusAdapter
       )
       const createOfferController = new CreateOfferController(postOfferService)
-      createOfferController.executeImpl({ ...jobOfferFields, id: id })
+      createOfferController.executeImpl(jobOfferFields)
     },
     resetErrors() {
       this.$store.commit('resetErrors')

@@ -1,5 +1,5 @@
 import { CreateOfferPort } from '@/job/application/use-cases/out/CreateOfferPort'
-import { CreateOfferDTO } from '../../domain/DTO/CreateOfferDto'
+import { CreateOfferDTOApp } from '../../domain/DTO/CreateOfferDto'
 import { CreateOfferUseCase } from '@/job/application/use-cases/in/CreateOfferUseCase'
 import { PostOfferValidator } from '../validators/PostOfferValidator'
 import { UpdateStatePort } from '@/shared/application/use-cases/out/UpdateStatePort'
@@ -21,25 +21,19 @@ export class CreateOfferService implements CreateOfferUseCase {
     this.updateStatusPort = updateStatusPort
   }
 
-  public async execute(createOfferFields: CreateOfferDTO): Promise<void> {
+  public async execute(createOfferFields: CreateOfferDTOApp): Promise<void> {
     const postOfferValidator = new PostOfferValidator(createOfferFields) //FIXME:pasar esto por constructor ?
     let jobOffer
-
     if (!postOfferValidator.isValid()) {
       this.updateErrorStatePort.setState(postOfferValidator.errors)
       return
     }
 
     try {
-      // FIXME: ver como solucionar el tema del id y del employee, mappers?
-      jobOffer = new JobOffer({
-        ...createOfferFields,
-        id: '1',
-        employee: {},
-      })
+      jobOffer = new JobOffer(postOfferValidator.offerValues)
     } catch (error) {
-      // handle error on creation
-      console.log(error)
+      this.updateStatusPort.error() //FIXME: add custom msg
+      return
     }
 
     this.updateStatusPort.inProgress()
@@ -47,7 +41,6 @@ export class CreateOfferService implements CreateOfferUseCase {
       jobOffer as JobOffer
     )
     if (response.success) {
-      // redireccionar?
       this.updateStatusPort.success()
     } else {
       this.updateStatusPort.error()

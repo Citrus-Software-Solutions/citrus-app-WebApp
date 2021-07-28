@@ -30,7 +30,7 @@ import { ConsultOfferService } from '../../job/application/services/ConsultOffer
 import { ConsultOfferAdapter } from '../../job/infrastructure/driven-adapters/in/ConsultOfferAdapter'
 import { ConsultOfferStateAdapter } from '@/job/infrastructure/driven-adapters/out/ConsultOfferStateAdapter'
 import { ConsultOfferStatusAdapter } from '@/job/infrastructure/driven-adapters/out/ConsultOfferStatusAdapter'
-import { _JobOffer } from '@/job/domain/JobOffer'
+import { ModifyOfferDTO } from '@/job/domain/DTO/ModifyOfferDTO'
 
 interface AddJobStateTypes {
   breadCrumbLinks: breadCrumbTypes[]
@@ -62,7 +62,7 @@ export default defineComponent({
     this.resetErrors()
   },
   methods: {
-    handleSubmit(jobOfferFields: JobOffer) {
+    handleSubmit(jobOfferFields: ModifyOfferDTO) {
       this.resetErrors()
       const modifyOfferErrorsAdapter = new CreateOfferErrorsAdapter() //FIXME: generalizar nombre o crear adaptador propio
       const modifyOfferAdapter = new ModifyOfferAdapter()
@@ -91,7 +91,7 @@ export default defineComponent({
     userInfo(): { name: string; id: string } {
       return this.$store.getters.getUser
     },
-    offer(): _JobOffer {
+    offer(): ModifyOfferDTO {
       return this.$store.getters.getJobOffer
     },
   },

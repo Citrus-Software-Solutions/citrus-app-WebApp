@@ -1,7 +1,17 @@
 <template>
   <Calendar
     id="schedules"
-    v-model="schedules"
+    v-model="schedules.init_date"
+    :manualInput="false"
+    hourFormat="12"
+    :showTime="true"
+    required
+    dateFormat="dd/mm/yy"
+  />
+  -
+  <Calendar
+    id="schedules"
+    v-model="schedules.end_date"
     :manualInput="false"
     hourFormat="12"
     :showTime="true"
@@ -29,7 +39,9 @@
         "
         @click="handleRemove(schedule)"
       />
-      {{ formatDate(schedule) }}
+      {{
+        formatDate(schedule.init_date) + ' - ' + formatDate(schedule.end_date)
+      }}
     </li>
   </ul>
 </template>
@@ -41,14 +53,14 @@ import Button from 'primevue/button'
 import { formatDateWithTime } from '../../shared'
 
 interface dataType {
-  schedules: Date | null
+  schedules: { init_date: Date; end_date: Date }
   listOfSchedules: any[]
 }
 
 export default defineComponent({
   data(): dataType {
     return {
-      schedules: new Date(),
+      schedules: { init_date: new Date(), end_date: new Date() },
       listOfSchedules: this.list ? this.list : [],
     }
   },
@@ -57,13 +69,15 @@ export default defineComponent({
     formatDate(date: Date): string {
       return formatDateWithTime(date)
     },
-    handleRemove(date: Date): void {
-      this.listOfSchedules = this.listOfSchedules.filter((el) => el !== date)
+    handleRemove(date: dataType['schedules']): void {
+      this.listOfSchedules = this.listOfSchedules.filter(
+        (el) => el.init_date !== date.init_date && el.end_date !== date.end_date
+      )
       this.$emit('updSchedules', this.listOfSchedules)
     },
     handleAddSchedule(): void {
       this.listOfSchedules = [...this.listOfSchedules, this.schedules]
-      this.schedules = new Date()
+      this.schedules = { init_date: new Date(), end_date: new Date() }
       this.$emit('updSchedules', this.listOfSchedules)
     },
   },

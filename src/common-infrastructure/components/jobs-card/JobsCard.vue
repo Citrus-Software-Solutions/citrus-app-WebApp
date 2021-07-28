@@ -37,7 +37,7 @@ export default defineComponent({
     applicants: String,
     status: String,
   },
-  emits: ['removeOffer'],
+  emits: ['removeOffer', 'dupOffer'],
   setup(props, context) {
     const menu = ref()
     const items = ref([
@@ -59,7 +59,7 @@ export default defineComponent({
         label: 'Duplicar',
         icon: 'pi pi-copy',
         command: () => {
-          //impl
+          context.emit('dupOffer', props.id)
         },
       },
     ])

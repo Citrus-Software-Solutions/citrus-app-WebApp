@@ -4,6 +4,7 @@ import { PostOfferValidator } from '../validators/PostOfferValidator'
 import { UpdateStatePort } from '@/shared/application/use-cases/out/UpdateStatePort'
 import { UpdateStatusPort } from '@/shared/application/use-cases/out/UpdateStatusPort'
 import { JobOffer, _JobOffer } from '@/job/domain/JobOffer'
+import { ModifyOfferDTO } from '@/job/domain/DTO/ModifyOfferDTO'
 
 export class ModifyOfferService implements ModifyOfferUseCase {
   private modifyOfferPort: ModifyOfferPort
@@ -20,7 +21,7 @@ export class ModifyOfferService implements ModifyOfferUseCase {
     this.updateStatusPort = updateStatusPort
   }
 
-  public async execute(OfferFields: _JobOffer): Promise<void> {
+  public async execute(OfferFields: ModifyOfferDTO): Promise<void> {
     const postOfferValidator = new PostOfferValidator(OfferFields) //FIXME:pasar esto por constructor ?
     let jobOffer
 
@@ -30,7 +31,7 @@ export class ModifyOfferService implements ModifyOfferUseCase {
     }
 
     try {
-      jobOffer = new JobOffer(OfferFields)
+      jobOffer = new JobOffer(postOfferValidator.offerValues)
     } catch (error) {
       // handle error on creation
       console.log(error)
@@ -40,8 +41,8 @@ export class ModifyOfferService implements ModifyOfferUseCase {
     const response = await this.modifyOfferPort.requestHandler(
       jobOffer as JobOffer
     )
+
     if (response.success) {
-      // redireccionar?
       this.updateStatusPort.success()
     } else {
       this.updateStatusPort.error()

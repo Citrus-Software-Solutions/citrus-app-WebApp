@@ -28,7 +28,17 @@
     &_section {
       margin-bottom: 2rem;
 
-      &__double-row {
+      &_info-container,
+      &_info-container__block {
+        margin-top: 1.5rem;
+        display: inline-block;
+      }
+
+      &_info-container__block {
+        display: block;
+      }
+
+      &__double-col {
         display: flex;
       }
 
@@ -46,10 +56,10 @@
 
       &_input {
         &__small {
-          max-width: 6rem;
+          max-width: 6rem !important;
         }
         &__medium {
-          max-width: 14rem;
+          max-width: 14rem !important;
         }
       }
     }

@@ -16,16 +16,80 @@
       </div>
       <div class="jobs-form_form_section">
         <h2 class="jobs-form_form_section_title">Ubicación</h2>
-        <InputText
-          type="text"
-          v-model="location"
-          name="location"
-          required
-          placeholder="Caracas - Venezuela"
-        />
-        <InlineMessage v-if="errors?.location">
-          {{ errors.location }}
-        </InlineMessage>
+        <span class="jobs-form_form_section_info-container">
+          <label class="jobs-form_form_section_label" for="state">Estado</label>
+          <InputText
+            type="text"
+            v-model="state"
+            name="state"
+            required
+            placeholder="Distrito Capital"
+            class="jobs-form_form_section_input__medium"
+          />
+          <InlineMessage v-if="errors?.state">
+            {{ errors.state }}
+          </InlineMessage>
+        </span>
+        <span class="jobs-form_form_section_info-container">
+          <label class="jobs-form_form_section_label" for="city">Ciudad</label>
+          <InputText
+            type="text"
+            v-model="city"
+            name="city"
+            required
+            placeholder="Caracas"
+            class="jobs-form_form_section_input__medium"
+          />
+          <InlineMessage v-if="errors?.city">
+            {{ errors.location }}
+          </InlineMessage>
+        </span>
+        <span class="jobs-form_form_section_info-container__block">
+          <label class="jobs-form_form_section_label" for="street1">
+            Calle #1
+          </label>
+          <InputText
+            type="text"
+            v-model="street1"
+            name="street1"
+            required
+            placeholder=" Avenida Francisco de Miranda"
+          />
+          <InlineMessage v-if="errors?.street1">
+            {{ errors.street1 }}
+          </InlineMessage>
+        </span>
+        <span class="jobs-form_form_section_info-container__block">
+          <label class="jobs-form_form_section_label" for="street2">
+            Calle #2
+          </label>
+          <InputText
+            type="text"
+            v-model="street2"
+            name="street2"
+            required
+            placeholder="Urbanización El Rosal, Chacao"
+          />
+          <InlineMessage v-if="errors?.street2">
+            {{ errors.street2 }}
+          </InlineMessage>
+        </span>
+        <span class="jobs-form_form_section_info-container__block">
+          <label class="jobs-form_form_section_label" for="_zip">
+            Codigo Zip
+          </label>
+          <InputNumber
+            :min="0"
+            v-model="zip"
+            name="_zip"
+            required
+            placeholder="1060"
+            class="jobs-form_form_section_input__small"
+          />
+          <InlineMessage v-if="errors?._zip">
+            {{ errors._zip }}
+          </InlineMessage>
+        </span>
       </div>
       <div class="jobs-form_form_section">
         <h2 class="jobs-form_form_section_title">Requerimientos Especiales</h2>
@@ -91,25 +155,7 @@
           {{ errors.skills }}
         </InlineMessage>
       </div>
-      <div class="jobs-form_form_section">
-        <h2 class="jobs-form_form_section_title">Certificados requeridos</h2>
-        <label class="jobs-form_form_section_label" for="skills">
-          Seleccionar:
-        </label>
-        <MultiSelect
-          v-model="certifications"
-          :options="listOfCertifications"
-          optionLabel="name"
-          placeholder="Selecciona los certificados necesarios"
-          display="chip"
-          name="skills"
-          :loading="false"
-        />
-        <InlineMessage v-if="errors?.skills">
-          {{ errors.schedules }}
-        </InlineMessage>
-      </div>
-      <div class="jobs-form_form_section jobs-form_form_section__double-row">
+      <div class="jobs-form_form_section jobs-form_form_section__double-col">
         <div>
           <h2 class="jobs-form_form_section_title">Salario por hora</h2>
           <label class="jobs-form_form_section_label" for="hourlyRate">
@@ -120,8 +166,8 @@
             v-model="hourlyRate"
             :min="0"
             required
-            class="jobs-form_form_section_input__medium"
-            placeholder="1.000.000"
+            class="jobs-form_form_section_input__small"
+            placeholder="20"
           />
           <InlineMessage v-if="errors?.hourlyRate">
             {{ errors.hourlyRate }}
@@ -164,8 +210,9 @@ import InputText from 'primevue/inputtext'
 import Textarea from 'primevue/textarea'
 import Button from 'primevue/button'
 import InlineMessage from 'primevue/inlinemessage'
-import { CreateOfferDTO } from '@/job/domain/DTO/CreateOfferDto'
+import { CreateOfferDTOUi } from '@/job/domain/DTO/CreateOfferDto'
 import ScheduleList from '../schedule-list/ScheduleList.vue'
+import { formatDate } from '../../shared'
 
 export default defineComponent({
   data() {
@@ -176,7 +223,12 @@ export default defineComponent({
         : this.formData.specialRequirements,
       schedules: !this.formData
         ? (null as unknown as Date[])
-        : this.formData.schedules.map((el: string) => new Date(el)),
+        : this.formData.schedules.map(
+            (el: { init_date: string; end_date: string }) => ({
+              init_date: new Date(el.init_date),
+              end_date: new Date(el.end_date),
+            })
+          ),
       deadline: !this.formData ? new Date() : new Date(this.formData.deadline),
       hourlyRate: !this.formData
         ? (null as unknown as number)
@@ -184,50 +236,52 @@ export default defineComponent({
       duration: !this.formData
         ? (null as unknown as number)
         : this.formData.duration,
-      location: !this.formData ? '' : this.formData.location.name,
+      location: !this.formData ? '' : this.formData.location,
+      city: !this.formData ? '' : this.formData.location.city,
+      state: !this.formData ? '' : this.formData.location.state,
+      street1: !this.formData ? '' : this.formData.location.street1,
+      street2: !this.formData ? '' : this.formData.location.street2,
+      zip: !this.formData ? '' : this.formData.location._zip,
       skills: !this.formData
-        ? (null as unknown as { name: string; value: string }[])
-        : this.formData.skills.map((el: string) => {
-            return { name: el, value: el }
-          }),
-      certifications: !this.formData
-        ? (null as unknown as { name: string; value: string }[])
-        : this.formData.certifications.map((el: string) => {
-            return { name: el, value: el }
-          }),
-      listOfCertifications: [
-        { name: 'Experto en diseño', value: 'Experto en diseño' },
-        { name: 'Manejo de UX', value: 'Manejo de UX' },
-        { name: 'Manejo de Tiempo', value: 'Manejo de Tiempo' },
-      ],
+        ? (null as unknown as {
+            name: string
+            value: string
+            category: string
+          }[])
+        : this.formData.skills.map(
+            (el: { name: string; value: string; category: string }) => {
+              return { name: el.name, value: el.name, category: el.category }
+            }
+          ),
       listOfSkills: [
-        { name: 'Diseño', value: 'Diseño' },
-        { name: 'Desarrollo', value: 'Desarrollo' },
-        { name: 'Limpieza', value: 'Limpieza' },
-        { name: 'Trabajo en equipo', value: 'Trabajo en equipo' },
+        { name: 'Diseño', value: 'Diseño', category: '1' },
+        { name: 'Desarrollo', value: 'Desarrollo', category: '1' },
+        { name: 'Limpieza', value: 'Limpieza', category: '1' },
       ],
     }
   },
   methods: {
     handleSubmit(): void {
-      // FIXME: Definir como se maneja estatus
-      const JobOfferData: CreateOfferDTO = {
+      // FIXME: Definir como se maneja estatus y el type
+      const JobOfferData: CreateOfferDTOUi = {
         title: this.title,
         status: 0,
-        deadline: this.deadline,
+        deadline: formatDate(this.deadline, '-', true) as unknown as Date,
         schedules: this.schedules,
-        skills: this.skills.map((el: any) => el.name),
+        skills: this.skills.map((el: any) => ({
+          name: el.name,
+          category: el.category,
+        })),
         specialRequirements: this.specialRequirements,
-        certifications: this.certifications.map((el: any) => el.name),
         duration: this.duration,
         hourlyRate: this.hourlyRate,
         location: {
-          //TODO: definir esto
-          id: '202020',
-          name: this.location,
-          type: 'Specific Direction',
+          city: this.city,
+          state: this.state,
+          street1: this.street1,
+          street2: this.street2,
+          _zip: this.zip,
         },
-        employer: this.user,
       }
 
       this.$emit('submitHandler', JobOfferData)

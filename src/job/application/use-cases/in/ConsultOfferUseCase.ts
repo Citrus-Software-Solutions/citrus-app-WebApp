@@ -1,5 +1,5 @@
-import { Id } from '../../../domain/Identifier'
+import { ConsultOfferDTOUi } from '../../../domain/DTO/ConsultOfferDto'
 
 export interface ConsultOfferUseCase {
-  execute(offerId: Id): void
+  execute(offerId: ConsultOfferDTOUi): void
 }

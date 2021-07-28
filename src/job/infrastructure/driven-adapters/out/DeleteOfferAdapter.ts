@@ -1,5 +1,5 @@
 import { DeleteOfferPort } from '@/job/application/use-cases/out/DeleteOfferPort'
-import { Id } from '@/job/domain/Identifier'
+import { Id } from '@/job/domain/value-objects/Identifier'
 import { JobOffer } from '@/job/domain/JobOffer'
 import { req } from '@/shared/infrastructure/http'
 

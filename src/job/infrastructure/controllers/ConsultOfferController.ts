@@ -1,6 +1,5 @@
-import { Id } from '@/job/domain/Identifier'
 import { ConsultOfferUseCase } from '@/job/application/use-cases/in/ConsultOfferUseCase'
-
+import { ConsultOfferDTOUi } from '@/job/domain/DTO/ConsultOfferDto'
 export class ConsultOfferController {
   private consultOfferUseCase: ConsultOfferUseCase
 
@@ -8,7 +7,7 @@ export class ConsultOfferController {
     this.consultOfferUseCase = consultOfferUseCase
   }
 
-  public executeImpl(offerId: Id): void {
+  public executeImpl(offerId: ConsultOfferDTOUi): void {
     this.consultOfferUseCase.execute(offerId)
   }
 }
