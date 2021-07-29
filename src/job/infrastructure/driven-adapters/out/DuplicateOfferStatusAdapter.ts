@@ -24,6 +24,7 @@ export class DuplicateOfferStatusAdapter implements UpdateStatusPort {
     store.commit(this.STATE_NAME, {
       type: 'SUCCESS',
       message: 'LA OFERTA FUE DUPLICADA EXITOSAMENTE',
+      key: new Date(),
     })
   }
 }

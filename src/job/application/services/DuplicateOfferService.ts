@@ -35,9 +35,7 @@ export class DuplicateOfferService implements DuplicateOfferUseCase {
 
     const consultResponse = await this.consultOfferPort.requestHandler(id)
 
-    if (consultResponse.success) {
-      this.updateStatusPort.success()
-    } else {
+    if (!consultResponse.success) {
       this.updateStatusPort.error()
       return
     }

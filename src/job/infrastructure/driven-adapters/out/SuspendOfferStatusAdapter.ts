@@ -25,6 +25,7 @@ export class SuspendOfferStatusAdapter implements UpdateStatusPort {
     store.commit(this.STATE_NAME, {
       type: 'SUCCESS',
       message: msg || 'LA OFERTA FUE SUSPENDIDA EXITOSAMENTE',
+      key: new Date(),
     })
   }
 }

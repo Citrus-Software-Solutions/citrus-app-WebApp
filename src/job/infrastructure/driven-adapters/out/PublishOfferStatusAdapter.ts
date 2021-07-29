@@ -25,6 +25,7 @@ export class PublishOfferStatusAdapter implements UpdateStatusPort {
     store.commit(this.STATE_NAME, {
       type: 'SUCCESS',
       message: msg || 'LA OFERTA FUE PUBLICADA EXITOSAMENTE',
+      key: new Date(),
     })
   }
 }

@@ -15,6 +15,7 @@ export const store = createStore({
       operationStatus: {
         message: '',
         type: '',
+        key: 0,
       },
     }
   },

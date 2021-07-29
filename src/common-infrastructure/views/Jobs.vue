@@ -1,5 +1,5 @@
 <template>
-  <Layout :breadCrumbLinks="breadCrumbLinks">
+  <Layout :breadCrumbLinks="breadCrumbLinks" :key="status.time">
     <template v-slot:callToAction>
       <router-link class="" to="/jobs/add">
         <Button label="Crear Oferta" icon="pi pi-plus" />
@@ -66,6 +66,18 @@ export default defineComponent({
   },
   mounted() {
     this.$nextTick(() => {
+      this.consultOfferHandler()
+    })
+  },
+  watch: {
+    status(newStatus) {
+      if (newStatus.key) {
+        this.consultOfferHandler()
+      }
+    },
+  },
+  methods: {
+    consultOfferHandler() {
       const getOfferController = new ConsultAllOffersController(
         new ConsultAllOffersService(
           new ConsultAllOffersAdapter(),
@@ -74,9 +86,7 @@ export default defineComponent({
         )
       )
       getOfferController.executeImpl(this.userInfo.id)
-    })
-  },
-  methods: {
+    },
     deleteOfferHandler(offerId: DeleteOfferDTOUi) {
       const deleteOfferStatusAdapter = new DeleteOfferStatusAdapter()
       const deleteOfferAdapter = new DeleteOfferAdapter()
@@ -137,6 +147,9 @@ export default defineComponent({
   computed: {
     userInfo(): any {
       return this.$store.getters.getUser
+    },
+    status(): any {
+      return this.$store.getters.getOperationStatus
     },
   },
   components: {
