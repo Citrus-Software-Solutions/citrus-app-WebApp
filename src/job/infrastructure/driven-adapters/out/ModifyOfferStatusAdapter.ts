@@ -5,10 +5,11 @@ import router from '@/common-infrastructure/router'
 export class ModifyOfferStatusAdapter implements UpdateStatusPort {
   private STATE_NAME = 'setOperationStatus'
 
-  public error(): void {
+  public error(msg?: string): void {
     store.commit(this.STATE_NAME, {
       type: 'ERROR',
       message:
+        msg ||
         'HUBO UN ERROR DURANTE LA MODIFICACIÓN DE LOS DATOS, INTENTAR NUEVAMENTE',
     })
   }
@@ -21,11 +22,11 @@ export class ModifyOfferStatusAdapter implements UpdateStatusPort {
     store.commit(this.STATE_NAME, { type: 'LOADING' })
   }
 
-  public success(): void {
+  public success(msg?: string): void {
     router.push('/jobs') //FIXME: move it?
     store.commit(this.STATE_NAME, {
       type: 'SUCCESS',
-      message: 'LA OFERTA FUE MODIFICADA EXITOSAMENTE',
+      message: msg || 'LA OFERTA FUE MODIFICADA EXITOSAMENTE',
     })
   }
 }

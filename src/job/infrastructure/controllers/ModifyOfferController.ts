@@ -1,6 +1,6 @@
 import { ModifyOfferUseCase } from '../../application/use-cases/in/ModifyOfferUseCase'
 import { ModifyOfferDTO } from '../../domain/DTO/ModifyOfferDTO'
-
+import { ModifyOfferMapper } from '../mappers/ModifyOfferMapper'
 export class ModifyOfferController {
   public modifyOfferUseCase: ModifyOfferUseCase
 
@@ -9,6 +9,6 @@ export class ModifyOfferController {
   }
 
   public executeImpl(jobOffer: ModifyOfferDTO): void {
-    this.modifyOfferUseCase.execute(jobOffer)
+    this.modifyOfferUseCase.execute(ModifyOfferMapper.toApplication(jobOffer))
   }
 }

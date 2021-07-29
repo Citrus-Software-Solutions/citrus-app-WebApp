@@ -1,7 +1,8 @@
 {
   "jobs": [
     {
-      "title": "asdf",
+      "id": "OSh3xgr",
+      "title": "qwerty44123asd",
       "employer": {
         "id": "101010"
       },
@@ -34,13 +35,13 @@
         }
       ],
       "specialRequirements": "asdf",
-      "duration": 23,
+      "duration": 233,
       "hourlyRate": 32,
-      "status": 6,
-      "employee": {},
-      "id": "OSh3xgr"
+      "status": 3,
+      "employee": {}
     },
     {
+      "id": "pICKrFK",
       "title": "poqiwuerasdf",
       "employer": {
         "id": "101010"
@@ -80,9 +81,8 @@
       "specialRequirements": "asdf",
       "duration": 12,
       "hourlyRate": 123,
-      "status": 0,
-      "employee": [],
-      "id": "pICKrFK"
+      "status": 6,
+      "employee": {}
     }
   ]
 }

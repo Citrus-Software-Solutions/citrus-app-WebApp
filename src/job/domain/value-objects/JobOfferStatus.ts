@@ -19,14 +19,21 @@ export class JobOfferStatus {
     return this._jobOfferStatus
   }
 
-  public setToCanceled(): any {
+  public setToCanceled(): void {
     if (this.jobOfferStatus === _JobOfferStatus['Canceled']) {
       throw new Error('La oferta ya se encuentra cancelada')
     }
     this._jobOfferStatus = _JobOfferStatus['Canceled']
   }
 
-  public setToPublished(): any {
+  public isModifiable(): boolean {
+    return Boolean(
+      this.jobOfferStatus === _JobOfferStatus['Posted'] ||
+        this.jobOfferStatus === _JobOfferStatus['Canceled']
+    )
+  }
+
+  public setToPublished(): void {
     if (
       this.jobOfferStatus !== _JobOfferStatus['Posted'] &&
       this.jobOfferStatus !== _JobOfferStatus['Canceled']

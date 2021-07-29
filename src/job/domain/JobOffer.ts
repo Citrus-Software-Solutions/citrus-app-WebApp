@@ -121,6 +121,14 @@ export class JobOffer {
     return true
   }
 
+  public checkModifiability(): void {
+    if (!this.status.isModifiable()) {
+      throw new Error(
+        'La oferta de trabajo no puede modificarse porque está activa'
+      )
+    }
+  }
+
   public suspendOffer() {
     this.status.setToCanceled()
   }

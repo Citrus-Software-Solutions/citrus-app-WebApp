@@ -75,10 +75,7 @@ export default defineComponent({
       const createOfferController = new ModifyOfferController(
         modifyOfferService
       )
-      createOfferController.executeImpl({
-        ...jobOfferFields,
-        id: this.$route.params.id,
-      })
+      createOfferController.executeImpl(jobOfferFields)
     },
     resetErrors() {
       this.$store.commit('resetErrors')
