@@ -11,6 +11,7 @@
         @deleteOffer="deleteOfferHandler"
         @duplicateOffer="duplicateOfferHandler"
         @suspendOffer="suspendOfferHandler"
+        @publishOffer="publishOfferHandler"
       />
     </template>
   </Layout>
@@ -46,6 +47,13 @@ import { SuspendOfferService } from '../../job/application/services/SuspendOffer
 import { SuspendOfferController } from '@/job/infrastructure/controllers/SuspendOfferController'
 import { SuspendOfferAdapter } from '../../job/infrastructure/driven-adapters/out/SuspendOfferAdapter'
 import { SuspendOfferStatusAdapter } from '../../job/infrastructure/driven-adapters/out/SuspendOfferStatusAdapter'
+import { SuspendOfferDTOUi } from '@/job/domain/DTO/SuspendOfferDto'
+// Publish
+import { PublishOfferService } from '../../job/application/services/PublishOfferService'
+import { PublishOfferController } from '@/job/infrastructure/controllers/PublishOfferController'
+import { PublishOfferAdapter } from '../../job/infrastructure/driven-adapters/out/PublishOfferAdapter'
+import { PublishOfferStatusAdapter } from '../../job/infrastructure/driven-adapters/out/PublishOfferStatusAdapter'
+import { PublishOfferDTOUi } from '@/job/domain/DTO/PublishOfferDto'
 
 interface JobsStateTypes {
   breadCrumbLinks: breadCrumbTypes[]
@@ -97,7 +105,7 @@ export default defineComponent({
       )
       duplicateOfferController.executeImpl(offerId)
     },
-    suspendOfferHandler(offerId: DuplicateOfferDTOUi) {
+    suspendOfferHandler(offerId: SuspendOfferDTOUi) {
       const suspendOfferStatusAdapter = new SuspendOfferStatusAdapter()
       const consultOfferAdapter = new ConsultOfferAdapter()
       const suspendOfferAdapter = new SuspendOfferAdapter()
@@ -110,6 +118,20 @@ export default defineComponent({
         suspendOfferService
       )
       suspendOfferController.executeImpl(offerId)
+    },
+    publishOfferHandler(offerId: PublishOfferDTOUi) {
+      const publishOfferStatusAdapter = new PublishOfferStatusAdapter()
+      const consultOfferAdapter = new ConsultOfferAdapter()
+      const publishOfferAdapter = new PublishOfferAdapter()
+      const publishOfferService = new PublishOfferService(
+        consultOfferAdapter,
+        publishOfferStatusAdapter,
+        publishOfferAdapter
+      )
+      const publishOfferController = new PublishOfferController(
+        publishOfferService
+      )
+      publishOfferController.executeImpl(offerId)
     },
   },
   computed: {

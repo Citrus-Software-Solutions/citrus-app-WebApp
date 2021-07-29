@@ -21,8 +21,18 @@ export class JobOfferStatus {
 
   public setToCanceled(): any {
     if (this.jobOfferStatus === _JobOfferStatus['Canceled']) {
-      throw new Error('Ya la oferta se encuentra cancelada')
+      throw new Error('La oferta ya se encuentra cancelada')
     }
     this._jobOfferStatus = _JobOfferStatus['Canceled']
+  }
+
+  public setToPublished(): any {
+    if (
+      this.jobOfferStatus !== _JobOfferStatus['Posted'] &&
+      this.jobOfferStatus !== _JobOfferStatus['Canceled']
+    ) {
+      throw new Error('La oferta ya se encuentra publicada')
+    }
+    this._jobOfferStatus = _JobOfferStatus['OpenFoAplications']
   }
 }

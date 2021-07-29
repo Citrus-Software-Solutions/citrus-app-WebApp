@@ -37,7 +37,7 @@ export default defineComponent({
     applicants: String,
     status: String,
   },
-  emits: ['deleteOffer', 'duplicateOffer', 'suspendOffer'],
+  emits: ['deleteOffer', 'duplicateOffer', 'suspendOffer', 'publishOffer'],
   setup(props, context) {
     const menu = ref()
     const items = ref([
@@ -67,6 +67,13 @@ export default defineComponent({
         icon: 'pi pi-copy',
         command: () => {
           context.emit('suspendOffer', props.id)
+        },
+      },
+      {
+        label: 'Publicar',
+        icon: 'pi pi-copy',
+        command: () => {
+          context.emit('publishOffer', props.id)
         },
       },
     ])

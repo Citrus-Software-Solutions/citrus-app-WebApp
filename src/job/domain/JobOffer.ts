@@ -124,4 +124,8 @@ export class JobOffer {
   public suspendOffer() {
     this.status.setToCanceled()
   }
+
+  public publishOffer() {
+    this.status.setToPublished()
+  }
 }
