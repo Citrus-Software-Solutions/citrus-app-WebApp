@@ -1,6 +1,7 @@
 import { CreateOfferPort } from '@/job/application/use-cases/out/CreateOfferPort'
 import { JobOffer } from '@/job/domain/JobOffer'
 import { req } from '@/shared/infrastructure/http'
+import { CreateOfferMapper } from '../../mappers/CreateOfferMapper'
 
 export class CreateOfferAdapter implements CreateOfferPort {
   public async requestHandler(
@@ -12,7 +13,7 @@ export class CreateOfferAdapter implements CreateOfferPort {
     const response = await req<JobOffer>({
       url: 'http://localhost:3000/jobs',
       method: 'POST',
-      body: jobOffer,
+      body: CreateOfferMapper.toPersistence(jobOffer),
     })
     return response
   }

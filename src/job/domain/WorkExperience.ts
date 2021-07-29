@@ -5,8 +5,13 @@ export interface _WorkExperience {
 }
 
 export class WorkExperience {
+  private jobTitle
+  private companyName
+  private category
+
   constructor(props: _WorkExperience) {
-    //   validations
-    return props
+    this.jobTitle = props.jobTitle
+    this.companyName = props.companyName
+    this.category = props.category
   }
 }

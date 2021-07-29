@@ -1,14 +1,19 @@
-import { Id } from './value-objects/Identifier'
+// import { Id } from './value-objects/Identifier'
 
 export interface _Skill {
-  id: Id
+  // id: Id
   name: string
   category: number //FIXME:
 }
 
 export class Skill {
-  constructor(props: _Skill) {
-    // Validations
-    return props
+  private skill: _Skill[]
+
+  constructor(props: _Skill[]) {
+    this.skill = props
+  }
+
+  public get _skill() {
+    return this.skill
   }
 }

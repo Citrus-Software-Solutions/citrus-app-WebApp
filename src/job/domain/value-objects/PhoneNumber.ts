@@ -5,18 +5,27 @@ export interface _PhoneNumber {
 }
 
 export class PhoneNumber {
+  private countryCode
+  private areaCode
+  private userNumber
+
   constructor(props: _PhoneNumber) {
+    this.countryCode = props.countryCode
+    this.areaCode = props.areaCode
+    this.userNumber = props.userNumber
+  }
+
+  private validate() {
     if (
-      props.countryCode != 58 ||
-      (props.areaCode != 212 &&
-        props.areaCode != 412 &&
-        props.areaCode != 424 &&
-        props.areaCode != 414 &&
-        props.areaCode != 416 &&
-        props.areaCode != 426)
+      this.countryCode !== 58 ||
+      (this.areaCode !== 212 &&
+        this.areaCode !== 412 &&
+        this.areaCode !== 424 &&
+        this.areaCode !== 414 &&
+        this.areaCode !== 416 &&
+        this.areaCode !== 426)
     ) {
-      return new Error('El número telefónico introducido no es correcto')
+      throw new Error('El número telefónico introducido no es correcto')
     }
-    return props
   }
 }

@@ -1,66 +1,100 @@
 export type Zip = string
 export interface _Location {
-  country: string
+  city: string
   state: string
   street1: string
   street2?: string
-  zip: Zip
+  _zip: Zip
 }
+
 export class Location {
-  private _country: string
-  private _state: string
-  private _street1: string
-  private _street2: string | null
-  private _zip: Zip
+  private city
+  private state
+  private street1
+  private street2
+  private zip
 
   constructor(props: _Location) {
-    if (
-      props.country == undefined ||
-      props.country == null ||
-      props.country.length >= 20
-    ) {
+    this.city = props.city
+    this.state = props.state
+    this.street1 = props.street1
+    this.street2 = props.street1
+    this.zip = props._zip
+    this.validate()
+  }
+
+  public get _location() {
+    return {
+      city: this.city,
+      state: this.state,
+      street1: this.street1,
+      street2: this.street2,
+      _zip: this.zip,
+    }
+  }
+
+  public get _city() {
+    return this.city
+  }
+
+  public get _state() {
+    return this.state
+  }
+
+  public get _street1() {
+    return this.street1
+  }
+
+  public get _street2() {
+    return this.street2
+  }
+
+  public get _zip() {
+    return this.zip
+  }
+
+  private validate() {
+    if (this.city == undefined || this.city == null || this.city.length >= 20) {
       throw new Error(
         'El pais no puede estar vacío ni exceder los 20 caracteres'
       )
     } else if (
-      props.state == undefined ||
-      props.state == null ||
-      props.state.length >= 20
+      this.state == undefined ||
+      this.state == null ||
+      this.state.length >= 20
     ) {
       throw new Error(
         'El estado no puede estar vacío ni exceder los 20 caracteres'
       )
     } else if (
-      props.street1 == undefined ||
-      props.street1 == null ||
-      props.street1.length >= 50
+      this.street1 == undefined ||
+      this.street1 == null ||
+      this.street1.length >= 50
     ) {
       throw new Error(
         'La direccion no puede estar vacia ni exceder los 50 caracteres'
       )
     } else if (
-      props.zip == undefined ||
-      props.zip == null ||
-      props.zip.length >= 10
+      // this.zip == undefined ||
+      // this.zip == null ||
+      this.zip.length >= 4
     ) {
       throw new Error(
-        'El codigo ZIP no puede estar vacío ni exceder los 10 caracteres'
+        'El codigo ZIP no puede estar vacío ni exceder los 4 caracteres'
       )
-    } else {
-      this._country = props.country
-      this._state = props.state
-      this._street1 = props.street1
-      this._zip = props.zip
-
-      if (props.street2 == undefined || props.street2 == null) {
-        this._street2 = null
-      } else if (props.street2.length >= 50) {
-        throw new Error(
-          'El campo de direccion 2 no puede exceder los 50 caracteres'
-        )
-      } else {
-        this._street2 = props.street2
-      }
     }
   }
+  //
+  //  else {
+
+  //   if (props.street2 == undefined || props.street2 == null) {
+  //     this._street2 = null
+  //   } else if (props.street2.length >= 50) {
+  //     throw new Error(
+  //       'El campo de direccion 2 no puede exceder los 50 caracteres'
+  //     )
+  //   } else {
+  //     this._street2 = props.street2
+  //   }
+  // }
 }

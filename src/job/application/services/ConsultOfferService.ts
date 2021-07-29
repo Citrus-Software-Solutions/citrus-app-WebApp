@@ -1,5 +1,6 @@
 import { ConsultOfferUseCase } from '@/job/application/use-cases/in/ConsultOfferUseCase'
 import { ConsultOfferPort } from '@/job/application/use-cases/out/ConsultOfferPort'
+import { ConsultOfferDTOUi } from '@/job/domain/DTO/ConsultOfferDto'
 import { Id } from '@/job/domain/value-objects/Identifier'
 import { UpdateStatePort } from '@/shared/application/use-cases/out/UpdateStatePort'
 import { UpdateStatusPort } from '@/shared/application/use-cases/out/UpdateStatusPort'
@@ -19,10 +20,19 @@ export class ConsultOfferService implements ConsultOfferUseCase {
     this.updateStatusPort = updateStatusPort
   }
 
-  public async execute(offerId: Id): Promise<void> {
+  public async execute(offerId: ConsultOfferDTOUi): Promise<void> {
+    let id
     this.updateStatusPort.inProgress()
+
+    try {
+      id = new Id(offerId)
+    } catch (error) {
+      this.updateStatusPort.error() //FIXME: Ver esto
+      return
+    }
+
     this.updateStatePort.setState({})
-    const response = await this.consultOfferPort.requestHandler(offerId)
+    const response = await this.consultOfferPort.requestHandler(id)
 
     if (response.success) {
       this.updateStatePort.setState(response.body)

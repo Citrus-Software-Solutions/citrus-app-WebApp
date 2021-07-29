@@ -6,8 +6,16 @@ export interface _ContactInformation {
 }
 
 export class ContactInformation {
+  private fullName
+  private jobTitle
+  private phoneNumber
+  private email
+
   constructor(props: _ContactInformation) {
     //   validations
-    return props
+    this.fullName = props.fullName
+    this.jobTitle = props.jobTitle
+    this.phoneNumber = props.phoneNumber
+    this.email = props.email
   }
 }

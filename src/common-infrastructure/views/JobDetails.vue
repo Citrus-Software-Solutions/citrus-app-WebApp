@@ -16,7 +16,6 @@ import { ConsultOfferService } from '../../job/application/services/ConsultOffer
 import { ConsultOfferAdapter } from '../../job/infrastructure/driven-adapters/in/ConsultOfferAdapter'
 import { ConsultOfferStateAdapter } from '@/job/infrastructure/driven-adapters/out/ConsultOfferStateAdapter'
 import { ConsultOfferStatusAdapter } from '@/job/infrastructure/driven-adapters/out/ConsultOfferStatusAdapter'
-import { _JobOffer } from '@/job/domain/JobOffer'
 
 interface JobDetailsStateTypes {
   breadCrumbLinks: breadCrumbTypes[]
@@ -37,11 +36,11 @@ export default defineComponent({
           new ConsultOfferStatusAdapter()
         )
       )
-      getOfferController.executeImpl(this.$route.params.id as string)
+      getOfferController.executeImpl(this.$route.params.id)
     })
   },
   computed: {
-    job(): _JobOffer {
+    job() {
       return this.$store.getters.getJobOffer
     },
   },

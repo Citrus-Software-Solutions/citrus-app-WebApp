@@ -1,4 +1,6 @@
-export type CreateOfferDTOUi = {
+export type DuplicateOfferDTOUi = any
+
+export type DuplicateOfferDTOPersistence = {
   title: any
   location: {
     city: any
@@ -14,13 +16,6 @@ export type CreateOfferDTOUi = {
   duration: any
   hourlyRate: any
   status: any
-}
-
-export type CreateOfferDTOPersistence = CreateOfferDTOUi & {
   employer: any
   employee: any
-}
-
-export type CreateOfferDTOApp = CreateOfferDTOPersistence & {
-  id: any
 }

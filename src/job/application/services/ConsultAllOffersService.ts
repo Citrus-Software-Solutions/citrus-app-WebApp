@@ -1,6 +1,6 @@
 import { ConsultAllOffersUseCase } from '@/job/application/use-cases/in/ConsultAllOffersUseCase'
 import { ConsultAllOffersPort } from '@/job/application/use-cases/out/ConsultAllOffersPort'
-import { Id } from '@/job/domain/value-objects/Identifier'
+import { ConsultAllOfferDTOUi } from '@/job/domain/DTO/ConsultAllOfferDto'
 import { UpdateStatePort } from '@/shared/application/use-cases/out/UpdateStatePort'
 import { UpdateStatusPort } from '@/shared/application/use-cases/out/UpdateStatusPort'
 
@@ -19,7 +19,7 @@ export class ConsultAllOffersService implements ConsultAllOffersUseCase {
     this.updateStatusPort = updateStatusPort
   }
 
-  public async execute(employerId: Id): Promise<void> {
+  public async execute(employerId: ConsultAllOfferDTOUi): Promise<void> {
     this.updateStatusPort.inProgress()
     const response = await this.consultAllOffersPort.requestHandler(employerId)
 

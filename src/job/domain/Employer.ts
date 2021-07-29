@@ -17,31 +17,72 @@ export interface _Employer {
 }
 
 export class Employer {
-  private _id: Id
-  private _companyName: string
-  private _address: Address
-  private _contacts: ContactInformation[]
-  private _logo: string
-  private _skills: Skill[]
-  private _specialRequeriments: Text
-  private _status: EmployerStatus
+  private id: Id
+  private companyName: string
+  private address: Address
+  private contacts: ContactInformation[]
+  private logo: string
+  private skills: Skill[]
+  private specialRequeriments: Text
+  private status: EmployerStatus
 
   constructor(props: _Employer) {
-    this._id = props.id
-    this._companyName = props.companyName
-    this._address = props.address
-    this._contacts = props.contacts
-    this._logo = props.logo
-    this._skills = props.skills
-    this._specialRequeriments = props.specialRequirements
-    this._status = props.status
+    this.id = props.id
+    this.companyName = props.companyName
+    this.address = props.address
+    this.contacts = props.contacts
+    this.logo = props.logo
+    this.skills = props.skills
+    this.specialRequeriments = props.specialRequirements
+    this.status = props.status
   }
 
-  get status(): EmployerStatus {
-    return this._status
+  get _specialRequeriments() {
+    return this.specialRequeriments
   }
 
-  set status(status: EmployerStatus) {
+  get _employer() {
+    return {
+      id: this.id,
+      companyName: this.companyName,
+      address: this.address,
+      contacts: this.contacts,
+      logo: this.logo,
+      skills: this.skills,
+      specialRequeriments: this.specialRequeriments,
+      status: this.status,
+    }
+  }
+
+  get _skills() {
+    return this.skills
+  }
+
+  get _logo() {
+    return this.logo
+  }
+
+  get _contacts() {
+    return this.contacts
+  }
+
+  get _address() {
+    return this.address
+  }
+
+  get _id() {
+    return this.id
+  }
+
+  get _companyName() {
+    return this.companyName
+  }
+
+  get _status(): EmployerStatus {
+    return this.status
+  }
+
+  set _status(status: EmployerStatus) {
     this.status = status
   }
 

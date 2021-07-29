@@ -1,5 +1,5 @@
 import { DeleteOfferUseCase } from '../../application/use-cases/in/DeleteOfferUseCase'
-import { Id } from '../../domain/Identifier'
+import { Id } from '../../domain/value-objects/Identifier'
 
 export class DeleteOfferController {
   private deleteOfferUseCase: DeleteOfferUseCase

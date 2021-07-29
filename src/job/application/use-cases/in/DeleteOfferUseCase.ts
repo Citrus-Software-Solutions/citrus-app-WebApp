@@ -1,5 +1,5 @@
-import { Id } from '../../../domain/Identifier'
+import { DeleteOfferDTOUi } from '@/job/domain/DTO/DeleteOfferDto'
 
 export interface DeleteOfferUseCase {
-  execute(offerID: Id): void
+  execute(offerID: DeleteOfferDTOUi): void
 }

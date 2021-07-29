@@ -7,7 +7,7 @@
     </template>
     <template v-slot:content>
       <h1 class="title">Consulta de ofertas</h1>
-      <JobsList @removeOffer="deleteOffer" />
+      <JobsList @removeOffer="deleteOffer" @dupOffer="duplicateOffer" />
     </template>
   </Layout>
 </template>
@@ -27,6 +27,16 @@ import { DeleteOfferController } from '@/job/infrastructure/controllers/DeleteOf
 import { DeleteOfferService } from '@/job/application/services/DeleteOfferService'
 import { DeleteOfferAdapter } from '@/job/infrastructure/driven-adapters/out/DeleteOfferAdapter'
 import { DeleteOfferStatusAdapter } from '@/job/infrastructure/driven-adapters/out/DeleteOfferStatusAdapter'
+import { DeleteOfferStateAdapter } from '@/job/infrastructure/driven-adapters/out/DeleteOfferStateAdapter'
+import { DeleteOfferDTOUi } from '@/job/domain/DTO/DeleteOfferDto'
+import { DuplicateOfferDTOUi } from '@/job/domain/DTO/DuplicateOfferDto'
+//fix this
+import { DuplicateOfferService } from '../../job/application/services/DuplicateOfferService'
+import { DuplicateOfferController } from '@/job/infrastructure/controllers/DuplicateOfferController'
+import { ConsultOfferAdapter } from '../../job/infrastructure/driven-adapters/in/ConsultOfferAdapter'
+import { CreateOfferAdapter } from '../../job/infrastructure/driven-adapters/out/CreateOfferAdapter'
+import { DuplicateOfferStatusAdapter } from '../../job/infrastructure/driven-adapters/out/DuplicateOfferStatusAdapter'
+import { DuplicateOfferAdapter } from '@/job/infrastructure/driven-adapters/out/DuplicateOfferAdapter'
 
 interface JobsStateTypes {
   breadCrumbLinks: breadCrumbTypes[]
@@ -50,17 +60,33 @@ export default defineComponent({
     })
   },
   methods: {
-    deleteOffer(offerId: string) {
+    deleteOffer(offerId: DeleteOfferDTOUi) {
       const deleteOfferStatusAdapter = new DeleteOfferStatusAdapter()
       const deleteOfferAdapter = new DeleteOfferAdapter()
+      const deleteOfferStateAdapter = new DeleteOfferStateAdapter()
       const deleteOfferService = new DeleteOfferService(
         deleteOfferAdapter,
-        deleteOfferStatusAdapter
+        deleteOfferStatusAdapter,
+        deleteOfferStateAdapter
       )
       const deleteOfferController = new DeleteOfferController(
         deleteOfferService
       )
       deleteOfferController.executeImpl(offerId)
+    },
+    duplicateOffer(offerId: DuplicateOfferDTOUi) {
+      const duplicateOfferStatusAdapter = new DuplicateOfferStatusAdapter()
+      const consultOfferAdapter = new ConsultOfferAdapter()
+      const duplicateOfferAdapter = new DuplicateOfferAdapter()
+      const duplicateOfferService = new DuplicateOfferService(
+        consultOfferAdapter,
+        duplicateOfferStatusAdapter,
+        duplicateOfferAdapter
+      )
+      const duplicateOfferController = new DuplicateOfferController(
+        duplicateOfferService
+      )
+      duplicateOfferController.executeImpl(offerId)
     },
   },
   computed: {

@@ -4,17 +4,17 @@
     <div class="jobs-details_section">
       <i class="pi pi-calendar jobs-details_section_icon"></i>
       <p class="jobs-details_section_sub-title">Fecha final:</p>
-      <p>{{ formatTime(details.deadline) }}</p>
+      <p>{{ formatDate(details.deadline) }}</p>
     </div>
     <div class="jobs-details_section">
       <i class="pi pi-map-marker jobs-details_section_icon"></i>
       <p class="jobs-details_section_sub-title">Ubicación:</p>
-      <p>{{ details.location.name }}</p>
+      <p>{{ details.location.state }}, {{ details.location.city }}</p>
     </div>
     <div class="jobs-details_section">
       <i class="pi pi-money-bill jobs-details_section_icon"></i>
       <p class="jobs-details_section_sub-title">Salario:</p>
-      <p>{{ details.hourlyRate }}</p>
+      <p>{{ details.hourlyRate }} USD</p>
     </div>
     <div class="jobs-details_section">
       <p class="jobs-details_section_sub-title">Duración:</p>
@@ -22,25 +22,13 @@
     </div>
     <div class="jobs-details_section">
       <p class="jobs-details_section_sub-title">Habilidades requeridas:</p>
-      <ul class="jobs-details_section_list">
+      <ul class="jobs-details_section_list" v-if="details.skills">
         <li
           v-for="skill in details.skills"
           :key="skill"
           class="jobs-details_section_list_item"
         >
-          {{ skill }}
-        </li>
-      </ul>
-    </div>
-    <div class="jobs-details_section">
-      <p class="jobs-details_section_sub-title">Certificaciones necesarias:</p>
-      <ul class="jobs-details_section_list">
-        <li
-          v-for="certification in details.certifications"
-          :key="certification"
-          class="jobs-details_section_list_item"
-        >
-          {{ certification }}
+          {{ skill.name }}
         </li>
       </ul>
     </div>
@@ -52,7 +40,11 @@
           :key="schedule"
           class="jobs-details_section_list_item"
         >
-          {{ formatTime(schedule) }}
+          {{
+            formatDate(schedule.init_date, true) +
+            ' - ' +
+            formatDate(schedule.end_date, true)
+          }}
         </li>
       </ul>
     </div>
@@ -66,7 +58,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import { RouteParams } from 'vue-router'
-import { formatDateWithTime } from '../../shared'
+import { formatDateWithTime, formatDate } from '../../shared'
 
 export default defineComponent({
   data(): RouteParams {
@@ -75,8 +67,11 @@ export default defineComponent({
     }
   },
   methods: {
-    formatTime(date: string) {
-      return formatDateWithTime(new Date(date))
+    formatDate(date: string, time?: boolean) {
+      if (time) {
+        return formatDateWithTime(new Date(date))
+      }
+      return formatDate(new Date(date), '/')
     },
   },
   props: ['details'],

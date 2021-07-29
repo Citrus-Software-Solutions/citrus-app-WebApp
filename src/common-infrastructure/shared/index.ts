@@ -9,16 +9,21 @@ export function formatTime(date: Date): string {
   return strTime
 }
 
-export function formatOnlyDate(date: Date): string {
+export function formatDate(
+  date: Date,
+  separator: string,
+  reversed?: boolean
+): string {
   const day = date.getDate()
   const month = date.getMonth() + 1
   const year = date.getFullYear()
-  return `${day}/${month}/${year}`
+  if (reversed) {
+    return `${year}${separator}${month}${separator}${day}`
+  }
+  return `${day}${separator}${month}${separator}${year}`
 }
 
 export function formatDateWithTime(date: Date): string {
-  const day = date.getDate()
-  const month = date.getMonth() + 1
-  const year = date.getFullYear()
-  return `${day}/${month}/${year}-${formatTime(date)}`
+  const formatedDate = formatDate(date, '/')
+  return `Fecha: ${formatedDate}, Hora: ${formatTime(date)}`
 }

@@ -11,8 +11,19 @@ export interface _Interview {
 }
 
 export class Interview {
+  private id
+  private employee
+  private startDate
+  private duration
+  private accessURL
+  private status
+
   constructor(props: _Interview) {
-    //   validations
-    return props
+    this.id = props.id
+    this.employee = props.employee
+    this.startDate = props.startDate
+    this.duration = props.duration
+    this.accessURL = props.accessURL
+    this.status = props.status
   }
 }

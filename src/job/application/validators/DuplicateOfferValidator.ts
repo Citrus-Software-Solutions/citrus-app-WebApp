@@ -1,4 +1,3 @@
-import { CreateOfferDTOApp } from '@/job/domain/DTO/CreateOfferDTO'
 import { Text } from '@/job/domain/value-objects/Text'
 import { Location } from '@/job/domain/value-objects/Location'
 import { Hours } from '@/job/domain/value-objects/Hours'
@@ -12,24 +11,17 @@ import { Id } from '@/job/domain/value-objects/Identifier'
 import { Schedules } from '@/job/domain/value-objects/Schedules'
 import { JobOfferStatus } from '@/job/domain/value-objects/JobOfferStatus'
 import { Title } from '@/job/domain/value-objects/Title'
-import { ModifyOfferDTO } from '@/job/domain/DTO/ModifyOfferDTO'
 
-export class PostOfferValidator {
-  private createJobOfferFields: CreateOfferDTOApp | ModifyOfferDTO
-  private createJobOfferErrors: { [name: string]: any }
+export class DuplicateOfferValidator {
+  private JobOfferFields
   private _isValid: boolean
   private _jobOfferValues: _JobOffer
 
-  constructor(createJobOfferFields: CreateOfferDTOApp | ModifyOfferDTO) {
-    this.createJobOfferFields = createJobOfferFields
-    this.createJobOfferErrors = {}
+  constructor(JobOfferFields: any) {
+    this.JobOfferFields = JobOfferFields
     this._isValid = false
     this._jobOfferValues = null as unknown as _JobOffer
     this.createValues()
-  }
-
-  public get errors(): { [name: string]: any } {
-    return this.createJobOfferErrors
   }
 
   public get offerValues(): _JobOffer {
@@ -40,15 +32,11 @@ export class PostOfferValidator {
     return this._isValid
   }
 
-  private instanceCreator<T>(
-    valueObj: any,
-    fieldContent: any,
-    fieldName: string
-  ): T | null {
+  private instanceCreator<T>(valueObj: any, fieldContent: any): T | null {
     try {
       return new valueObj(fieldContent as T)
     } catch (error) {
-      this.createJobOfferErrors[fieldName] = error.message
+      console.log(error)
       return null
     }
   }
@@ -56,74 +44,59 @@ export class PostOfferValidator {
   private createValues(): void {
     const titleOrError = this.instanceCreator<Title>(
       Title,
-      this.createJobOfferFields.title,
-      'title'
+      this.JobOfferFields.title
     )
 
     const locationOrError = this.instanceCreator<Location>(
       Location,
-      this.createJobOfferFields.location,
-      'location'
+      this.JobOfferFields.location
     )
 
     const deadlineOrError = this.instanceCreator<Deadline>(
       Deadline,
-      this.createJobOfferFields.deadline,
-      'deadline'
+      this.JobOfferFields.deadline
     )
 
     const scheduleOrError = this.instanceCreator<Schedules>(
       Schedules,
-      this.createJobOfferFields.schedules,
-      'schedules'
+      this.JobOfferFields.schedules
     )
 
     const skillsOrError = this.instanceCreator<Skill>(
       Skill,
-      this.createJobOfferFields.skills,
-      'skill'
+      this.JobOfferFields.skills
     )
 
     const specialRequirementsOrError = this.instanceCreator<Text>(
       Text,
-      this.createJobOfferFields.specialRequirements,
-      'specialRequirements'
+      this.JobOfferFields.specialRequirements
     )
 
     const durationOrError = this.instanceCreator<Hours>(
       Hours,
-      this.createJobOfferFields.duration,
-      'duration'
+      this.JobOfferFields.duration
     )
 
     const hourlyRateOrError = this.instanceCreator<Cost>(
       Cost,
-      this.createJobOfferFields.hourlyRate,
-      'hourlyRate'
+      this.JobOfferFields.hourlyRate
     )
 
     const statusOrError = this.instanceCreator<JobOfferStatus>(
       JobOfferStatus,
-      this.createJobOfferFields.status,
-      'status'
+      this.JobOfferFields.status
     )
 
-    const idOrError = this.instanceCreator<Id>(
-      Id,
-      this.createJobOfferFields.id,
-      'id'
-    )
+    const idOrError = this.instanceCreator<Id>(Id, this.JobOfferFields.id)
 
     const employeerOrError = this.instanceCreator<Employer>(
       Employer,
-      this.createJobOfferFields.employer,
-      'employer'
+      this.JobOfferFields.employer
     )
 
     const employeeOrError = this.instanceCreator<Employee>(
       Employee,
-      this.createJobOfferFields.employee,
-      'employee'
+      this.JobOfferFields.employee
     )
 
     this._isValid = Boolean(

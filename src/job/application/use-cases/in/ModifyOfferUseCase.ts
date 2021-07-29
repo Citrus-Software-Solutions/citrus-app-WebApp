@@ -1,5 +1,5 @@
-import { JobOffer } from '../../../domain/JobOffer'
+import { ModifyOfferDTO } from '../../../domain/DTO/ModifyOfferDTO'
 
 export interface ModifyOfferUseCase {
-  execute(jobOffer: JobOffer): void
+  execute(jobOffer: ModifyOfferDTO): void
 }
