@@ -38,7 +38,68 @@
       "duration": 233,
       "hourlyRate": 32,
       "status": 3,
-      "employee": {}
+      "employee": {
+        "id": 4,
+        "first_name": "Pedro",
+        "middle_name": "Antonio",
+        "last_name": "Ramirez",
+        "phone_number": "(+58) 412 6672829",
+        "birth_date": "1983-07-21",
+        "address": {
+          "street1": "Calle 2",
+          "street2": "Calle alterna 2",
+          "city": "Ciudad 1",
+          "state": "State 1",
+          "_zip": "ZIP11"
+        },
+        "ssn": "345678223",
+        "education_level": 3,
+        "work_experiences": [
+          {
+            "job_title": "Job title 1",
+            "company_name": "Company 3",
+            "category": 1
+          },
+          {
+            "job_title": "Job title 1",
+            "company_name": "Company 2",
+            "category": 1
+          },
+          {
+            "job_title": "Job title 1",
+            "company_name": "Company 1",
+            "category": 1
+          }
+        ],
+        "skills": [
+          {
+            "name": "Skill 1",
+            "category": 1
+          },
+          {
+            "name": "Skill 2",
+            "category": 1
+          }
+        ],
+        "references": [
+          {
+            "full_name": "Person 3",
+            "job_title": "Job Title 3",
+            "company_name": "Company 3",
+            "phone_number": 2211271,
+            "email": "email3@domain.com"
+          },
+          {
+            "full_name": "Person 2",
+            "job_title": "Job Title 2",
+            "company_name": "Company 2",
+            "phone_number": 4343533,
+            "email": "email2@domain.com"
+          }
+        ],
+        "rating": 4.3,
+        "status": 2
+      }
     },
     {
       "id": "pICKrFK",
@@ -82,7 +143,169 @@
       "duration": 12,
       "hourlyRate": 123,
       "status": 6,
-      "employee": {}
+      "employee": {
+        "id": 4,
+        "first_name": "Pedro",
+        "middle_name": "Antonio",
+        "last_name": "Ramirez",
+        "phone_number": "(+58) 412 6672829",
+        "birth_date": "1983-07-21",
+        "address": {
+          "street1": "Calle 2",
+          "street2": "Calle alterna 2",
+          "city": "Ciudad 1",
+          "state": "State 1",
+          "_zip": "ZIP11"
+        },
+        "ssn": "345678223",
+        "education_level": 3,
+        "work_experiences": [
+          {
+            "job_title": "Job title 1",
+            "company_name": "Company 3",
+            "category": 1
+          },
+          {
+            "job_title": "Job title 1",
+            "company_name": "Company 2",
+            "category": 1
+          },
+          {
+            "job_title": "Job title 1",
+            "company_name": "Company 1",
+            "category": 1
+          }
+        ],
+        "skills": [
+          {
+            "name": "Skill 1",
+            "category": 1
+          },
+          {
+            "name": "Skill 2",
+            "category": 1
+          }
+        ],
+        "references": [
+          {
+            "full_name": "Person 3",
+            "job_title": "Job Title 3",
+            "company_name": "Company 3",
+            "phone_number": 2211271,
+            "email": "email3@domain.com"
+          },
+          {
+            "full_name": "Person 2",
+            "job_title": "Job Title 2",
+            "company_name": "Company 2",
+            "phone_number": 4343533,
+            "email": "email2@domain.com"
+          }
+        ],
+        "rating": 4.3,
+        "status": 2
+      }
+    },
+    {
+      "title": "qwerty44123asd",
+      "employer": {
+        "id": "101010"
+      },
+      "location": {
+        "city": "asdf",
+        "state": "asdf",
+        "street1": "asdf",
+        "street2": "asdf",
+        "_zip": 123
+      },
+      "deadline": "2021-7-30",
+      "schedules": [
+        {
+          "init_date": "2021-07-28T21:09:11.941Z",
+          "end_date": "2021-07-28T21:09:11.941Z"
+        },
+        {
+          "init_date": "2021-07-28T21:09:20.455Z",
+          "end_date": "2021-07-28T21:09:20.455Z"
+        }
+      ],
+      "skills": [
+        {
+          "name": "Diseño",
+          "category": "1"
+        },
+        {
+          "name": "Desarrollo",
+          "category": "1"
+        }
+      ],
+      "specialRequirements": "asdf",
+      "duration": 233,
+      "hourlyRate": 32,
+      "status": 3,
+      "employee": {
+        "id": 4,
+        "first_name": "Pedro",
+        "middle_name": "Antonio",
+        "last_name": "Ramirez",
+        "phone_number": "(+58) 412 6672829",
+        "birth_date": "1983-07-21",
+        "address": {
+          "street1": "Calle 2",
+          "street2": "Calle alterna 2",
+          "city": "Ciudad 1",
+          "state": "State 1",
+          "_zip": "ZIP11"
+        },
+        "ssn": "345678223",
+        "education_level": 3,
+        "work_experiences": [
+          {
+            "job_title": "Job title 1",
+            "company_name": "Company 3",
+            "category": 1
+          },
+          {
+            "job_title": "Job title 1",
+            "company_name": "Company 2",
+            "category": 1
+          },
+          {
+            "job_title": "Job title 1",
+            "company_name": "Company 1",
+            "category": 1
+          }
+        ],
+        "skills": [
+          {
+            "name": "Skill 1",
+            "category": 1
+          },
+          {
+            "name": "Skill 2",
+            "category": 1
+          }
+        ],
+        "references": [
+          {
+            "full_name": "Person 3",
+            "job_title": "Job Title 3",
+            "company_name": "Company 3",
+            "phone_number": 2211271,
+            "email": "email3@domain.com"
+          },
+          {
+            "full_name": "Person 2",
+            "job_title": "Job Title 2",
+            "company_name": "Company 2",
+            "phone_number": 4343533,
+            "email": "email2@domain.com"
+          }
+        ],
+        "rating": 4.3,
+        "status": 2
+      },
+      "id": "z8asmZp"
     }
   ]
 }
