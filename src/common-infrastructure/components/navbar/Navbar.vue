@@ -16,12 +16,12 @@
         v-tooltip.right="'Notificaciones'"
       ></i>
     </router-link>
-    <router-link class="nav-bar_item" to="/jobs">
+    <router-link class="nav-bar_item" to="/app/jobs">
       <i
         class="pi pi-briefcase nav-bar_item_icons"
         v-tooltip.right="'Ofertas'"
         v-bind:class="{
-          'nav-bar_item_icons__active': $route.path.includes('/jobs'),
+          'nav-bar_item_icons__active': $route.path.includes('/app/jobs'),
         }"
       ></i>
     </router-link>

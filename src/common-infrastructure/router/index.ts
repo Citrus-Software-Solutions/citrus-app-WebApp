@@ -3,29 +3,34 @@ import Jobs from '../views/Jobs.vue'
 import AddJob from '../views/AddJob.vue'
 import JobDetails from '../views/JobDetails.vue'
 import ModifyOffer from '../views/ModifyOffer.vue'
+import Landing from '../views/Landing.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    redirect: '/jobs',
+    component: Landing,
   },
   {
-    path: '/jobs',
+    path: '/app',
+    redirect: '/app/jobs',
+  },
+  {
+    path: '/app/jobs',
     name: 'Jobs',
     component: Jobs,
   },
   {
-    path: '/jobs/add',
+    path: '/app/jobs/add',
     name: 'AddJob',
     component: AddJob,
   },
   {
-    path: '/jobs/:id',
+    path: '/app/jobs/:id',
     name: 'JobDetails',
     component: JobDetails,
   },
   {
-    path: '/jobs/modify/:id',
+    path: '/app/jobs/modify/:id',
     name: 'ModifyOffer',
     component: ModifyOffer,
   },

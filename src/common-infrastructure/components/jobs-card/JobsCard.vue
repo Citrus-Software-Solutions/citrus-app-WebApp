@@ -52,7 +52,7 @@ export default defineComponent({
         label: 'Modificar',
         icon: 'pi pi-pencil',
         command: () => {
-          router.push('/jobs/modify/' + props.id)
+          router.push('/app/jobs/modify/' + props.id)
         },
       },
       {
