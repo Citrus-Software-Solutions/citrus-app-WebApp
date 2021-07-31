@@ -7,6 +7,29 @@
       margin: 1rem 0;
     }
   }
+  &_table {
+    border-collapse: collapse;
+    width: 100%;
+    table-layout: auto;
+    margin: 3rem 0 1rem 0;
+  }
+
+  &_cell {
+    text-align: left;
+    padding: 1rem 1rem;
+    border: 1px solid #e9ecef;
+    border-width: 0 0 1px 0;
+    font-weight: 600;
+    color: var(--color-gray-04);
+    background: #f8f9fa;
+  }
+
+  &_row {
+    text-align: left;
+    border: 1px solid #e9ecef;
+    border-width: 0 0 1px 0;
+    padding: 1rem 1rem;
+  }
 
   &_btn {
     &__add {

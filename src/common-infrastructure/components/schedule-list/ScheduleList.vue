@@ -25,32 +25,50 @@
   >
     Agregar Fecha
   </Button>
-  <ul class="schedule-list_list">
-    <li
-      v-for="schedule in listOfSchedules"
-      :key="schedule"
-      class="schedule-list_list_item"
-    >
-      <Button
-        icon="pi pi-times"
-        class="
-          p-button-rounded p-button-danger p-button-outlined
-          schedule-list_btn__del
-        "
-        @click="handleRemove(schedule)"
-      />
-      {{
-        formatDate(schedule.init_date) + ' - ' + formatDate(schedule.end_date)
-      }}
-    </li>
-  </ul>
+  <table class="schedule-list_table" v-if="listOfSchedules.length">
+    <thead>
+      <tr>
+        <th class="schedule-list_cell"></th>
+        <th class="schedule-list_cell">Fecha Inicio</th>
+        <th class="schedule-list_cell">Hora Inicio</th>
+        <th class="schedule-list_cell">Fecha Fin</th>
+        <th class="schedule-list_cell">Hora Fin</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr v-for="schedule in listOfSchedules" :key="schedule">
+        <td>
+          <Button
+            icon="pi pi-times"
+            class="
+              p-button-rounded p-button-danger p-button-outlined
+              schedule-list_btn__del
+            "
+            @click="handleRemove(schedule)"
+          />
+        </td>
+        <td class="schedule-list_row">
+          {{ formatDate(schedule.init_date) }}
+        </td>
+        <td class="schedule-list_row">
+          {{ formatDate(schedule.init_date, true) }}
+        </td>
+        <td class="schedule-list_row">
+          {{ formatDate(schedule.end_date) }}
+        </td>
+        <td class="schedule-list_row">
+          {{ formatDate(schedule.end_date, true) }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
 import Calendar from 'primevue/calendar'
 import Button from 'primevue/button'
-import { formatDateWithTime } from '../../shared'
+import { formatDate, formatTime } from '../../shared'
 
 interface dataType {
   schedules: { init_date: Date; end_date: Date }
@@ -66,8 +84,11 @@ export default defineComponent({
   },
   emits: ['updSchedules'],
   methods: {
-    formatDate(date: Date): string {
-      return formatDateWithTime(date)
+    formatDate(date: string, time?: boolean) {
+      if (time) {
+        return formatTime(new Date(date))
+      }
+      return formatDate(new Date(date), '/')
     },
     handleRemove(date: dataType['schedules']): void {
       this.listOfSchedules = this.listOfSchedules.filter(
