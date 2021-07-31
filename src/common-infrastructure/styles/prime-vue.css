@@ -86,3 +86,14 @@
     stroke: var(--color-white);
   }
 }
+
+/* Error Msgs */
+
+.p-inline-message.p-inline-message-error {
+  margin-top: 0.5rem !important;
+  display: block !important;
+  width: fit-content !important;
+}
+.p-inline-message-text {
+  font-size: 1.2rem !important;
+}
