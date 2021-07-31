@@ -64,14 +64,14 @@ export default defineComponent({
       },
       {
         label: 'Suspender',
-        icon: 'pi pi-copy',
+        icon: 'pi pi-minus-circle',
         command: () => {
           context.emit('suspendOffer', props.id)
         },
       },
       {
         label: 'Publicar',
-        icon: 'pi pi-copy',
+        icon: 'pi pi-send',
         command: () => {
           context.emit('publishOffer', props.id)
         },
