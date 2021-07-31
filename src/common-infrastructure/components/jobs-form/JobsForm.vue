@@ -26,9 +26,6 @@
             placeholder="Distrito Capital"
             class="jobs-form_form_section_input__medium"
           />
-          <InlineMessage v-if="errors?.state">
-            {{ errors.state }}
-          </InlineMessage>
         </span>
         <span class="jobs-form_form_section_info-container">
           <label class="jobs-form_form_section_label" for="city">Ciudad</label>
@@ -40,9 +37,6 @@
             placeholder="Caracas"
             class="jobs-form_form_section_input__medium"
           />
-          <InlineMessage v-if="errors?.city">
-            {{ errors.location }}
-          </InlineMessage>
         </span>
         <span class="jobs-form_form_section_info-container__block">
           <label class="jobs-form_form_section_label" for="street1">
@@ -55,9 +49,6 @@
             required
             placeholder=" Avenida Francisco de Miranda"
           />
-          <InlineMessage v-if="errors?.street1">
-            {{ errors.street1 }}
-          </InlineMessage>
         </span>
         <span class="jobs-form_form_section_info-container__block">
           <label class="jobs-form_form_section_label" for="street2">
@@ -70,26 +61,23 @@
             required
             placeholder="Urbanización El Rosal, Chacao"
           />
-          <InlineMessage v-if="errors?.street2">
-            {{ errors.street2 }}
-          </InlineMessage>
         </span>
         <span class="jobs-form_form_section_info-container__block">
           <label class="jobs-form_form_section_label" for="_zip">
             Codigo Zip
           </label>
-          <InputNumber
-            :min="0"
+          <InputMask
+            mask="9999"
             v-model="zip"
+            class="jobs-form_form_section_input__small"
             name="_zip"
             required
             placeholder="1060"
-            class="jobs-form_form_section_input__small"
           />
-          <InlineMessage v-if="errors?._zip">
-            {{ errors._zip }}
-          </InlineMessage>
         </span>
+        <InlineMessage v-if="errors?.location">
+          {{ errors.location }}
+        </InlineMessage>
       </div>
       <div class="jobs-form_form_section">
         <h2 class="jobs-form_form_section_title">Requerimientos Especiales</h2>
@@ -213,6 +201,7 @@ import InlineMessage from 'primevue/inlinemessage'
 import { CreateOfferDTOUi } from '@/job/domain/DTO/CreateOfferDto'
 import ScheduleList from '../schedule-list/ScheduleList.vue'
 import { formatDate } from '../../shared'
+import InputMask from 'primevue/inputmask'
 
 export default defineComponent({
   data() {
@@ -241,7 +230,7 @@ export default defineComponent({
       state: !this.formData ? '' : this.formData.location.state,
       street1: !this.formData ? '' : this.formData.location.street1,
       street2: !this.formData ? '' : this.formData.location.street2,
-      zip: !this.formData ? '' : this.formData.location._zip,
+      zip: !this.formData ? null : this.formData.location._zip,
       skills: !this.formData
         ? (null as unknown as {
             name: string
@@ -268,7 +257,7 @@ export default defineComponent({
         status: 0,
         deadline: formatDate(this.deadline, '-', true) as unknown as Date,
         schedules: this.schedules,
-        skills: this.skills.map((el: any) => ({
+        skills: this.skills?.map((el: any) => ({
           name: el.name,
           category: el.category,
         })),
@@ -301,6 +290,7 @@ export default defineComponent({
     Button,
     InlineMessage,
     ScheduleList,
+    InputMask,
   },
 })
 </script>

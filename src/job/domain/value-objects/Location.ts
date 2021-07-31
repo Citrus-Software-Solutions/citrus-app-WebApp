@@ -74,11 +74,7 @@ export class Location {
       throw new Error(
         'La direccion no puede estar vacia ni exceder los 50 caracteres'
       )
-    } else if (
-      // this.zip == undefined ||
-      // this.zip == null ||
-      this.zip.length >= 4
-    ) {
+    } else if (!this.zip || this.zip.length > 4) {
       throw new Error(
         'El codigo ZIP no puede estar vacío ni exceder los 4 caracteres'
       )
