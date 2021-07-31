@@ -32,8 +32,8 @@ export default defineComponent({
   data(): AddJobStateTypes {
     return {
       breadCrumbLinks: [
-        { label: 'Ofertas', to: '/jobs' },
-        { label: 'Nueva Oferta', to: '/jobs/add' },
+        { label: 'Ofertas', to: '/app/jobs' },
+        { label: 'Nueva Oferta', to: '/app/jobs/add' },
       ],
     }
   },

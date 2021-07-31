@@ -3,7 +3,7 @@ describe('Post Offer use case', () => {
     cy.visit('http://localhost:8081')
     cy.wait(3000)
     cy.get('a').contains('Crear Oferta').click()
-    cy.url().should('include', '/jobs/add')
+    cy.url().should('include', '/app/jobs/add')
     cy.get('input[name="name"]').should('exist')
     cy.get('input[name="name"]')
       .type('Example Job 1')

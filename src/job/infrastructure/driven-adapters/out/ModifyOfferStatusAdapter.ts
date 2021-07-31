@@ -23,7 +23,7 @@ export class ModifyOfferStatusAdapter implements UpdateStatusPort {
   }
 
   public success(msg?: string): void {
-    router.push('/jobs') //FIXME: move it?
+    router.push('/app/jobs') //FIXME: move it?
     store.commit(this.STATE_NAME, {
       type: 'SUCCESS',
       message: msg || 'LA OFERTA FUE MODIFICADA EXITOSAMENTE',

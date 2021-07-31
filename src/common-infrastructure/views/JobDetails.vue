@@ -24,7 +24,7 @@ interface JobDetailsStateTypes {
 export default defineComponent({
   data(): JobDetailsStateTypes {
     return {
-      breadCrumbLinks: [{ label: 'Ofertas', to: '/jobs' }],
+      breadCrumbLinks: [{ label: 'Ofertas', to: '/app/jobs' }],
     }
   },
   mounted() {

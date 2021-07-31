@@ -61,7 +61,7 @@ interface JobsStateTypes {
 export default defineComponent({
   data(): JobsStateTypes {
     return {
-      breadCrumbLinks: [{ label: 'Ofertas', to: '/jobs' }],
+      breadCrumbLinks: [{ label: 'Ofertas', to: '/app/jobs' }],
     }
   },
   mounted() {

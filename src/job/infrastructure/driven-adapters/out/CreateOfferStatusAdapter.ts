@@ -22,7 +22,7 @@ export class CreateOfferStatusAdapter implements UpdateStatusPort {
   }
 
   public success(): void {
-    router.push('/jobs') //FIXME: move it?
+    router.push('/app/jobs') //FIXME: move it?
     store.commit(this.STATE_NAME, {
       type: 'SUCCESS',
       message: 'LA OFERTA FUE CREADA EXITOSAMENTE',
