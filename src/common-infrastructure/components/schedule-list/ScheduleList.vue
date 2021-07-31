@@ -1,30 +1,35 @@
 <template>
-  <Calendar
-    id="schedules"
-    v-model="schedules.init_date"
-    :manualInput="false"
-    hourFormat="12"
-    :showTime="true"
-    required
-    dateFormat="dd/mm/yy"
-  />
-  -
-  <Calendar
-    id="schedules"
-    v-model="schedules.end_date"
-    :manualInput="false"
-    hourFormat="12"
-    :showTime="true"
-    required
-    dateFormat="dd/mm/yy"
-  />
-  <Button
-    label="Success"
-    class="p-button-outlined p-button-success schedule-list_btn__add"
-    @click.prevent="handleAddSchedule"
-  >
-    Agregar Fecha
-  </Button>
+  <span class="schedule-list_calendar-container">
+    <Calendar
+      id="schedules"
+      v-model="schedules.init_date"
+      :manualInput="false"
+      hourFormat="12"
+      :showTime="true"
+      required
+      dateFormat="dd/mm/yy"
+      class="schedule-list_calendar"
+    />
+    -
+    <Calendar
+      id="schedules"
+      v-model="schedules.end_date"
+      :manualInput="false"
+      hourFormat="12"
+      :showTime="true"
+      required
+      dateFormat="dd/mm/yy"
+      class="schedule-list_calendar"
+    />
+    <Button
+      label="Success"
+      class="p-button-outlined p-button-success schedule-list_btn__add"
+      @click.prevent="handleAddSchedule"
+    >
+      Agregar
+    </Button>
+  </span>
+
   <table class="schedule-list_table" v-if="listOfSchedules.length">
     <thead>
       <tr>

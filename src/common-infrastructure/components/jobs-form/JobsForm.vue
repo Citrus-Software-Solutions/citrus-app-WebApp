@@ -114,7 +114,7 @@
       <div class="jobs-form_form_section">
         <h2 class="jobs-form_form_section_title">Días de trabajo</h2>
         <label class="jobs-form_form_section_label" for="schedules">
-          Seleccionar:
+          Seleccionar los horarios de inicio y fin deseados:
         </label>
         <ScheduleList
           @updSchedules="updateSchedules"
