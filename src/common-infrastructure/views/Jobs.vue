@@ -1,7 +1,7 @@
 <template>
   <Layout :breadCrumbLinks="breadCrumbLinks" :key="status.time">
     <template v-slot:callToAction>
-      <router-link class="" to="/jobs/add">
+      <router-link class="" to="/app/jobs/add">
         <Button label="Crear Oferta" icon="pi pi-plus" />
       </router-link>
     </template>
