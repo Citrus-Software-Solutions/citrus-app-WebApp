@@ -8,7 +8,7 @@
       <h1 class="jobs-card_content_title">{{ title }}</h1>
       <p class="jobs-card_content_description">{{ specialRequirements }}</p>
       <Tag v-if="applicants">{{ applicants }} Aplicantes</Tag>
-      <Tag v-if="status">{{ status }}</Tag>
+      <Tag v-if="status !== null">{{ consultStatus(status) }}</Tag>
     </div>
     <span>
       <i
@@ -28,6 +28,8 @@ import Menu from 'primevue/menu'
 import Tag from '../tag/Tag.vue'
 import { ref } from 'vue'
 import router from '@/common-infrastructure/router'
+import { ConsultOfferStatusNameController } from '@/job/infrastructure/controllers/ConsultOfferStatusNameController'
+import { ConsultOfferStatusNameService } from '@/job/application/services/ConsultOfferStatusService'
 
 export default defineComponent({
   props: {
@@ -36,6 +38,14 @@ export default defineComponent({
     specialRequirements: String,
     applicants: String,
     status: String,
+  },
+  methods: {
+    consultStatus(status: number) {
+      const consultOfferStatusController = new ConsultOfferStatusNameController(
+        new ConsultOfferStatusNameService()
+      )
+      return consultOfferStatusController.executeImpl(status)
+    },
   },
   emits: ['deleteOffer', 'duplicateOffer', 'suspendOffer', 'publishOffer'],
   setup(props, context) {

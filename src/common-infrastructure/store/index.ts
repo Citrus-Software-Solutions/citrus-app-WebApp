@@ -17,6 +17,7 @@ export const store = createStore({
         type: '',
         key: 0,
       },
+      filterOption: 'all',
     }
   },
   mutations: {
@@ -39,6 +40,9 @@ export const store = createStore({
       }
       state.errors.addJobForm = {}
     },
+    setFilterOption(state: any, payload) {
+      state.filterOption = payload
+    },
   },
   getters: {
     getAllJobOffers(state) {
@@ -55,6 +59,9 @@ export const store = createStore({
     },
     getUser(state) {
       return state.user
+    },
+    getFilterOption(state: any) {
+      return state.filterOption
     },
   },
 })

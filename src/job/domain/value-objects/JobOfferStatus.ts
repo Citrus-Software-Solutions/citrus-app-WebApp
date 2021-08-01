@@ -1,4 +1,4 @@
-enum _JobOfferStatus {
+export enum _JobOfferStatus {
   Posted = 0,
   OpenFoAplications,
   AplicationsClosed,

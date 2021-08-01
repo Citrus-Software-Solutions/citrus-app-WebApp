@@ -1,7 +1,7 @@
 <template>
   <button class="jobs-list_btn" @click.prevent="toggle" label="Toggle">
     <i type="button" class="pi pi-filter jobs-list_icon" />
-    Filtrar
+    Filtrar <span class="jobs-list_filter--selected">({{ filterValue }})</span>
     <Menu id="overlay_menu" ref="menu" :model="items" :popup="true" />
   </button>
   <ul class="jobs-list">
@@ -23,6 +23,9 @@ import { defineComponent } from 'vue'
 import JobsCard from '../jobs-card/JobsCard.vue'
 import Menu from 'primevue/menu'
 import { ref } from 'vue'
+import { useStore } from 'vuex'
+import { ConsultOfferStatusNameController } from '@/job/infrastructure/controllers/ConsultOfferStatusNameController'
+import { ConsultOfferStatusNameService } from '@/job/application/services/ConsultOfferStatusService'
 
 export default defineComponent({
   computed: {
@@ -30,34 +33,53 @@ export default defineComponent({
       const jobs = this.$store.getters.getAllJobOffers
       switch (this.filter) {
         case 'offers':
-          return jobs.filter((job) => job.status === 0)
+          return jobs.filter((job) => {
+            return this.consultStatus(job.status) === 'Sin Publicar'
+          })
         case 'jobs':
-          return jobs.filter((job) => job.status !== 0)
+          return jobs.filter(
+            (job) => this.consultStatus(job.status) !== 'Sin Publicar'
+          )
         default:
           return jobs
       }
     },
+    filter() {
+      return this.$store.getters.getFilterOption
+    },
+  },
+  methods: {
+    consultStatus(status) {
+      const consultOfferStatusController = new ConsultOfferStatusNameController(
+        new ConsultOfferStatusNameService()
+      )
+      return consultOfferStatusController.executeImpl(status)
+    },
   },
   setup(props, context) {
-    const filter = ref('all')
+    const store = useStore()
+    const filterValue = ref('Todo')
     const menu = ref()
     const items = ref([
       {
-        label: 'Todo',
+        label: 'Ver Todo',
         command: () => {
-          filter.value = 'all'
+          store.commit('setFilterOption', 'all')
+          filterValue.value = 'Todo'
         },
       },
       {
         label: 'Ver ofertas',
         command: () => {
-          filter.value = 'offers'
+          store.commit('setFilterOption', 'offers')
+          filterValue.value = 'Ofertas'
         },
       },
       {
         label: 'Ver Trabajos',
         command: () => {
-          filter.value = 'jobs'
+          store.commit('setFilterOption', 'jobs')
+          filterValue.value = 'Trabajos'
         },
       },
     ])
@@ -66,7 +88,7 @@ export default defineComponent({
       menu.value.toggle(event)
     }
 
-    return { items, menu, toggle, filter }
+    return { items, menu, toggle, filterValue }
   },
   components: {
     JobsCard,
