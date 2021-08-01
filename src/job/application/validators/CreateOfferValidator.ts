@@ -4,7 +4,6 @@ import { Location } from '@/job/domain/value-objects/Location'
 import { Hours } from '@/job/domain/value-objects/Hours'
 import { Cost } from '@/job/domain/value-objects/Cost'
 import { Deadline } from '@/job/domain/value-objects/Deadline'
-import { _JobOffer } from '@/job/domain/JobOffer'
 import { Employer } from '@/job/domain/Employer'
 import { Employee } from '@/job/domain/Employee'
 import { Skill } from '@/job/domain/Skill'
@@ -13,116 +12,80 @@ import { Schedules } from '@/job/domain/value-objects/Schedules'
 import { JobOfferStatus } from '@/job/domain/value-objects/JobOfferStatus'
 import { Title } from '@/job/domain/value-objects/Title'
 import { ModifyOfferDTO } from '@/job/domain/DTO/ModifyOfferDTO'
+import { InstancesValidator } from '@/shared/application/validators/InstancesValidator'
 
-export class PostOfferValidator {
-  private createJobOfferFields: CreateOfferDTOApp | ModifyOfferDTO
-  private createJobOfferErrors: { [name: string]: any }
-  private _isValid: boolean
-  private _jobOfferValues: _JobOffer
-
+export class CreateOfferValidator extends InstancesValidator {
   constructor(createJobOfferFields: CreateOfferDTOApp | ModifyOfferDTO) {
-    this.createJobOfferFields = createJobOfferFields
-    this.createJobOfferErrors = {}
-    this._isValid = false
-    this._jobOfferValues = null as unknown as _JobOffer
+    super(createJobOfferFields)
     this.createValues()
   }
 
-  public get errors(): { [name: string]: any } {
-    return this.createJobOfferErrors
-  }
-
-  public get offerValues(): _JobOffer {
-    return this._jobOfferValues
-  }
-
-  public isValid(): boolean {
-    return this._isValid
-  }
-
-  private instanceCreator<T>(
-    valueObj: any,
-    fieldContent: any,
-    fieldName: string
-  ): T | null {
-    try {
-      return new valueObj(fieldContent as T)
-    } catch (error) {
-      this.createJobOfferErrors[fieldName] = error.message
-      return null
-    }
-  }
-
-  private createValues(): void {
+  protected createValues(): void {
     const titleOrError = this.instanceCreator<Title>(
       Title,
-      this.createJobOfferFields.title,
+      this._offerFields.title,
       'title'
     )
 
     const locationOrError = this.instanceCreator<Location>(
       Location,
-      this.createJobOfferFields.location,
+      this._offerFields.location,
       'location'
     )
 
     const deadlineOrError = this.instanceCreator<Deadline>(
       Deadline,
-      this.createJobOfferFields.deadline,
+      this._offerFields.deadline,
       'deadline'
     )
 
     const scheduleOrError = this.instanceCreator<Schedules>(
       Schedules,
-      this.createJobOfferFields.schedules,
+      this._offerFields.schedules,
       'schedules'
     )
 
     const skillsOrError = this.instanceCreator<Skill>(
       Skill,
-      this.createJobOfferFields.skills,
+      this._offerFields.skills,
       'skill'
     )
 
     const specialRequirementsOrError = this.instanceCreator<Text>(
       Text,
-      this.createJobOfferFields.specialRequirements,
+      this._offerFields.specialRequirements,
       'specialRequirements'
     )
 
     const durationOrError = this.instanceCreator<Hours>(
       Hours,
-      this.createJobOfferFields.duration,
+      this._offerFields.duration,
       'duration'
     )
 
     const hourlyRateOrError = this.instanceCreator<Cost>(
       Cost,
-      this.createJobOfferFields.hourlyRate,
+      this._offerFields.hourlyRate,
       'hourlyRate'
     )
 
     const statusOrError = this.instanceCreator<JobOfferStatus>(
       JobOfferStatus,
-      this.createJobOfferFields.status,
+      this._offerFields.status,
       'status'
     )
 
-    const idOrError = this.instanceCreator<Id>(
-      Id,
-      this.createJobOfferFields.id,
-      'id'
-    )
+    const idOrError = this.instanceCreator<Id>(Id, this._offerFields.id, 'id')
 
     const employeerOrError = this.instanceCreator<Employer>(
       Employer,
-      this.createJobOfferFields.employer,
+      this._offerFields.employer,
       'employer'
     )
 
     const employeeOrError = this.instanceCreator<Employee>(
       Employee,
-      this.createJobOfferFields.employee,
+      this._offerFields.employee,
       'employee'
     )
 
@@ -138,7 +101,7 @@ export class PostOfferValidator {
         statusOrError
     )
 
-    this._jobOfferValues = {
+    this._offerValues = {
       title: titleOrError as Title,
       duration: durationOrError as Hours,
       id: idOrError as Id,

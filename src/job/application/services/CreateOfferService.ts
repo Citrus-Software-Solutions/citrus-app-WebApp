@@ -1,7 +1,7 @@
 import { CreateOfferPort } from '@/job/application/use-cases/out/CreateOfferPort'
 import { CreateOfferDTOApp } from '../../domain/DTO/CreateOfferDto'
 import { CreateOfferUseCase } from '@/job/application/use-cases/in/CreateOfferUseCase'
-import { PostOfferValidator } from '../validators/PostOfferValidator'
+import { CreateOfferValidator } from '../validators/CreateOfferValidator'
 import { UpdateStatePort } from '@/shared/application/use-cases/out/UpdateStatePort'
 import { UpdateStatusPort } from '@/shared/application/use-cases/out/UpdateStatusPort'
 import { JobOffer } from '@/job/domain/JobOffer'
@@ -22,15 +22,15 @@ export class CreateOfferService implements CreateOfferUseCase {
   }
 
   public async execute(createOfferFields: CreateOfferDTOApp): Promise<void> {
-    const postOfferValidator = new PostOfferValidator(createOfferFields) //FIXME:pasar esto por constructor ?
+    const offerValidator = new CreateOfferValidator(createOfferFields) //FIXME:pasar esto por constructor ?
     let jobOffer
-    if (!postOfferValidator.isValid()) {
-      this.updateErrorStatePort.setState(postOfferValidator.errors)
+    if (!offerValidator.isValid()) {
+      this.updateErrorStatePort.setState(offerValidator.errors)
       return
     }
 
     try {
-      jobOffer = new JobOffer(postOfferValidator.offerValues)
+      jobOffer = new JobOffer(offerValidator.offerValues)
     } catch (error) {
       this.updateStatusPort.error(error.message)
       return
