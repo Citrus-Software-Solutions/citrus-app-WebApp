@@ -12,6 +12,9 @@
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
     "baseUrl": ".",
+    //añadido allowJs y checkJs
+    "allowJs": true,
+    "checkJs": true,
     "types": [
       "webpack-env",
       "jest"

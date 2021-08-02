@@ -17,6 +17,8 @@ export const store = createStore({
         type: '',
         key: 0,
       },
+      review: {},
+      allReviews: [],
     }
   },
   mutations: {
@@ -25,6 +27,12 @@ export const store = createStore({
     },
     setJobOffer(state: any, payload) {
       state.jobOffer = payload
+    },
+    setAllReviews(state: any, payload) {
+      state.allReviews = payload
+    },
+    setReview(state: any, payload) {
+      state.review = payload
     },
     setAddJobFormError(state: any, payload) {
       state.errors.addJobForm = payload
@@ -55,6 +63,12 @@ export const store = createStore({
     },
     getUser(state) {
       return state.user
+    },
+    getReview(state) {
+      return state.review
+    },
+    getAllReviews(state) {
+      return state.allReviews
     },
   },
 })

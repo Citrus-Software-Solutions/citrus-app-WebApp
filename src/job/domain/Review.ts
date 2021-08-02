@@ -11,17 +11,11 @@ export enum Scores {
   VeryPoor,
 }
 
-export interface _Questions {
-  Question1: string
-  Question2: string
-  Question3: string
-  Question4: string
-  Question5: string
-}
+export type Question = string
 
 export interface _Review {
   id: Id //Added
-  questions: _Questions
+  questions: Question[]
   scores: Scores[]
   totalScore: number
   employee: Employee
@@ -47,7 +41,7 @@ export class Review {
     this.employer = props.employer
   }
 
-  get _questions(): _Questions {
+  get _questions(): Question[] {
     return this.questions
   }
 

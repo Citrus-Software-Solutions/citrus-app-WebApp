@@ -20,7 +20,7 @@ import 'vue-awesome/icons/star'
 import 'vue-awesome/icons/star-o'
 import Icon from 'vue-awesome/components/Icon.vue'
 
-import { defineComponent } from '@vue/runtime-core'
+import { defineComponent } from 'vue'
 
 export default defineComponent({
   components: { Icon },
