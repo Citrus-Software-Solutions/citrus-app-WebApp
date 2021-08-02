@@ -17,11 +17,7 @@ import { defineComponent } from 'vue'
 import JobsForm from '../components/jobs-form/JobsForm.vue'
 import Layout from '../components/layout/Layout.vue'
 import { breadCrumbTypes } from '../types/index'
-import { CreateOfferService } from '@/job/application/services/CreateOfferService'
-import { CreateOfferController } from '@/job/infrastructure/controllers/CreateOfferController'
-import { CreateOfferAdapter } from '@/job/infrastructure/driven-adapters/out/CreateOfferAdapter'
-import { CreateOfferErrorsAdapter } from '@/job/infrastructure/driven-adapters/out/CreateOfferErrorsAdapter'
-import { CreateOfferStatusAdapter } from '@/job/infrastructure/driven-adapters/out/CreateOfferStatusAdapter'
+import { CreateOfferFactory } from '@/job/infrastructure/factories/CreateOfferFactory'
 import { CreateOfferDTOUi } from '@/job/domain/DTO/CreateOfferDto'
 
 interface AddJobStateTypes {
@@ -43,16 +39,8 @@ export default defineComponent({
   methods: {
     handleSubmit(jobOfferFields: CreateOfferDTOUi) {
       this.resetErrors()
-      const createOfferErrorsAdapter = new CreateOfferErrorsAdapter()
-      const postOfferAdapter = new CreateOfferAdapter()
-      const updateStatusAdapter = new CreateOfferStatusAdapter()
-      const postOfferService = new CreateOfferService(
-        postOfferAdapter,
-        createOfferErrorsAdapter,
-        updateStatusAdapter
-      )
-      const createOfferController = new CreateOfferController(postOfferService)
-      createOfferController.executeImpl(jobOfferFields)
+      const createOfferFactory = new CreateOfferFactory()
+      createOfferFactory.create(jobOfferFields)
     },
     resetErrors() {
       this.$store.commit('resetErrors')

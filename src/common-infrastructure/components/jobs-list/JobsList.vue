@@ -24,8 +24,7 @@ import JobsCard from '../jobs-card/JobsCard.vue'
 import Menu from 'primevue/menu'
 import { ref } from 'vue'
 import { useStore } from 'vuex'
-import { ConsultOfferStatusNameController } from '@/job/infrastructure/controllers/ConsultOfferStatusNameController'
-import { ConsultOfferStatusNameService } from '@/job/application/services/ConsultOfferStatusService'
+import { ConsultOfferStatusNameFactory } from '@/job/infrastructure/factories/ConsultOfferStatusNameFactory'
 
 export default defineComponent({
   computed: {
@@ -50,10 +49,8 @@ export default defineComponent({
   },
   methods: {
     consultStatus(status) {
-      const consultOfferStatusController = new ConsultOfferStatusNameController(
-        new ConsultOfferStatusNameService()
-      )
-      return consultOfferStatusController.executeImpl(status)
+      const consultOfferStatusNameFactory = new ConsultOfferStatusNameFactory()
+      return consultOfferStatusNameFactory.create(status)
     },
   },
   setup(props, context) {

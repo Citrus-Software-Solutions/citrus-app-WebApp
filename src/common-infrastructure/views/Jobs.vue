@@ -23,36 +23,14 @@ import Button from 'primevue/button'
 import Layout from '../components/layout/Layout.vue'
 import JobsList from '../components/jobs-list/JobsList.vue'
 import { breadCrumbTypes } from '../types/index'
-import { ConsultAllOffersController } from '../../job/infrastructure/controllers/ConsultAllOffersController'
-import { ConsultAllOffersService } from '../../job/application/services/ConsultAllOffersService'
-import { ConsultAllOffersAdapter } from '../../job/infrastructure/driven-adapters/in/ConsultAllOffersAdapter'
-import { ConsultAllOffersStateAdapter } from '@/job/infrastructure/driven-adapters/out/ConsultAllOffersStateAdapter'
-import { ConsultOfferStatusAdapter } from '@/job/infrastructure/driven-adapters/out/ConsultOfferStatusAdapter'
-import { DeleteOfferController } from '@/job/infrastructure/controllers/DeleteOfferController'
-import { DeleteOfferService } from '@/job/application/services/DeleteOfferService'
-import { DeleteOfferAdapter } from '@/job/infrastructure/driven-adapters/out/DeleteOfferAdapter'
-import { DeleteOfferStatusAdapter } from '@/job/infrastructure/driven-adapters/out/DeleteOfferStatusAdapter'
-import { DeleteOfferStateAdapter } from '@/job/infrastructure/driven-adapters/out/DeleteOfferStateAdapter'
+import { ConsultAllOffersFactory } from '@/job/infrastructure/factories/ConsultAllOffersFactory'
+import { DeleteOfferFactory } from '@/job/infrastructure/factories/DeleteOfferFactory'
+import { DuplicateOfferFactory } from '@/job/infrastructure/factories/DuplicateOfferFactory'
+import { SuspendOfferFactory } from '@/job/infrastructure/factories/SuspendOfferFactory'
+import { PublishOfferFactory } from '@/job/infrastructure/factories/PublishOfferFactory'
 import { DeleteOfferDTOUi } from '@/job/domain/DTO/DeleteOfferDto'
 import { DuplicateOfferDTOUi } from '@/job/domain/DTO/DuplicateOfferDto'
-//fix this
-import { DuplicateOfferService } from '../../job/application/services/DuplicateOfferService'
-import { DuplicateOfferController } from '@/job/infrastructure/controllers/DuplicateOfferController'
-import { ConsultOfferAdapter } from '../../job/infrastructure/driven-adapters/in/ConsultOfferAdapter'
-import { CreateOfferAdapter } from '../../job/infrastructure/driven-adapters/out/CreateOfferAdapter'
-import { DuplicateOfferStatusAdapter } from '../../job/infrastructure/driven-adapters/out/DuplicateOfferStatusAdapter'
-import { DuplicateOfferAdapter } from '@/job/infrastructure/driven-adapters/out/DuplicateOfferAdapter'
-// suspend
-import { SuspendOfferService } from '../../job/application/services/SuspendOfferService'
-import { SuspendOfferController } from '@/job/infrastructure/controllers/SuspendOfferController'
-import { SuspendOfferAdapter } from '../../job/infrastructure/driven-adapters/out/SuspendOfferAdapter'
-import { SuspendOfferStatusAdapter } from '../../job/infrastructure/driven-adapters/out/SuspendOfferStatusAdapter'
 import { SuspendOfferDTOUi } from '@/job/domain/DTO/SuspendOfferDto'
-// Publish
-import { PublishOfferService } from '../../job/application/services/PublishOfferService'
-import { PublishOfferController } from '@/job/infrastructure/controllers/PublishOfferController'
-import { PublishOfferAdapter } from '../../job/infrastructure/driven-adapters/out/PublishOfferAdapter'
-import { PublishOfferStatusAdapter } from '../../job/infrastructure/driven-adapters/out/PublishOfferStatusAdapter'
 import { PublishOfferDTOUi } from '@/job/domain/DTO/PublishOfferDto'
 
 interface JobsStateTypes {
@@ -78,70 +56,24 @@ export default defineComponent({
   },
   methods: {
     consultOfferHandler() {
-      const getOfferController = new ConsultAllOffersController(
-        new ConsultAllOffersService(
-          new ConsultAllOffersAdapter(),
-          new ConsultAllOffersStateAdapter(),
-          new ConsultOfferStatusAdapter()
-        )
-      )
-      getOfferController.executeImpl(this.userInfo.id)
+      const consultAllOffersFactory = new ConsultAllOffersFactory()
+      consultAllOffersFactory.create(this.userInfo.id)
     },
     deleteOfferHandler(offerId: DeleteOfferDTOUi) {
-      const deleteOfferStatusAdapter = new DeleteOfferStatusAdapter()
-      const deleteOfferAdapter = new DeleteOfferAdapter()
-      const deleteOfferStateAdapter = new DeleteOfferStateAdapter()
-      const deleteOfferService = new DeleteOfferService(
-        deleteOfferAdapter,
-        deleteOfferStatusAdapter,
-        deleteOfferStateAdapter
-      )
-      const deleteOfferController = new DeleteOfferController(
-        deleteOfferService
-      )
-      deleteOfferController.executeImpl(offerId)
+      const deleteOfferFactory = new DeleteOfferFactory()
+      deleteOfferFactory.create(offerId)
     },
     duplicateOfferHandler(offerId: DuplicateOfferDTOUi) {
-      const duplicateOfferStatusAdapter = new DuplicateOfferStatusAdapter()
-      const consultOfferAdapter = new ConsultOfferAdapter()
-      const duplicateOfferAdapter = new DuplicateOfferAdapter()
-      const duplicateOfferService = new DuplicateOfferService(
-        consultOfferAdapter,
-        duplicateOfferStatusAdapter,
-        duplicateOfferAdapter
-      )
-      const duplicateOfferController = new DuplicateOfferController(
-        duplicateOfferService
-      )
-      duplicateOfferController.executeImpl(offerId)
+      const duplicateOfferFactory = new DuplicateOfferFactory()
+      duplicateOfferFactory.create(offerId)
     },
     suspendOfferHandler(offerId: SuspendOfferDTOUi) {
-      const suspendOfferStatusAdapter = new SuspendOfferStatusAdapter()
-      const consultOfferAdapter = new ConsultOfferAdapter()
-      const suspendOfferAdapter = new SuspendOfferAdapter()
-      const suspendOfferService = new SuspendOfferService(
-        consultOfferAdapter,
-        suspendOfferStatusAdapter,
-        suspendOfferAdapter
-      )
-      const suspendOfferController = new SuspendOfferController(
-        suspendOfferService
-      )
-      suspendOfferController.executeImpl(offerId)
+      const suspendOfferFactory = new SuspendOfferFactory()
+      suspendOfferFactory.create(offerId)
     },
     publishOfferHandler(offerId: PublishOfferDTOUi) {
-      const publishOfferStatusAdapter = new PublishOfferStatusAdapter()
-      const consultOfferAdapter = new ConsultOfferAdapter()
-      const publishOfferAdapter = new PublishOfferAdapter()
-      const publishOfferService = new PublishOfferService(
-        consultOfferAdapter,
-        publishOfferStatusAdapter,
-        publishOfferAdapter
-      )
-      const publishOfferController = new PublishOfferController(
-        publishOfferService
-      )
-      publishOfferController.executeImpl(offerId)
+      const publishOfferFactory = new PublishOfferFactory()
+      publishOfferFactory.create(offerId)
     },
   },
   computed: {

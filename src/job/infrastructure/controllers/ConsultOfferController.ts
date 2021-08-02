@@ -1,5 +1,6 @@
 import { ConsultOfferUseCase } from '@/job/application/use-cases/in/ConsultOfferUseCase'
 import { ConsultOfferDTOUi } from '@/job/domain/DTO/ConsultOfferDto'
+
 export class ConsultOfferController {
   private consultOfferUseCase: ConsultOfferUseCase
 

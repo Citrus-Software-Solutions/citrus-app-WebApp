@@ -28,8 +28,7 @@ import Menu from 'primevue/menu'
 import Tag from '../tag/Tag.vue'
 import { ref } from 'vue'
 import router from '@/common-infrastructure/router'
-import { ConsultOfferStatusNameController } from '@/job/infrastructure/controllers/ConsultOfferStatusNameController'
-import { ConsultOfferStatusNameService } from '@/job/application/services/ConsultOfferStatusService'
+import { ConsultOfferStatusNameFactory } from '@/job/infrastructure/factories/ConsultOfferStatusNameFactory'
 
 export default defineComponent({
   props: {
@@ -41,10 +40,8 @@ export default defineComponent({
   },
   methods: {
     consultStatus(status: number) {
-      const consultOfferStatusController = new ConsultOfferStatusNameController(
-        new ConsultOfferStatusNameService()
-      )
-      return consultOfferStatusController.executeImpl(status)
+      const consultOfferStatusNameFactory = new ConsultOfferStatusNameFactory()
+      return consultOfferStatusNameFactory.create(status)
     },
   },
   emits: ['deleteOffer', 'duplicateOffer', 'suspendOffer', 'publishOffer'],

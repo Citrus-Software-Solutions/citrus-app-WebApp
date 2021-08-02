@@ -18,18 +18,8 @@ import { defineComponent } from 'vue'
 import JobsForm from '../components/jobs-form/JobsForm.vue'
 import Layout from '../components/layout/Layout.vue'
 import { breadCrumbTypes } from '../types/index'
-import { ModifyOfferService } from '@/job/application/services/ModifyOfferService'
-import { ModifyOfferController } from '@/job/infrastructure/controllers/ModifyOfferController'
-import { ModifyOfferAdapter } from '@/job/infrastructure/driven-adapters/out/ModifyOfferAdapter'
-import { CreateOfferErrorsAdapter } from '@/job/infrastructure/driven-adapters/out/CreateOfferErrorsAdapter'
-import { ModifyOfferStatusAdapter } from '@/job/infrastructure/driven-adapters/out/ModifyOfferStatusAdapter'
-import { JobOffer } from '@/job/domain/JobOffer'
-
-import { ConsultOfferController } from '../../job/infrastructure/controllers/ConsultOfferController'
-import { ConsultOfferService } from '../../job/application/services/ConsultOfferService'
-import { ConsultOfferAdapter } from '../../job/infrastructure/driven-adapters/in/ConsultOfferAdapter'
-import { ConsultOfferStateAdapter } from '@/job/infrastructure/driven-adapters/out/ConsultOfferStateAdapter'
-import { ConsultOfferStatusAdapter } from '@/job/infrastructure/driven-adapters/out/ConsultOfferStatusAdapter'
+import { ModifyOfferFactory } from '@/job/infrastructure/factories/ModifyOfferFactory'
+import { ConsultOfferFactory } from '@/job/infrastructure/factories/ConsultOfferFactory'
 import { ModifyOfferDTO } from '@/job/domain/DTO/ModifyOfferDTO'
 
 interface AddJobStateTypes {
@@ -50,32 +40,16 @@ export default defineComponent({
   },
   mounted() {
     this.$nextTick(() => {
-      const getOfferController = new ConsultOfferController(
-        new ConsultOfferService(
-          new ConsultOfferAdapter(),
-          new ConsultOfferStateAdapter(),
-          new ConsultOfferStatusAdapter()
-        )
-      )
-      getOfferController.executeImpl(this.$route.params.id as string)
+      const consultOfferFactory = new ConsultOfferFactory()
+      consultOfferFactory.create(this.$route.params.id)
     })
     this.resetErrors()
   },
   methods: {
     handleSubmit(jobOfferFields: ModifyOfferDTO) {
       this.resetErrors()
-      const modifyOfferErrorsAdapter = new CreateOfferErrorsAdapter() //FIXME: generalizar nombre o crear adaptador propio
-      const modifyOfferAdapter = new ModifyOfferAdapter()
-      const modifyStatusAdapter = new ModifyOfferStatusAdapter()
-      const modifyOfferService = new ModifyOfferService(
-        modifyOfferAdapter,
-        modifyOfferErrorsAdapter,
-        modifyStatusAdapter
-      )
-      const createOfferController = new ModifyOfferController(
-        modifyOfferService
-      )
-      createOfferController.executeImpl(jobOfferFields)
+      const modifyOfferFactory = new ModifyOfferFactory()
+      modifyOfferFactory.create(jobOfferFields)
     },
     resetErrors() {
       this.$store.commit('resetErrors')
