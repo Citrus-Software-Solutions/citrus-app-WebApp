@@ -34,7 +34,7 @@ export default defineComponent({
   data() {
     return {
       questions: [],
-      scores: [],
+      score: [] as any,
     }
   },
   props: ['application', 'employee'],
@@ -46,8 +46,8 @@ export default defineComponent({
     handleSubmit(): void {
       const review: CreateReviewDTOUi = {
         questions: this.questions,
-        scores: this.scores,
-        totalScore: this.scores.reduce((a, b) => a + b, 0),
+        score: this.score,
+        totalScore: this.scores.reduce((a:number, b:number) => a + b, 0),
         employee: this.employee,
       }
       this.$emit('submitHandler', review)
