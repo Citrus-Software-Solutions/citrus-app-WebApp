@@ -44,6 +44,7 @@ export class DuplicateOfferService implements DuplicateOfferUseCase {
 
     try {
       jobOffer = new JobOffer(OfferValidator.offerValues)
+      jobOffer.isDuplicable()
     } catch (error) {
       this.updateStatusPort.error(error.message)
       return

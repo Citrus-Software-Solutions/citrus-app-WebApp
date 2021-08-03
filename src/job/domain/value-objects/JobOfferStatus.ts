@@ -26,6 +26,10 @@ export class JobOfferStatus {
     this._jobOfferStatus = _JobOfferStatus['Canceled']
   }
 
+  public setToPosted(): void {
+    this._jobOfferStatus = _JobOfferStatus['Posted']
+  }
+
   public isModifiable(): boolean {
     return Boolean(
       this.jobOfferStatus === _JobOfferStatus['Posted'] ||

@@ -205,6 +205,128 @@
       "hourlyRate": 3,
       "status": 1,
       "employee": {}
+    },
+    {
+      "title": "probandoooo",
+      "employer": {
+        "id": "101010"
+      },
+      "location": {
+        "city": "asdf",
+        "state": "asdf",
+        "street1": "asdf",
+        "street2": "asdf",
+        "_zip": "1234"
+      },
+      "deadline": "2021-8-4",
+      "schedules": [
+        {
+          "init_date": "2021-07-31T23:31:23.248Z",
+          "end_date": "2021-08-12T23:31:23.000Z"
+        }
+      ],
+      "specialRequirements": "asdf",
+      "duration": 1,
+      "hourlyRate": 10,
+      "status": 0,
+      "employee": {},
+      "id": "3rpCipM"
+    },
+    {
+      "title": "qwerty123",
+      "employer": {
+        "id": "101010"
+      },
+      "location": {
+        "city": "asdf",
+        "state": "adsf",
+        "street1": "asd",
+        "street2": "asd",
+        "_zip": "1222"
+      },
+      "deadline": "2021-8-2",
+      "schedules": [
+        {
+          "init_date": "2021-08-01T23:04:23.867Z",
+          "end_date": "2021-08-02T00:04:23.867Z"
+        }
+      ],
+      "skills": [
+        {
+          "name": "Desarrollo",
+          "category": "1"
+        }
+      ],
+      "specialRequirements": "adsfas",
+      "duration": 3,
+      "hourlyRate": 3,
+      "status": 0,
+      "employee": {},
+      "id": "hW2iRDs"
+    },
+    {
+      "title": "qwerty",
+      "employer": {
+        "id": "101010"
+      },
+      "location": {
+        "city": "asdf",
+        "state": "adsf",
+        "street1": "asdf",
+        "street2": "asdf",
+        "_zip": "1234"
+      },
+      "deadline": "2021-8-3",
+      "schedules": [
+        {
+          "init_date": "2021-08-01T23:03:02.636Z",
+          "end_date": "2021-08-02T00:03:02.636Z"
+        }
+      ],
+      "skills": [
+        {
+          "name": "Diseño",
+          "category": "1"
+        }
+      ],
+      "specialRequirements": "asdfw",
+      "duration": 3,
+      "hourlyRate": 3,
+      "status": 0,
+      "employee": {},
+      "id": "VrjLl7T"
+    },
+    {
+      "title": "qwerty123",
+      "employer": {
+        "id": "101010"
+      },
+      "location": {
+        "city": "asdf",
+        "state": "adsf",
+        "street1": "asd",
+        "street2": "asd",
+        "_zip": "1222"
+      },
+      "deadline": "2021-8-2",
+      "schedules": [
+        {
+          "init_date": "2021-08-01T23:04:23.867Z",
+          "end_date": "2021-08-02T00:04:23.867Z"
+        }
+      ],
+      "skills": [
+        {
+          "name": "Desarrollo",
+          "category": "1"
+        }
+      ],
+      "specialRequirements": "adsfas",
+      "duration": 3,
+      "hourlyRate": 3,
+      "status": 0,
+      "employee": {},
+      "id": "lKnPYEI"
     }
   ]
 }

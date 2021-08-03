@@ -4,10 +4,11 @@ import { store } from '@/common-infrastructure/store'
 export class DuplicateOfferStatusAdapter implements UpdateStatusPort {
   private STATE_NAME = 'setOperationStatus'
 
-  public error(): void {
+  public error(msg?: string): void {
     store.commit(this.STATE_NAME, {
       type: 'ERROR',
       message:
+        msg ||
         'HUBO UN ERROR DURANTE LA DUPLICACIÓN DE LA OFERTA, INTENTAR NUEVAMENTE',
     })
   }
@@ -20,10 +21,10 @@ export class DuplicateOfferStatusAdapter implements UpdateStatusPort {
     store.commit(this.STATE_NAME, { type: 'LOADING' })
   }
 
-  public success(): void {
+  public success(msg?: string): void {
     store.commit(this.STATE_NAME, {
       type: 'SUCCESS',
-      message: 'LA OFERTA FUE DUPLICADA EXITOSAMENTE',
+      message: msg || 'LA OFERTA FUE DUPLICADA EXITOSAMENTE',
       key: new Date(),
     })
   }

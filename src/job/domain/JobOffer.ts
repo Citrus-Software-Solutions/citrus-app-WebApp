@@ -112,6 +112,11 @@ export class JobOffer {
   //   }
   // }
 
+  public isDuplicable(): boolean {
+    this.status.setToPosted()
+    return true
+  }
+
   public isDeletable(): boolean {
     if (this.status.jobOfferStatus !== 0 && this.status.jobOfferStatus !== 6) {
       throw new Error(
