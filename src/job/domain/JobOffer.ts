@@ -112,8 +112,8 @@ export class JobOffer {
   //   }
   // }
 
-  public isDeletable(): boolean | Error {
-    if (this.status.jobOfferStatus !== 0) {
+  public isDeletable(): boolean {
+    if (this.status.jobOfferStatus !== 0 && this.status.jobOfferStatus !== 6) {
       throw new Error(
         'La oferta de trabajo no puede eliminarse ya que se encuentra en curso'
       )

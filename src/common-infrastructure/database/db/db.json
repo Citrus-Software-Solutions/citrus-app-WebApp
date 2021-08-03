@@ -53,6 +53,7 @@
       "employee": {}
     },
     {
+      "id": "bYp_m2I",
       "title": "probandoooo",
       "employer": {
         "id": "101010"
@@ -74,9 +75,8 @@
       "specialRequirements": "asdf",
       "duration": 1,
       "hourlyRate": 10,
-      "status": 6,
-      "employee": {},
-      "id": "bYp_m2I"
+      "status": 1,
+      "employee": {}
     },
     {
       "title": "paosdfjñkj",
@@ -109,32 +109,6 @@
       "status": 0,
       "employee": [],
       "id": "5cj8cxy"
-    },
-    {
-      "title": "probandoooo",
-      "employer": {
-        "id": "101010"
-      },
-      "location": {
-        "city": "asdf",
-        "state": "asdf",
-        "street1": "asdf",
-        "street2": "asdf",
-        "_zip": "1234"
-      },
-      "deadline": "2021-8-4",
-      "schedules": [
-        {
-          "init_date": "2021-07-31T23:31:23.248Z",
-          "end_date": "2021-08-12T23:31:23.000Z"
-        }
-      ],
-      "specialRequirements": "asdf",
-      "duration": 1,
-      "hourlyRate": 10,
-      "status": 1,
-      "employee": {},
-      "id": "SNRd967"
     },
     {
       "title": "qwerty",

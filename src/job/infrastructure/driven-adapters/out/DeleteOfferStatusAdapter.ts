@@ -4,10 +4,11 @@ import { store } from '@/common-infrastructure/store'
 export class DeleteOfferStatusAdapter implements UpdateStatusPort {
   private STATE_NAME = 'setOperationStatus'
 
-  public error(): void {
+  public error(msg?: string): void {
     store.commit(this.STATE_NAME, {
       type: 'ERROR',
       message:
+        msg ||
         'HUBO UN ERROR DURANTE LA ELIMINACIÓN DE LA OFERTA, INTENTAR NUEVAMENTE',
     })
   }
@@ -20,10 +21,10 @@ export class DeleteOfferStatusAdapter implements UpdateStatusPort {
     store.commit(this.STATE_NAME, { type: 'LOADING' })
   }
 
-  public success(): void {
+  public success(msg?: string): void {
     store.commit(this.STATE_NAME, {
       type: 'SUCCESS',
-      message: 'LA OFERTA FUE ELIMINADA EXITOSAMENTE',
+      message: msg || 'LA OFERTA FUE ELIMINADA EXITOSAMENTE',
     })
   }
 }
