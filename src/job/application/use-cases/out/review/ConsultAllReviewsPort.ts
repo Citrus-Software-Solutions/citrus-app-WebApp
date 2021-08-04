@@ -3,7 +3,6 @@ import { Id } from '../../../../domain/value-objects/Identifier'
 
 export interface ConsultAllReviewsByApplicationPort {
   requestHandler(
-    applicationId: Id,
     employerId: Id
   ): Promise<
     | { status?: never; body?: never; success: boolean; error: Error }
