@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAEA,AAAA,eAAe,CAAC;EACd,gBAAgB,EAAE,oBAAoB;CAYvC;;AAVE,AAAD,0BAAY,CAAC;EACX,KAAK,EANM,IAAI;EAOf,QAAQ,EAAE,KAAK;EACf,GAAG,EAAE,CAAC;EACN,IAAI,EAAE,CAAC;CACR;;AAEA,AAAD,2BAAa,CAAC;EACZ,OAAO,EAAE,IAAI,CAAC,IAAI,CAAC,IAAI,CAAC,iBAA6B;CACtD",
+    "sources": [
+        "ViewContainer.module.scss"
+    ],
+    "names": [],
+    "file": "ViewContainer.module.css"
+}

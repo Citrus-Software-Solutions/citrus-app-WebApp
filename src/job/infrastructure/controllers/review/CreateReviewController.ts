@@ -1,5 +1,12 @@
 import { CreateReviewUseCase } from '@/job/application/use-cases/in/review/CreateReviewUseCase'
-import { CreateReviewDTOUi } from '../../../domain/DTO/Review/CreateReviewUI'
+import {
+  CreateReviewDTOApp,
+  CreateReviewDTOUi,
+} from '../../../domain/DTO/Review/CreateReviewDTO'
+import { CreateReviewMapper } from '@/job/infrastructure/mappers/review/CreateReviewMapper'
+import { Application } from '../../../domain/Application'
+import { Review } from '@/job/domain/Review'
+import { CreateOfferDTOApp } from '../../../domain/DTO/CreateOfferDto'
 
 export class CreateReviewController {
   private creteReviewUseCase: CreateReviewUseCase
@@ -8,7 +15,12 @@ export class CreateReviewController {
     this.creteReviewUseCase = creteReviewUseCase
   }
 
-  //   public executeImpl(review: CreateReviewDTOUi): void {
-  //     this.creteReviewUseCase.execute(review)
-  //   }
+  public executeImpl(
+    review: CreateReviewDTOApp,
+    application: Application
+  ): void {
+    this.creteReviewUseCase.execute(
+      CreateReviewMapper.toApplication(review, application)
+    )
+  }
 }

@@ -1,0 +1,28 @@
+.layout_container {
+  background-color: var(--color-gray-01);
+}
+
+.layout_container_controls {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: 1rem 0;
+}
+
+.layout_container_content {
+  border-radius: 5px;
+  padding: 2rem;
+  position: relative;
+}
+
+.title {
+  font-size: 2.4rem;
+  text-align: center;
+}
+/*# sourceMappingURL=Layout.module.css.map */

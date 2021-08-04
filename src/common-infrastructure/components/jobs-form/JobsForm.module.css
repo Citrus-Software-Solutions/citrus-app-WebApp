@@ -1,0 +1,92 @@
+.jobs-form {
+  background-color: var(--color-white);
+  padding: 2rem 5rem;
+  border: 1px solid var(--color-gray-02);
+  border-radius: 5px;
+  margin-top: 2rem;
+  font-size: 1.6rem;
+  max-width: 80rem;
+  margin: 2rem auto 0 auto;
+}
+
+.jobs-form ::-webkit-input-placeholder {
+  color: var(--color-gray-05);
+  opacity: 1;
+}
+
+.jobs-form :-ms-input-placeholder {
+  color: var(--color-gray-05);
+  opacity: 1;
+}
+
+.jobs-form ::-ms-input-placeholder {
+  color: var(--color-gray-05);
+  opacity: 1;
+}
+
+.jobs-form ::placeholder {
+  color: var(--color-gray-05);
+  opacity: 1;
+}
+
+.jobs-form :-ms-input-placeholder {
+  color: var(--color-gray-05);
+}
+
+.jobs-form ::-ms-input-placeholder {
+  color: var(--color-gray-05);
+}
+
+.jobs-form_form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.jobs-form_form_section {
+  margin-bottom: 2rem;
+}
+
+.jobs-form_form_section_info-container, .jobs-form_form_section_info-container__block {
+  margin-top: 1.5rem;
+  display: inline-block;
+}
+
+.jobs-form_form_section_info-container__block {
+  display: block;
+}
+
+.jobs-form_form_section__double-col {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.jobs-form_form_section_title {
+  color: var(--color-orange-01);
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin: 1rem 0 1rem -1rem;
+}
+
+.jobs-form_form_section_label {
+  color: var(--color-gray-03);
+  margin: 0 2rem 0 1rem;
+}
+
+.jobs-form_form_section_input__small {
+  max-width: 6rem !important;
+}
+
+.jobs-form_form_section_input__medium {
+  max-width: 14rem !important;
+}
+
+.jobs-form_form_btn {
+  margin: 2rem 0 0 auto;
+}
+/*# sourceMappingURL=JobsForm.module.css.map */

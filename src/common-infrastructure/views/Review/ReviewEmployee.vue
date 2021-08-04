@@ -28,7 +28,7 @@
 <script lan="ts">
 import { defineComponent } from 'vue'
 import RatingBox from '@/common-infrastructure/components/review/RatingBox.vue'
-import { CreateReviewDTOUi } from '../../../job/domain/DTO/Review/CreateReviewUI'
+import { CreateReviewDTOUi } from '../../../job/domain/DTO/Review/CreateReviewDTO'
 
 export default defineComponent({
   data() {

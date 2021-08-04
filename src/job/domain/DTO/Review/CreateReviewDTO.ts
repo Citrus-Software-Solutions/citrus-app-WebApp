@@ -1,11 +1,11 @@
 import { Question, Scores } from '../../Review'
 import { Employee } from '../../Employee'
-import { Employer } from '../../Employer'
-import { Id } from '../../value-objects/Identifier'
+import { Application } from '../../Application'
+import { Employer } from '@/job/domain/Employer'
 
 export type CreateReviewDTOUi = {
   questions: Question[]
-  score: Scores
+  scores: Scores[]
   totalScore: number
   employee: Employee
 }
@@ -15,5 +15,5 @@ export type CreateReviewDTOPersistence = CreateReviewDTOUi & {
 }
 
 export type CreateReviewDTOApp = CreateReviewDTOPersistence & {
-  id: Id
+  application: Application
 }

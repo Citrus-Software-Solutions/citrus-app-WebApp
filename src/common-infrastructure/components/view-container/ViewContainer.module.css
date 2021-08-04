@@ -1,0 +1,15 @@
+.view-container {
+  background-color: var(--color-gray-01);
+}
+
+.view-container_side__left {
+  width: 6rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.view-container_side__right {
+  padding: 2rem 2rem 2rem calc(6rem + 2rem);
+}
+/*# sourceMappingURL=ViewContainer.module.css.map */

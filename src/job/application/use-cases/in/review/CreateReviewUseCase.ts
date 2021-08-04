@@ -1,5 +1,5 @@
-import { Review } from '../../../../domain/Review'
+import { CreateReviewDTOApp } from '@/job/domain/DTO/Review/CreateReviewDTO'
 
 export interface CreateReviewUseCase {
-  execute(review: Review): void
+  execute(review: CreateReviewDTOApp): void
 }

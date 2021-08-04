@@ -1,0 +1,35 @@
+.nav-bar {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-gray-02);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 100vh;
+  width: 100%;
+}
+
+.nav-bar_item_logo {
+  width: 100%;
+}
+
+.nav-bar_item_icons {
+  border-radius: 5px;
+  color: var(--color-gray-03);
+  font-size: 1.6rem;
+  margin: 0.5rem;
+  padding: 1rem;
+}
+
+.nav-bar_item_icons:hover, .nav-bar_item_icons__active {
+  background-color: var(--color-orange-01);
+  color: var(--color-white);
+  border-radius: 5px;
+}
+/*# sourceMappingURL=Navbar.module.css.map */
