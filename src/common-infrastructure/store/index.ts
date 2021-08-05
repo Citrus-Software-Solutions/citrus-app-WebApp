@@ -18,6 +18,8 @@ export const store = createStore({
         key: 0,
       },
       filterOption: 'all',
+      allReviews: [],
+      review: {},
     }
   },
   mutations: {
@@ -42,6 +44,12 @@ export const store = createStore({
     },
     setFilterOption(state: any, payload) {
       state.filterOption = payload
+    },
+    setAllReviews(state: any, payload) {
+      state.allReviews = payload
+    },
+    setReview(state: any, payload) {
+      state.review = payload
     },
   },
   getters: {
