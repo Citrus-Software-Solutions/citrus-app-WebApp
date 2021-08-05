@@ -11,9 +11,9 @@
           placeholder="Pregunta $key"
         />
         <RatingBox :grade="2" v-model="scores" required />
-        <InlineMessage v-if="errors?.title">
+        <!-- <InlineMessage v-if="errors?.title">
           {{ errors.title }}
-        </InlineMessage>
+        </InlineMessage> -->
       </div>
       <Button
         type="submit"
@@ -34,7 +34,7 @@ export default defineComponent({
   data() {
     return {
       questions: [],
-      score: [] as any,
+      scores: [],
     }
   },
   props: ['application', 'employee'],
@@ -46,8 +46,8 @@ export default defineComponent({
     handleSubmit(): void {
       const review: CreateReviewDTOUi = {
         questions: this.questions,
-        score: this.score,
-        totalScore: this.scores.reduce((a:number, b:number) => a + b, 0),
+        scores: this.scores,
+        totalScore: this.scores.reduce((a: number, b: number) => a + b, 0),
         employee: this.employee,
       }
       this.$emit('submitHandler', review)
