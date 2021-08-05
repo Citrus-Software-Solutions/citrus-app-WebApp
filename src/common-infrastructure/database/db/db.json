@@ -13,7 +13,7 @@
         "street2": "asdf",
         "_zip": "1234"
       },
-      "deadline": "2021-8-4",
+      "dead_line": "2021-8-4",
       "schedules": [
         {
           "init_date": "2021-07-31T23:31:23.248Z",
@@ -39,7 +39,7 @@
         "street2": "asdf",
         "_zip": "1234"
       },
-      "deadline": "2021-8-4",
+      "dead_line": "2021-8-4",
       "schedules": [
         {
           "init_date": "2021-07-31T23:31:23.248Z",
@@ -65,7 +65,7 @@
         "street2": "asdf",
         "_zip": "1234"
       },
-      "deadline": "2021-8-4",
+      "dead_line": "2021-8-4",
       "schedules": [
         {
           "init_date": "2021-07-31T23:31:23.248Z",
@@ -90,7 +90,7 @@
         "street2": "asd",
         "_zip": "1234"
       },
-      "deadline": "2021-8-26",
+      "dead_line": "2021-8-26",
       "schedules": [
         {
           "init_date": "2021-08-17T16:14:48.000Z",
@@ -122,7 +122,7 @@
         "street2": "asdf",
         "_zip": "1234"
       },
-      "deadline": "2021-8-3",
+      "dead_line": "2021-8-3",
       "schedules": [
         {
           "init_date": "2021-08-01T23:03:02.636Z",
@@ -154,7 +154,7 @@
         "street2": "asd",
         "_zip": "1222"
       },
-      "deadline": "2021-8-2",
+      "dead_line": "2021-8-2",
       "schedules": [
         {
           "init_date": "2021-08-01T23:04:23.867Z",
@@ -187,7 +187,7 @@
         "street2": "asd",
         "_zip": "1222"
       },
-      "deadline": "2021-8-2",
+      "dead_line": "2021-8-2",
       "schedules": [
         {
           "init_date": "2021-08-01T23:04:23.867Z",
@@ -218,7 +218,7 @@
         "street2": "asdf",
         "_zip": "1234"
       },
-      "deadline": "2021-8-4",
+      "dead_line": "2021-8-4",
       "schedules": [
         {
           "init_date": "2021-07-31T23:31:23.248Z",
@@ -244,7 +244,7 @@
         "street2": "asd",
         "_zip": "1222"
       },
-      "deadline": "2021-8-2",
+      "dead_line": "2021-8-2",
       "schedules": [
         {
           "init_date": "2021-08-01T23:04:23.867Z",
@@ -276,7 +276,7 @@
         "street2": "asdf",
         "_zip": "1234"
       },
-      "deadline": "2021-8-3",
+      "dead_line": "2021-8-3",
       "schedules": [
         {
           "init_date": "2021-08-01T23:03:02.636Z",
@@ -308,7 +308,7 @@
         "street2": "asd",
         "_zip": "1222"
       },
-      "deadline": "2021-8-2",
+      "dead_line": "2021-8-2",
       "schedules": [
         {
           "init_date": "2021-08-01T23:04:23.867Z",
@@ -327,6 +327,41 @@
       "status": 0,
       "employee": {},
       "id": "lKnPYEI"
+    },
+    {
+      "title": "dada",
+      "employer": {
+        "id": "101010"
+      },
+      "location": {
+        "city": "caracas",
+        "state": "dtto capital",
+        "street1": "asdqwea",
+        "street2": "asdqwea",
+        "_zip": "1234"
+      },
+      "schedules": [
+        {
+          "init_date": "2021-08-08T12:00:23.000Z",
+          "end_date": "2021-08-12T14:00:23.000Z"
+        }
+      ],
+      "skills": [
+        {
+          "name": "Diseño",
+          "category": "1"
+        },
+        {
+          "name": "Desarrollo",
+          "category": "1"
+        }
+      ],
+      "specialRequirements": "adsfqweraf",
+      "duration": 5,
+      "hourlyRate": 10,
+      "status": 0,
+      "employee": [],
+      "id": "a9T3QC1"
     }
   ]
 }

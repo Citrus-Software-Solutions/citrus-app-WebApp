@@ -36,7 +36,7 @@ export class CreateOfferValidator extends InstancesValidator {
     const deadlineOrError = this.instanceCreator<Deadline>(
       Deadline,
       this._offerFields.deadline,
-      'deadline'
+      'dead_line'
     )
 
     const scheduleOrError = this.instanceCreator<Schedules>(
@@ -107,7 +107,7 @@ export class CreateOfferValidator extends InstancesValidator {
       id: idOrError as Id,
       location: locationOrError as Location,
       hourlyRate: hourlyRateOrError as Cost,
-      deadline: deadlineOrError as Deadline,
+      dead_line: deadlineOrError as Deadline,
       schedules: scheduleOrError as Schedules,
       skills: skillsOrError as Skill,
       specialRequirements: specialRequirementsOrError as Text,

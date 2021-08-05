@@ -13,7 +13,7 @@ export class ConsultOfferAdapter implements ConsultOfferPort {
   > {
     const id = ConsultOfferMapper.toPersistence(offerId)
     const response = await req<JobOffer>({
-      url: `http://localhost:3000/jobs/${id}`,
+      url: process.env.VUE_APP_BASEURL + `job-offers/${id}`,
       method: 'GET',
     })
     return response

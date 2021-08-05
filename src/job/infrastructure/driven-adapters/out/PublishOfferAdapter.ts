@@ -12,7 +12,7 @@ export class PublishOfferAdapter implements PublishOfferPort {
   > {
     const _jobOffer = PublishOfferMapper.toPersistence(jobOffer)
     const response = await req<JobOffer>({
-      url: 'http://localhost:3000/jobs/' + _jobOffer.id,
+      url: process.env.VUE_APP_BASEURL + `job-offers/${_jobOffer.id}`,
       method: 'PUT',
       body: _jobOffer,
     })

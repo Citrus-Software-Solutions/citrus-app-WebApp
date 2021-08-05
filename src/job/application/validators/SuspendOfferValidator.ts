@@ -94,7 +94,7 @@ export class SuspendOfferValidator extends InstancesValidator {
       id: idOrError as Id,
       location: locationOrError as Location,
       hourlyRate: hourlyRateOrError as Cost,
-      deadline: deadlineOrError as Deadline,
+      dead_line: deadlineOrError as Deadline,
       schedules: scheduleOrError as Schedules,
       skills: skillsOrError as Skill,
       specialRequirements: specialRequirementsOrError as Text,

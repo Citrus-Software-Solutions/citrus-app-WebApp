@@ -13,9 +13,9 @@
             {{ skill.name }}
           </li>
         </ul>
-        <p v-if="details.deadline" style="margin-left: auto">
+        <p v-if="details.dead_line" style="margin-left: auto">
           <i class="pi pi-clock jobs-details_header_content_icon" />
-          {{ formatDate(details.deadline) }}
+          {{ formatDate(details.dead_line) }}
         </p>
       </div>
     </div>

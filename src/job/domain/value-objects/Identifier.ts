@@ -1,4 +1,4 @@
-export type _Id = string
+export type _Id = number
 
 export class Id {
   private id

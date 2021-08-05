@@ -16,7 +16,7 @@ export interface _JobOffer {
   title: Title
   employer: Employer
   location: Location
-  deadline: Deadline
+  dead_line: Deadline
   schedules: Schedules
   skills: Skill
   specialRequirements: Text
@@ -31,7 +31,7 @@ export class JobOffer {
   private title
   private employer
   private location
-  private deadline
+  private dead_line
   private schedules
   private skills
   private specialRequirements
@@ -47,7 +47,7 @@ export class JobOffer {
     this.title = props.title
     this.employer = props.employer
     this.location = props.location
-    this.deadline = props.deadline
+    this.dead_line = props.dead_line
     this.schedules = props.schedules
     this.skills = props.skills
     this.specialRequirements = props.specialRequirements
@@ -73,7 +73,7 @@ export class JobOffer {
   }
 
   public get _deadline() {
-    return this.deadline._deadline
+    return this.dead_line._deadline
   }
 
   public get _schedules() {
