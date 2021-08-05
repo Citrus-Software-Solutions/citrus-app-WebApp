@@ -8,7 +8,15 @@
       <h1 class="jobs-card_content_title">{{ title }}</h1>
       <p class="jobs-card_content_description">{{ specialRequirements }}</p>
       <Tag v-if="applicants">{{ applicants }} Aplicantes</Tag>
-      <Tag v-if="status !== null">{{ consultStatus(status) }}</Tag>
+      <Tag v-if="status !== null && !isJobDone(status)" :style="(color = blue)">
+        {{ consultStatus(status) }}
+      </Tag>
+      <Tag
+        v-else-if="status !== null && isJobDone(status)"
+        :style="(color = red)"
+      >
+        {{ consultStatus(status) }}</Tag
+      >
     </div>
     <span>
       <i
@@ -42,6 +50,11 @@ export default defineComponent({
     consultStatus(status: number) {
       const consultOfferStatusNameFactory = new ConsultOfferStatusNameFactory()
       return consultOfferStatusNameFactory.create(status)
+    },
+    isJobDone(status: number) {
+      if (this.consultStatus(status) == 'Finalizada') {
+        return true
+      }
     },
   },
   emits: ['deleteOffer', 'duplicateOffer', 'suspendOffer', 'publishOffer'],

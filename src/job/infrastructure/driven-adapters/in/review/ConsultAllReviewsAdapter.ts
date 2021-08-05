@@ -12,7 +12,7 @@ export class ConsultAllReviewsAdapter implements ConsultAllReviewsPort {
     | { status: number; body: Review[]; success: boolean; error?: never }
   > {
     const response = await req<Review[]>({
-      url: process.env.VUE_APP_BASEURL_SPRING + `review/employer/${employerId}`,
+      url: process.env.VUE_APP_BASEURL_SPRING + `review/employer/1`,
       method: 'GET',
     })
     return response

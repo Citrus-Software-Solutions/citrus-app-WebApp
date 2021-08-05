@@ -34,6 +34,9 @@
     <router-link class="nav-bar_item" to="/#">
       <i class="pi pi-user nav-bar_item_icons" v-tooltip.right="'Perfil'"></i>
     </router-link>
+    <router-link class="nav-bar_item" to="/app/reviews">
+      <i class="pi pi-home nav-bar_item_icons" v-tooltip.right="'Reviews'"></i>
+    </router-link>
   </nav>
 </template>
 

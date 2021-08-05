@@ -44,7 +44,8 @@ export default defineComponent({
   },
   mounted() {
     this.$nextTick(() => {
-      this.consultOfferHandler()
+      const data = this.consultOfferHandler()
+      console.log(data)
     })
   },
   watch: {
