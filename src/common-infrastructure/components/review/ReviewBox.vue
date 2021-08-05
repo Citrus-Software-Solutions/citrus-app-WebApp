@@ -18,10 +18,10 @@
 <script lang="ts">
 import 'vue-awesome/icons/star'
 import 'vue-awesome/icons/star-o'
-import Icon from 'vue-awesome/components/Icon.vue'
+import icon from 'vue-awesome/components/Icon.vue'
 import { defineComponent } from 'vue'
 export default defineComponent({
-  components: { Icon },
+  components: { icon },
   props: {
     grade: {
       type: Number,
@@ -36,13 +36,13 @@ export default defineComponent({
       default: true,
     },
   },
-  data(): any {
+  data() {
     return {
       stars: this.grade,
     }
   },
   methods: {
-    rate(star: any) {
+    rate(star: number) {
       if (typeof star === 'number' && star <= this.maxStars && star >= 0)
         this.stars = this.stars === star ? star - 1 : star
     },

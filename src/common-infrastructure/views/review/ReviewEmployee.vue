@@ -1,58 +1,72 @@
 <template>
+  <h1>hola</h1>
   <main class="jobs-form">
     <form @submit.prevent="handleSubmit" class="jobs-form_form">
-      <div v-for="n in 5" :key="n" class="jobs-form_form_section">
-        <h2 class="jobs-form_form_section_title">Pregunta {{ n }}:</h2>
-        <InputText
+      <div class="jobs-form_form_section">
+        <h2 class="jobs-form_form_section_title">Pregunta 1:</h2>
+        <!-- <InputText
           type="text"
-          v-model="questions"
+          v-model="question"
           name="title"
           required
-          placeholder="Pregunta $key"
-        />
-        <RatingBox :grade="2" v-model="scores" required />
+          placeholder="Pregunta 1"
+        /> -->
+        <!-- <Reviewbox :grade="2" v-model="scores" required /> -->
         <!-- <InlineMessage v-if="errors?.title">
           {{ errors.title }}
         </InlineMessage> -->
+        <Button
+          type="submit"
+          :label="btn"
+          icon="pi pi-plus"
+          class="jobs-form_form_btn"
+        />
       </div>
-      <Button
-        type="submit"
-        :label="btn"
-        icon="pi pi-plus"
-        class="jobs-form_form_btn"
-      />
     </form>
   </main>
 </template>
 
 <script lan="ts">
 import { defineComponent } from 'vue'
-import RatingBox from '@/common-infrastructure/components/review/RatingBox.vue'
-import { CreateReviewDTOUi } from '../../../job/domain/DTO/Review/CreateReviewDTO'
+// import ReviewBox from '@/common-infrastructure/components/review/ReviewBox.vue'
+import StarRating from 'vue-star-rating'
+import { InputText, Button } from 'primevue/inputtext'
+
 export default defineComponent({
   data() {
     return {
-      questions: [],
+      question: '',
       scores: [],
+      rating: 0,
     }
   },
-  props: ['application', 'employee'],
+  props: ['application', 'employee', 'btn'],
   emits: ['submitHandler'],
-  components: {
-    RatingBox,
+  Component: {
+    // ReviewBox,
+    StarRating,
+    InputText,
+    Button,
   },
   methods: {
-    handleSubmit(): void {
-      const review: CreateReviewDTOUi = {
+    handleSubmit() {
+      const review = {
         questions: this.questions,
         scores: this.scores,
-        totalScore: this.scores.reduce((a: number, b: number) => a + b, 0),
+        totalScore: this.scores.reduce((a, b) => a + b, 0),
         employee: this.employee,
       }
       this.$emit('submitHandler', review)
+    },
+    setRating(rating) {
+      this.rating = rating
     },
   },
 })
 </script>
 
-<style lang="scss" src="./JobsList.module.scss" scoped></style>
+<style
+  lang="scss"
+  src="@/common-infrastructure/components/jobs-form/JobsForm.module.scss"
+  scoped
+></style>

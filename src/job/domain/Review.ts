@@ -3,16 +3,25 @@ import { Application } from './Application'
 import { Employer } from './Employer'
 import { Id } from './value-objects/Identifier'
 
+export enum Scores {
+  Excellent = 1,
+  AboveAverage,
+  Average,
+  BelowAverage,
+  VeryPoor,
+}
+
+export type Question = string
+
 export interface _Review {
   id: Id //Added
-  questions: string //son 5
-  scores: number //FIXME:
+  questions: Question[]
+  scores: Scores[]
   totalScore: number
   employee: Employee
   application: Application
   employer: Employer
 }
-
 export class Review {
   private id
   private questions
@@ -30,5 +39,33 @@ export class Review {
     this.employee = props.employee
     this.application = props.application
     this.employer = props.employer
+  }
+
+  get _questions(): Question[] {
+    return this.questions
+  }
+
+  get _scores(): Scores[] {
+    return this.scores
+  }
+
+  get _totalScore(): number {
+    let totalScore = 0
+    for (const score of this.scores) {
+      totalScore += score
+    }
+    return totalScore
+  }
+
+  get _employee(): Employee {
+    return this.employee
+  }
+
+  get _application(): Application {
+    return this.application
+  }
+
+  get _employer(): Employer {
+    return this.employer
   }
 }
