@@ -54,25 +54,29 @@ export class Location {
   }
 
   private validate() {
-    if (this.city == undefined || this.city == null || this.city.length >= 20) {
+    if (
+      this.city == undefined ||
+      this.city == null ||
+      this.city.length >= 100
+    ) {
       throw new Error(
-        'El pais no puede estar vacío ni exceder los 20 caracteres'
+        'El pais no puede estar vacío ni exceder los 100 caracteres'
       )
     } else if (
       this.state == undefined ||
       this.state == null ||
-      this.state.length >= 20
+      this.state.length >= 100
     ) {
       throw new Error(
-        'El estado no puede estar vacío ni exceder los 20 caracteres'
+        'El estado no puede estar vacío ni exceder los 100 caracteres'
       )
     } else if (
       this.street1 == undefined ||
       this.street1 == null ||
-      this.street1.length >= 50
+      this.street1.length >= 100
     ) {
       throw new Error(
-        'La direccion no puede estar vacia ni exceder los 50 caracteres'
+        'La direccion no puede estar vacia ni exceder los 100 caracteres'
       )
     } else if (!this.zip || this.zip.length > 4) {
       throw new Error(

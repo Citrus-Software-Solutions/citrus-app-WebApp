@@ -98,17 +98,19 @@
         <h2 class="jobs-form_form_section_title">
           Fecha de cierre de la oferta
         </h2>
-        <label class="jobs-form_form_section_label" for="deadline">Hasta</label>
+        <label class="jobs-form_form_section_label" for="dead_line">
+          Hasta
+        </label>
         <Calendar
-          id="deadline"
-          v-model="deadline"
+          id="dead_line"
+          v-model="dead_line"
           dateFormat="dd/mm/yy"
           :manualInput="false"
           hourFormat="12"
           required
         />
-        <InlineMessage v-if="errors?.deadline">
-          {{ errors.deadline }}
+        <InlineMessage v-if="errors?.dead_line">
+          {{ errors.dead_line }}
         </InlineMessage>
       </div>
       <div class="jobs-form_form_section">
@@ -218,7 +220,9 @@ export default defineComponent({
               end_date: new Date(el.end_date),
             })
           ),
-      deadline: !this.formData ? new Date() : new Date(this.formData.deadline),
+      dead_line: !this.formData
+        ? new Date()
+        : new Date(this.formData.dead_line),
       hourlyRate: !this.formData
         ? (null as unknown as number)
         : this.formData.hourlyRate,
@@ -255,7 +259,7 @@ export default defineComponent({
       const JobOfferData: CreateOfferDTOUi = {
         title: this.title,
         status: 0,
-        deadline: formatDate(this.deadline, '-', true) as unknown as Date,
+        dead_line: formatDate(this.dead_line, '-', true) as unknown as Date,
         schedules: this.schedules,
         skills: this.skills?.map((el: any) => ({
           name: el.name,

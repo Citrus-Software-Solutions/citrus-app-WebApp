@@ -7,7 +7,7 @@ export type CreateOfferDTOUi = {
     street2?: any
     _zip: any
   }
-  deadline: any
+  dead_line: any
   schedules: any
   skills: any
   specialRequirements: any

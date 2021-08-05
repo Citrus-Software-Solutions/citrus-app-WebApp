@@ -9,7 +9,7 @@ export class DuplicateOfferMapper {
       title: jobOffer._title,
       employer: jobOffer._employer,
       location: jobOffer._location,
-      deadline: jobOffer._deadline,
+      dead_line: jobOffer._deadline,
       schedules: jobOffer._schedules,
       skills: jobOffer._skills,
       specialRequirements: jobOffer._specialRequirements,

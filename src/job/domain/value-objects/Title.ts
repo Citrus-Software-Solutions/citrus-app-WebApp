@@ -16,10 +16,10 @@ export class Title {
     if (
       this.title === undefined ||
       this.title === null ||
-      this.title.length > 20
+      this.title.length > 100
     ) {
       throw new Error(
-        'El titulo no debe estar vacío y debe tener un límite de 20 caracteres'
+        'El titulo no debe estar vacío y debe tener un límite de 100 caracteres'
       )
     }
   }
