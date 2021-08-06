@@ -3,11 +3,16 @@
     <!--side bars de registro y login-->
 
     <!--singup-->
-    <Sidebar v-model:visible="visibleSingUp" :baseZIndex="1000" position="full">
-      <div class="card">
+    <Sidebar
+      v-model:visible="visibleSingUp"
+      :baseZIndex="1000"
+      position="right"
+      class="register-sidebar"
+    >
+      <div class="card register_content">
         <h2>Registro</h2>
         <br />
-        <h3>Datos de usuario</h3>
+        <h3 class="reg_title">Datos de usuario</h3>
         <br />
         <div class="p-fluid">
           <div class="p-field">
@@ -24,7 +29,6 @@
             &nbsp;
             <InputText id="email" type="text" v-model="singup_body.email" />
           </div>
-          <br />
           <div class="p-field">
             <label for="pwd_singup">Contraseña</label>
             &nbsp;
@@ -47,7 +51,7 @@
           </div>
         </div>
         <br />
-        <h3>Dirección</h3>
+        <h3 class="reg_title">Dirección</h3>
         <br />
         <div class="p-fluid">
           <div class="p-field">
@@ -79,13 +83,13 @@
             <InputText id="state" type="text" v-model="singup_body.state" />
           </div>
           <div class="p-field">
-            <label for="zip">Codigo Zip</label>
+            <label for="zip">Zip</label>
             &nbsp;
             <InputText id="zip" type="text" v-model="singup_body.zip" />
           </div>
         </div>
         <br />
-        <h3>Datos de la compañía</h3>
+        <h3 class="reg_title">Datos de la compañía</h3>
         <br />
         <div class="p-field">
           <label for="company_name">Nombre de la compañía</label>
@@ -98,7 +102,7 @@
         </div>
         <br />
         <div class="p-field">
-          <label for="requeriments">requerimientos espaciales</label>
+          <label for="requeriments">Requerimientos especiales</label>
           &nbsp;
           <Textarea
             id="requirements"
@@ -110,7 +114,7 @@
         <div class="p-grid p-jc-center">
           <div class="p-col-4">
             <Button
-              class="p-button"
+              class="p-button reg_button"
               label="Registrar usuario"
               @click="SingUp(singup_body)"
             />
@@ -534,6 +538,12 @@ export default defineComponent({
   }
 }
 
-.login_form {
+.reg_title {
+  color: var(--color-orange-01);
+}
+
+.reg_button {
+  position: relative;
+  right: 0;
 }
 </style>

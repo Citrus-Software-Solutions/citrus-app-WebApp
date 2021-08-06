@@ -97,3 +97,17 @@
 .p-inline-message-text {
   font-size: 1.2rem !important;
 }
+
+/* Card */
+.p-card {
+  box-shadow: none !important;
+}
+
+.p-field {
+  margin-bottom: 1rem !important;
+}
+
+.register-sidebar {
+  width: 500px !important;
+  padding: 0 2rem;
+}
