@@ -25,7 +25,7 @@
             />
           </div>
           <div class="p-field">
-            <label for="email">Correo electronico</label>
+            <label for="email">Correo electrónico</label>
             &nbsp;
             <InputText id="email" type="text" v-model="singup_body.email" />
           </div>
@@ -127,7 +127,7 @@
       v-model:visible="visibleLogin"
       :baseZIndex="1000"
       position="right"
-      class="p-sidebar-lg"
+      class="p-sidebar-m"
     >
       <Card>
         <template #title> Login </template>

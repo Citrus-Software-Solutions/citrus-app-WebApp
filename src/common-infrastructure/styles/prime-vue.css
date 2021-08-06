@@ -106,6 +106,9 @@
 .p-field {
   margin-bottom: 1rem !important;
 }
+.p-sidebar-m {
+  width: 35rem !important;
+}
 
 .register-sidebar {
   width: 500px !important;
