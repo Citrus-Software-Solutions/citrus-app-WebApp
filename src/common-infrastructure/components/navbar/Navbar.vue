@@ -36,7 +36,7 @@
     </router-link>
     <router-link class="nav-bar_item" to="/app/reviews">
       <i
-        class="pi pi-pi-star-o nav-bar_item_icons"
+        class="pi pi-star-o nav-bar_item_icons"
         v-tooltip.right="'Reviews'"
       ></i>
     </router-link>
