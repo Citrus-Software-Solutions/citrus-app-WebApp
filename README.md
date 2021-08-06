@@ -1,125 +1,112 @@
-
 <h1 align="center">
     Citrus Web App
 </h1>
 
-## Sobre el proyecto
+## Description
 
-Citrus App es una app para encontrar trabajos desarrollada por Citrus Software Solutions.
-Este repositorio contiene nuestro Fron-End desarrollado en Vue, usando Arquitectura CLEAN.
+Citrus App is a job finder app created and developed by Citrus Software Solutions.
+This repository contain our Fron-End developed in the Vue framework using CLEAN Architecture.
 
-### Requisitos del proyecto
+### Installation & Requirements
 
 - Node.js: 14.17.1
 - npm: 6.14.13
 - vue/cli 4.5.13
 
-### Descarga del proyecto
+### Project download
 
-1. Clonar el repositorio:
+1. Clone the repository:
 
 ```js
     git clone https://github.com/Citrus-Software-Solutions/citrus-app-WebApp.git
 ```
 
-2. Abrir el repositorio clonado y ejecutar:
+2. Open the cloned repository and run:
 
 ```js
     npm run install
 ```
 
-3. El proyecto estará listo para ser ejecutado una vez haya finalizado la instalación de dependencias
+3. The project will be ready to be executed once the dependencies installation has finished
 
-### ¿Cómo ejecutar el proyecto?
+### How to execute the project?
 
-1.  Una vez instaladas las dependencias **_(ver pasos sección anterior)_**, se puede correr el proyecto de la siguiente manera:
-
-    - Opción A - Usando concurrently:
-
-      Para ello ejecute el siguiente comando:
-
-      ```js
-      npm run serve:dev
-      ```
-
-        Si presenta errores de referentes a "concurrently", puede intentar instalarlo de manera global en su equipo con:
-
-        ```js
-      npm install -g concurrently
-        ```
-    Puede ver más sobre este paquete aquí:  [Concurrently](https://www.npmjs.com/package/concurrently)
-    - Opción B - Corriendo el servidor y la aplicación por separados
-
-        Esta opción es en caso de que el paso anterior no haya funcionado. Para ello, ejecute los siguientes comandos:
-
-        - Para ejecutar la aplicación de Vue
-
-            ```js
-              npm run start
-            ```
-        - Para ejecutar el Json-Server
-
-            ```js
-            npm run jsonserver
-            ```
-
-
-      **Nota**: Es necesario correr ambos simultaneamente, ya que para esta entrega se decidió emplear jsonserver como servidor.
-
-2.  Finalizado lo anterior, dirijase a la siguiente dirección:
+1.  Once the dependencies are installed **_(see steps in the previous section)_**, you can run the project as follows:
 
     ```js
-    http://localhost:8080/
+    npm run start
     ```
 
-### Instrucciones de Build
-
-Para crear la **build** del proyecto ejecutar el siguiente comando:
-
-```js
-npm run build
-```
-
-## Sobre Tests
-
-**IMPORTANTE**: Para el test de integración debe tener corriendo el servidor de jsonserver y para el e2e debe tener corriendo el servidor y la aplicación, de lo contrario, estos fallarán. *** Para ver como ejecutar el servidor y la app diríjase a la sección de ¿Cómo ejecutar el proyecto? ***
-
-- Para ejecutar el Json-Server
+2.  Para ejecutar el Json-server
 
     ```js
     npm run jsonserver
     ```
 
-### Tests unitarios
+3.  After the above, go to the following address:
 
-Para ejecutar los tests unitarios, emplee:
+    ```js
+    http://localhost:8080/
+    ```
+
+### Build Instructions
+
+To create the **build** of the project, execute the following command:
+
+```js
+npm run build
+```
+
+## About Tests
+
+**IMPORTANT**:
+For the e2e test you must have the application running, otherwise, they will fail.
+
+- To run the Json-Server
+
+  ```js
+  npm run jsonserver
+  ```
+
+### Unit tests
+
+To run the unit tests, use:
 
 ```js
 npm run test:unit
 ```
 
-### Tests de integración
+### Integration tests
 
-Para ejecutar los tests de integración, emplee:
+To run the integration tests, use:
 
 ```js
 npm run test:int
 ```
 
-### Tests end-to-end
+### End-to-end tests
 
-Para ejecutar los tests de end to end, emplee:
+To run the end-to-end tests, use:
 
 ```js
 npm run test:e2e
 ```
 
-#### Instrucciones adicionales para los tests end-to-end
+#### Additional instructions for end-to-end tests
 
-Una vez ejecute el comando dado, se abrirá una ventana de cypress. Cuando esta abra, deberá darle al botón **"Run all specs"** y se iniciará la ejecución de los tests.
+Once you run the given command, a cypress window will open. When it is open, you must click on the button **"Run all specs"** and the execution of the tests will begin.
 
+## Citrus Vue Developers
 
-## Referencias
+<table align="center">
+  <tbody><tr>
+    <td align="center"><a href="https://github.com/dalfonzo" rel="nofollow"><img src="https://avatars.githubusercontent.com/u/46352804?v=4" width="150px;" alt="" style="max-width:100%;"><br><sub><b>David Pérez</b></sub></a><br><a href="https://github.com/Citrus-Software-Solutions/citrus-app-WebApp/commits?author=Dalfonzo" title="Commits"><g-emoji class="g-emoji" alias="book" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f4d6.png">📖</g-emoji></a></td>
+    <td align="center"><a href="https://github.com/DanRivSa"><img src="https://avatars.githubusercontent.com/u/34323866?v=4" width="150px;" alt="" style="max-width:100%;"><br><sub><b>Daniel Rivero</b></sub></a><br><a href="https://github.com/Citrus-Software-Solutions/citrus-app-WebApp/commits?author=DanRivSa" title="Documentation"><g-emoji class="g-emoji" alias="book" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f4d6.png">📖</g-emoji></a></td>
+    <td align="center"><a href="https://github.com/katsfernan" rel="nofollow"><img src="https://avatars.githubusercontent.com/u/58194574?v=4" width="150px;" alt="" style="max-width:100%;"><br><sub><b>Alejandro Jauregui</b></sub></a><br><a href="https://github.com/Citrus-Software-Solutions/citrus-app-WebApp/commits?author=katsfernan" title="Documentation"><g-emoji class="g-emoji" alias="book" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f4d6.png">📖</g-emoji></a></td>
+  </tr>
+</tbody></table>
+
+## References
 
 [1] A. Ferrera (s.f.). Arquitectura Hexagonal en el FrontEnd [En línea], Softwarecrafter. Disponible en: https://softwarecrafters.io/react/arquitectura-hexagonal-frontend
 
@@ -135,7 +122,7 @@ Una vez ejecute el comando dado, se abrirá una ventana de cypress. Cuando esta 
 
 [6] R. Martin, Clean Architecture. Primera Edición. Estados Unidos de América. Prentice Hall, Pearson. 2018
 
-[7] Aula Software Libre. “Frontend Clean Architecture - A never ending story”, Youtube,  [archivo de vídeo]. Disponible en: https://www.youtube.com/watch?v=zwNcHQ-SqSI&ab_channel=AulaSoftwareLibre
+[7] Aula Software Libre. “Frontend Clean Architecture - A never ending story”, Youtube, [archivo de vídeo]. Disponible en: https://www.youtube.com/watch?v=zwNcHQ-SqSI&ab_channel=AulaSoftwareLibre
 
 [8] Geeks Hub Academy. “Arquitectura Hexagonal en Node + Typescript" Samuel Andreo, Full Stack en IBM Londres”, Youtube, [Archivo de vídeo]. Disponible en : https://www.youtube.com/watch?v=b5ngTWAPNeg&ab_channel=GeeksHubsAcademy
 
@@ -156,10 +143,9 @@ Una vez ejecute el comando dado, se abrirá una ventana de cypress. Cuando esta 
 [16] Event Handling [En línea] , Vue.js. Disponible en:
 https://vuejs.org/v2/guide/events.html
 
+[17] V. Chircu (2019). Defining Test Boundaries – An example [En línea], Simple Oriented Architecture. Disponible en: https://www.simpleorientedarchitecture.com/defining-test-boundaries/
 
-[17]  V. Chircu (2019). Defining Test Boundaries – An example [En línea], Simple Oriented Architecture. Disponible en: https://www.simpleorientedarchitecture.com/defining-test-boundaries/
-
-[18]  A. Masan(2019). Interfaces in TypeScript: What are they and how do we use them [En línea], Log Rocket. Disponible en: https://blog.logrocket.com/interfaces-in-typescript-what-are-they-and-how-do-we-use-them-befbc69b38b3/
+[18] A. Masan(2019). Interfaces in TypeScript: What are they and how do we use them [En línea], Log Rocket. Disponible en: https://blog.logrocket.com/interfaces-in-typescript-what-are-they-and-how-do-we-use-them-befbc69b38b3/
 
 [19] Committing Mutations in Componentes [En línea], Vuex.vuejs. Disponible en:
 https://vuex.vuejs.org/guide/mutations.html#commit-with-payload
@@ -167,16 +153,16 @@ https://vuex.vuejs.org/guide/mutations.html#commit-with-payload
 [20] Andrew Hughes (2018). Build a Simple CRUD App with Spring Boot and Vue.js [En linea], Developer.okta. Disponible en:
 https://developer.okta.com/blog/2018/11/20/build-crud-spring-and-vue
 
-[21] (2021) What is Vuex? [En línea], Vuex.vuejs. Disponible en:  https://next.vuex.vuejs.org/
+[21] (2021) What is Vuex? [En línea], Vuex.vuejs. Disponible en: https://next.vuex.vuejs.org/
 
 [22] (2021) Factory Method in TypeScrip t[En línea], Refactoring . Disponible en: https://refactoring.guru/design-patterns/factory-method/typescript/example
 
 [23]Konrad Gadzinowski. Trunk-based Development vs. Git Flow [En línea], Toptal. Disponible en:
 https://www.toptal.com/software/trunk-based-development-git-flow
 
-[24]  Mariano Álvarez (2020). ¿Por qué Trunk-Based Development? [En línea], Dev.to. Disponible en: https://dev.to/malvarezcr/por-que-trunk-based-development-i5n
+[24] Mariano Álvarez (2020). ¿Por qué Trunk-Based Development? [En línea], Dev.to. Disponible en: https://dev.to/malvarezcr/por-que-trunk-based-development-i5n
 
-[25] N. Nisi (2020).  Advanced TypeScript 4.2 Concepts: Classes and Types [En línea], Site Pen. Disponible en: https://www.sitepen.com/blog/advanced-typescript-concepts-classes-and-types
+[25] N. Nisi (2020). Advanced TypeScript 4.2 Concepts: Classes and Types [En línea], Site Pen. Disponible en: https://www.sitepen.com/blog/advanced-typescript-concepts-classes-and-types
 
 [26] J. Bodnar (2020). JavaScript Builder pattern tutorial [En línea] , ZetCode. Disponible en : https://zetcode.com/javascript/builderpattern/
 
@@ -184,15 +170,15 @@ https://www.toptal.com/software/trunk-based-development-git-flow
 
 [28] V. Prasanna (2019). JavaScript Object Oriented Patterns: Factory Pattern [En línea], Digital Ocean. Disponible en: https://www.digitalocean.com/community/tutorials/js-factory-pattern
 
-[29] M. Fowler (2016). Value Object [En línea], Martin Fowler. Disponible en:  https://martinfowler.com/bliki/ValueObject.html
+[29] M. Fowler (2016). Value Object [En línea], Martin Fowler. Disponible en: https://martinfowler.com/bliki/ValueObject.html
 
-[30] (2021) . Typescript Support [En línea],V3 Vuejs.  Disponible en: https://v3.vuejs.org/guide/typescript-support.html#official-declaration-in-npm-packages
+[30] (2021) . Typescript Support [En línea],V3 Vuejs. Disponible en: https://v3.vuejs.org/guide/typescript-support.html#official-declaration-in-npm-packages
 
 [31] M. Oberlehner (2019) . Container Components in Vue.js: Advanced Component Composition[En línea], Markus Oberlehner. Disponible en: https://markus.oberlehner.net/blog/advanced-vue-component-composition-with-container-components/
 
 [32] M. Thiessen(2018). How to Pass a Function as a Prop in Vue [En línea], Michael N Thiessen. Disponible en: https://michaelnthiessen.com/pass-function-as-prop/
 
-[33] D. Rodriguez(2021).  Implementing a Clean Architecture Modular Application in Nuxt/Vue Typescript Part 1: Domain Layer[En línea], Dirodriguezm.  Disponible en: https://dirodriguezm.gitlab.io/nuxt-clean-architecture.html
+[33] D. Rodriguez(2021). Implementing a Clean Architecture Modular Application in Nuxt/Vue Typescript Part 1: Domain Layer[En línea], Dirodriguezm. Disponible en: https://dirodriguezm.gitlab.io/nuxt-clean-architecture.html
 
 [34] H. Pretish(2020). Vue.js and TypeScript: A complete tutorial with examples[En línea], Log Rocket. Disponible en: https://blog.logrocket.com/vue-typescript-tutorial-examples/
 
@@ -201,4 +187,3 @@ https://www.toptal.com/software/trunk-based-development-git-flow
 [36] F. Alvarez (2019). Dependency Injection Made Easy for VueJS and Vuex with TypeScript [En línea]. Medium. Disponible en: https://medium.com/@fernalvarez/dependency-injection-made-easy-for-vuejs-and-vuex-with-typescript-3bc738c17e05
 
 [37] V. Khorikov(2016). What is domain logic?[En línea], Enterprise Craftsmanship. Disponible en: https://enterprisecraftsmanship.com/posts/what-is-domain-logic/
-

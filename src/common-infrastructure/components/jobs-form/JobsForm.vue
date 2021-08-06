@@ -105,7 +105,6 @@
           id="dead_line"
           v-model="dead_line"
           dateFormat="dd/mm/yy"
-          :manualInput="false"
           hourFormat="12"
           required
         />

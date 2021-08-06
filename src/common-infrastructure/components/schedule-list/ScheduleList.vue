@@ -1,9 +1,8 @@
 <template>
   <span class="schedule-list_calendar-container">
     <Calendar
-      id="schedules"
+      id="schedules1"
       v-model="schedules.init_date"
-      :manualInput="false"
       hourFormat="12"
       :showTime="true"
       required
@@ -12,9 +11,8 @@
     />
     -
     <Calendar
-      id="schedules"
+      id="schedules2"
       v-model="schedules.end_date"
-      :manualInput="false"
       hourFormat="12"
       :showTime="true"
       required
