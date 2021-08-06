@@ -5,22 +5,23 @@ export type CreateOfferDTOUi = {
     state: any
     street1: any
     street2?: any
-    _zip: any
+    zip: any
   }
   dead_line: any
   schedules: any
   skills: any
-  specialRequirements: any
+  special_requirements: any
   duration: any
-  hourlyRate: any
+  hourly_rate: any
   status: any
 }
 
-export type CreateOfferDTOPersistence = CreateOfferDTOUi & {
+export type CreateOfferDTOPersistence = Omit<CreateOfferDTOUi, 'status'> & {
   employer: any
-  employee: any
 }
 
-export type CreateOfferDTOApp = CreateOfferDTOPersistence & {
+export type CreateOfferDTOApp = CreateOfferDTOUi & {
   id: any
+  employee: any
+  employer: any
 }

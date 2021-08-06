@@ -24,8 +24,8 @@ describe('Given the CreateOffer Service', () => {
       cy.get('input[name = "street2"]')
         .type('Nullam eget gravida mi, a sodales urna')
         .should('have.value', 'Nullam eget gravida mi, a sodales urna')
-      cy.get('input[name = "_zip"]').type('1030').should('have.value', '1030')
-      cy.get('textarea[name = "specialRequirements"]')
+      cy.get('input[name = "zip"]').type('1030').should('have.value', '1030')
+      cy.get('textarea[name = "special_requirements"]')
         .type(
           'Ut ornare rutrum nibh, vitae accumsan justo porta eget. Donec bibendum quis ligula sed ultrices. Mauris hendrerit sed ipsum ac lobortis.'
         )
@@ -51,8 +51,8 @@ describe('Given the CreateOffer Service', () => {
       cy.get('div[name="skills"]').click()
       cy.get('.p-multiselect-items').find('li').first().as('first-skill')
       cy.get('@first-skill').click()
-      cy.get('input[name="hourlyRate"]').clear({ force: true })
-      cy.get('input[name="hourlyRate"]').type(20).should('have.value', '20')
+      cy.get('input[name="hourly_rate"]').clear({ force: true })
+      cy.get('input[name="hourly_rate"]').type(20).should('have.value', '20')
       cy.get('input[name="duration"]').clear({ force: true })
       cy.get('input[name="duration"]').type(3).should('have.value', '3')
       cy.get('.p-button').contains('Agregar Oferta').click()

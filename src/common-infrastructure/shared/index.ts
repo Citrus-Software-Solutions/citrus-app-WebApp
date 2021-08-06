@@ -18,9 +18,13 @@ export function formatDate(
   const month = date.getMonth() + 1
   const year = date.getFullYear()
   if (reversed) {
-    return `${year}${separator}${month}${separator}${day}`
+    return `${year}${separator}${
+      month < 10 ? '0' + month.toString() : month
+    }${separator}${day < 10 ? '0' + day.toString() : day}`
   }
-  return `${day}${separator}${month}${separator}${year}`
+  return `${day < 10 ? '0' + day.toString() : day}${separator}${
+    month < 10 ? '0' + month.toString() : month
+  }${separator}${year}`
 }
 
 export function formatDateWithTime(date: Date): string {

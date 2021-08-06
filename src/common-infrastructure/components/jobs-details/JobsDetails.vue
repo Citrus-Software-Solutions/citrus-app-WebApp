@@ -31,7 +31,7 @@
       </div>
       <div class="jobs-details_section">
         <p class="jobs-details_section_sub-title">Salario:</p>
-        <p class="jobs-details_section_text">{{ details.hourlyRate }} USD</p>
+        <p class="jobs-details_section_text">{{ details.hourly_rate }} USD</p>
       </div>
       <div class="jobs-details_section">
         <p class="jobs-details_section_sub-title">Duración:</p>
@@ -69,7 +69,7 @@
       <div class="jobs-details_section">
         <p class="jobs-details_section_sub-title">Requerimientos especiales:</p>
         <p class="jobs-details_section_text">
-          {{ details.specialRequirements }}
+          {{ details.special_requirements }}
         </p>
       </div>
     </section>

@@ -4,7 +4,7 @@ export interface _Location {
   state: string
   street1: string
   street2?: string
-  _zip: Zip
+  zip: Zip
 }
 
 export class Location {
@@ -19,7 +19,7 @@ export class Location {
     this.state = props.state
     this.street1 = props.street1
     this.street2 = props.street1
-    this.zip = props._zip
+    this.zip = props.zip
     this.validate()
   }
 
@@ -29,7 +29,7 @@ export class Location {
       state: this.state,
       street1: this.street1,
       street2: this.street2,
-      _zip: this.zip,
+      zip: this.zip,
     }
   }
 

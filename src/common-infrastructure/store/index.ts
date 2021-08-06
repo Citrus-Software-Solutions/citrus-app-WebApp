@@ -5,7 +5,7 @@ export const store = createStore({
     return {
       user: {
         name: 'Citrus App',
-        id: '101010',
+        id: 1,
       },
       allJobOffers: [],
       jobOffer: {},

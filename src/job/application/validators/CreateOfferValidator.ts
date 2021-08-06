@@ -35,7 +35,7 @@ export class CreateOfferValidator extends InstancesValidator {
 
     const deadlineOrError = this.instanceCreator<Deadline>(
       Deadline,
-      this._offerFields.deadline,
+      this._offerFields.dead_line,
       'dead_line'
     )
 
@@ -53,8 +53,8 @@ export class CreateOfferValidator extends InstancesValidator {
 
     const specialRequirementsOrError = this.instanceCreator<Text>(
       Text,
-      this._offerFields.specialRequirements,
-      'specialRequirements'
+      this._offerFields.special_requirements,
+      'special_requirements'
     )
 
     const durationOrError = this.instanceCreator<Hours>(
@@ -65,8 +65,8 @@ export class CreateOfferValidator extends InstancesValidator {
 
     const hourlyRateOrError = this.instanceCreator<Cost>(
       Cost,
-      this._offerFields.hourlyRate,
-      'hourlyRate'
+      this._offerFields.hourly_rate,
+      'hourly_rate'
     )
 
     const statusOrError = this.instanceCreator<JobOfferStatus>(
@@ -106,11 +106,11 @@ export class CreateOfferValidator extends InstancesValidator {
       duration: durationOrError as Hours,
       id: idOrError as Id,
       location: locationOrError as Location,
-      hourlyRate: hourlyRateOrError as Cost,
+      hourly_rate: hourlyRateOrError as Cost,
       dead_line: deadlineOrError as Deadline,
       schedules: scheduleOrError as Schedules,
       skills: skillsOrError as Skill,
-      specialRequirements: specialRequirementsOrError as Text,
+      special_requirements: specialRequirementsOrError as Text,
       employee: employeeOrError as Employee,
       status: statusOrError as JobOfferStatus,
       employer: employeerOrError as Employer,

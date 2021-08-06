@@ -8,7 +8,7 @@
     <li v-for="(job, index) in jobsData" :key="index">
       <JobsCard
         :title="job.title"
-        :specialRequirements="job.specialRequirements"
+        :special_requirements="job.special_requirements"
         :applicants="job.applicants"
         :status="job.status"
         :id="job.id"

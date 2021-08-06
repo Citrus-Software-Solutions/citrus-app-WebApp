@@ -12,7 +12,7 @@ export interface _Employer {
   contacts: ContactInformation[] // al menos 1
   logo: string // FIXME
   skills: Skill[]
-  specialRequirements: Text
+  special_requirements: Text
   status: EmployerStatus
 }
 
@@ -33,7 +33,7 @@ export class Employer {
     this.contacts = props.contacts
     this.logo = props.logo
     this.skills = props.skills
-    this.specialRequeriments = props.specialRequirements
+    this.specialRequeriments = props.special_requirements
     this.status = props.status
   }
 

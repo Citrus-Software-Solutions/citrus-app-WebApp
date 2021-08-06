@@ -13,9 +13,9 @@ export class ModifyOfferMapper {
       dead_line: jobOffer.dead_line,
       schedules: jobOffer.schedules,
       skills: jobOffer.skills,
-      specialRequirements: jobOffer.specialRequirements,
+      special_requirements: jobOffer.special_requirements,
       duration: jobOffer.duration,
-      hourlyRate: jobOffer.hourlyRate,
+      hourly_rate: jobOffer.hourly_rate,
       status: originalJobOffer.status,
       employee: originalJobOffer.employee,
     }
@@ -29,9 +29,9 @@ export class ModifyOfferMapper {
       dead_line: jobOffer._deadline,
       schedules: jobOffer._schedules,
       skills: jobOffer._skills,
-      specialRequirements: jobOffer._specialRequirements,
+      special_requirements: jobOffer._specialRequirements,
       duration: jobOffer._duration,
-      hourlyRate: jobOffer._hourlyRate,
+      hourly_rate: jobOffer._hourlyRate,
       status: jobOffer._status,
       employee: jobOffer._employee,
     }

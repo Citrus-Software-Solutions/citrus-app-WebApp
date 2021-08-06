@@ -19,9 +19,9 @@ export interface _JobOffer {
   dead_line: Deadline
   schedules: Schedules
   skills: Skill
-  specialRequirements: Text
+  special_requirements: Text
   duration: Hours
-  hourlyRate: Cost
+  hourly_rate: Cost
   employee: Employee
   status: JobOfferStatus
 }
@@ -34,9 +34,9 @@ export class JobOffer {
   private dead_line
   private schedules
   private skills
-  private specialRequirements
+  private special_requirements
   private duration
-  private hourlyRate
+  private hourly_rate
   private employee
   private status
 
@@ -50,9 +50,9 @@ export class JobOffer {
     this.dead_line = props.dead_line
     this.schedules = props.schedules
     this.skills = props.skills
-    this.specialRequirements = props.specialRequirements
+    this.special_requirements = props.special_requirements
     this.duration = props.duration
-    this.hourlyRate = props.hourlyRate
+    this.hourly_rate = props.hourly_rate
     this.employee = props.employee
     this.status = props.status
   }
@@ -85,7 +85,7 @@ export class JobOffer {
   }
 
   public get _specialRequirements() {
-    return this.specialRequirements._value
+    return this.special_requirements._value
   }
 
   public get _duration() {
@@ -93,7 +93,7 @@ export class JobOffer {
   }
 
   public get _hourlyRate() {
-    return this.hourlyRate._value
+    return this.hourly_rate._value
   }
 
   public get _employee() {

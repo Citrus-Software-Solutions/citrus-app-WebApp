@@ -43,7 +43,7 @@ const data = {
     state: 'test',
     street1: 'test',
     street2: 'test',
-    _zip: '1234',
+    zip: '1234',
   },
   dead_line: '2021-8-4',
   schedules: [
@@ -58,9 +58,9 @@ const data = {
       category: '1',
     },
   ],
-  specialRequirements: 'test',
+  special_requirements: 'test',
   duration: 1,
-  hourlyRate: 10,
+  hourly_rate: 10,
   status: 0,
   employee: {},
 }

@@ -63,14 +63,14 @@
           />
         </span>
         <span class="jobs-form_form_section_info-container__block">
-          <label class="jobs-form_form_section_label" for="_zip">
+          <label class="jobs-form_form_section_label" for="zip">
             Codigo Zip
           </label>
           <InputMask
             mask="9999"
             v-model="zip"
             class="jobs-form_form_section_input__small"
-            name="_zip"
+            name="zip"
             required
             placeholder="1060"
           />
@@ -82,16 +82,16 @@
       <div class="jobs-form_form_section">
         <h2 class="jobs-form_form_section_title">Requerimientos Especiales</h2>
         <Textarea
-          v-model="specialRequirements"
+          v-model="special_requirements"
           :autoResize="true"
           rows="5"
           cols="30"
-          name="specialRequirements"
+          name="special_requirements"
           required
           placeholder="Cuéntanos todos los detalles del trabajo"
         />
-        <InlineMessage v-if="errors?.specialRequirements">
-          {{ errors.specialRequirements }}
+        <InlineMessage v-if="errors?.special_requirements">
+          {{ errors.special_requirements }}
         </InlineMessage>
       </div>
       <div class="jobs-form_form_section">
@@ -147,19 +147,19 @@
       <div class="jobs-form_form_section jobs-form_form_section__double-col">
         <div>
           <h2 class="jobs-form_form_section_title">Salario por hora</h2>
-          <label class="jobs-form_form_section_label" for="hourlyRate">
+          <label class="jobs-form_form_section_label" for="hourly_rate">
             Cantidad
           </label>
           <InputNumber
-            name="hourlyRate"
-            v-model="hourlyRate"
+            name="hourly_rate"
+            v-model="hourly_rate"
             :min="0"
             required
             class="jobs-form_form_section_input__small"
             placeholder="20"
           />
-          <InlineMessage v-if="errors?.hourlyRate">
-            {{ errors.hourlyRate }}
+          <InlineMessage v-if="errors?.hourly_rate">
+            {{ errors.hourly_rate }}
           </InlineMessage>
         </div>
         <div>
@@ -208,9 +208,9 @@ export default defineComponent({
   data() {
     return {
       title: !this.formData ? '' : this.formData.title,
-      specialRequirements: !this.formData
+      special_requirements: !this.formData
         ? ''
-        : this.formData.specialRequirements,
+        : this.formData.special_requirements,
       schedules: !this.formData
         ? (null as unknown as Date[])
         : this.formData.schedules.map(
@@ -222,9 +222,9 @@ export default defineComponent({
       dead_line: !this.formData
         ? new Date()
         : new Date(this.formData.dead_line),
-      hourlyRate: !this.formData
+      hourly_rate: !this.formData
         ? (null as unknown as number)
-        : this.formData.hourlyRate,
+        : this.formData.hourly_rate,
       duration: !this.formData
         ? (null as unknown as number)
         : this.formData.duration,
@@ -233,7 +233,7 @@ export default defineComponent({
       state: !this.formData ? '' : this.formData.location.state,
       street1: !this.formData ? '' : this.formData.location.street1,
       street2: !this.formData ? '' : this.formData.location.street2,
-      zip: !this.formData ? null : this.formData.location._zip,
+      zip: !this.formData ? null : this.formData.location.zip,
       skills: !this.formData
         ? (null as unknown as {
             name: string
@@ -264,15 +264,15 @@ export default defineComponent({
           name: el.name,
           category: el.category,
         })),
-        specialRequirements: this.specialRequirements,
+        special_requirements: this.special_requirements,
         duration: this.duration,
-        hourlyRate: this.hourlyRate,
+        hourly_rate: this.hourly_rate,
         location: {
           city: this.city,
           state: this.state,
           street1: this.street1,
           street2: this.street2,
-          _zip: this.zip,
+          zip: this.zip,
         },
       }
 

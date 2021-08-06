@@ -10,10 +10,12 @@ export class CreateOfferAdapter implements CreateOfferPort {
     | { status?: never; body?: never; success: boolean; error: Error }
     | { status: number; body: JobOffer; success: boolean; error?: never }
   > {
+    const { employer, ...body } = CreateOfferMapper.toPersistence(jobOffer)
+    console.log(body)
     const response = await req<JobOffer>({
-      url: 'http://localhost:3000/jobs',
+      url: process.env.VUE_APP_BASEURL + `job-offers/${employer.id}`,
       method: 'POST',
-      body: CreateOfferMapper.toPersistence(jobOffer),
+      body: body,
     })
     return response
   }

@@ -6,7 +6,7 @@
     <img src="../../assets/citrus-logo.jpg" alt="" class="jobs-card_img" />
     <div class="jobs-card_content">
       <h1 class="jobs-card_content_title">{{ title }}</h1>
-      <p class="jobs-card_content_description">{{ specialRequirements }}</p>
+      <p class="jobs-card_content_description">{{ special_requirements }}</p>
       <Tag v-if="applicants">{{ applicants }} Aplicantes</Tag>
       <Tag v-if="status !== null">{{ consultStatus(status) }}</Tag>
     </div>
@@ -34,7 +34,7 @@ export default defineComponent({
   props: {
     id: String,
     title: String,
-    specialRequirements: String,
+    special_requirements: String,
     applicants: String,
     status: String,
   },
