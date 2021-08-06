@@ -5,7 +5,8 @@ export const store = createStore({
     return {
       user: {
         name: 'Citrus App',
-        id: 1,
+        uid: 1,
+        id: 1, //employer id
       },
       allJobOffers: [],
       jobOffer: {},
@@ -39,6 +40,7 @@ export const store = createStore({
       state.employer = payload
     },
     setUser(state: any, payload) {
+      console.log(payload)
       state.user = payload
     },
     resetErrors(state: any) {

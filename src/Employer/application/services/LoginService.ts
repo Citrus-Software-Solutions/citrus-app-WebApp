@@ -29,7 +29,13 @@ export class LoginService implements LoginUseCase {
     const request_user_res = await this.port.requestUser(id)
     const statePayLoad = {
       employer: request_employer_res.body,
-      user: request_user_res.body,
+      user: {
+        uid: request_user_res.body.id,
+        id: 1, //employer id
+        username: request_user_res.body.username,
+        email: request_user_res.body.email,
+        status: request_user_res.body.status,
+      },
     }
     this.statePort.setState(statePayLoad)
     if (
