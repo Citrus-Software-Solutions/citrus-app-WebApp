@@ -11,7 +11,7 @@ export class ConsultAllReviewsAdapter implements ConsultAllReviewsPort {
     | { status: number; body: Review; success: boolean; error?: never }
   > {
     const response = await req<Review>({
-      url: process.env.VUE_APP_BASEURL_SPRING + `review/employer/1`,
+      url: 'https://dry-scrubland-34976.herokuapp.com/http://prueba-ds.herokuapp.com/review/employer/1',
       method: 'GET',
     })
     return response

@@ -13,7 +13,6 @@
         :totalScore="review.totalScore"
         :employeeName="review.employee.first_name"
         :employeeLastName="revie.employee.last_name"
-        v-bind="$attrs"
       />
     </li>
   </ul>
@@ -21,20 +20,23 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import ReviewsCard from '@/common-infrastructure/components/review/reviews-card/ReviewsCard.vue'
 import Menu from 'primevue/menu'
 import { ref } from 'vue'
 import { useStore } from 'vuex'
-import { ConsultAllReviewsFactory } from '@/job/infrastructure/factories/review/ConsultAllReviewsFactory'
+// import { ConsultAllReviewsFactory } from '@/job/infrastructure/factories/review/ConsultAllReviewsFactory'
 
 export default defineComponent({
   computed: {
-    // eslint-disable-next-line vue/return-in-computed-property
-    reviewsData() {
+    reviewsData(): any {
       var reviews = this.$store.getters.getAllReviews
-      reviews.filter((review: { jobOffer: { id: number } }) => {
-        return review.jobOffer.id == 1
-      })
+      console.log(reviews)
+      // const reviewByApplication = reviews.filter(
+      //   (review: { application: { id: number } }) => {
+      //     return review.application.id === 1
+      //   }
+      // )
+      // return reviewByApplication
+      return reviews
     },
     userinfo(): any {
       return this.$store.getters.getUser
@@ -46,24 +48,27 @@ export default defineComponent({
       return this.$store.getters.getFilterOption
     },
   },
-  mounted() {
-    this.$nextTick(() => {
-      this.consultAllReviewsHandler()
-    })
+  props: {
+    jobId: Number,
   },
-  methods: {
-    consultAllReviewsHandler() {
-      const consultAllReviewsFactory = new ConsultAllReviewsFactory()
-      consultAllReviewsFactory.create(this.userinfo.id)
-    },
-  },
-  watch: {
-    status(newStatus) {
-      if (newStatus.key) {
-        this.consultAllReviewsHandler()
-      }
-    },
-  },
+  // mounted() {
+  //   this.$nextTick(() => {
+  //     this.consultAllReviewsHandler()
+  //   })
+  // },
+  // methods: {
+  //   consultAllReviewsHandler() {
+  //     const consultAllReviewsFactory = new ConsultAllReviewsFactory()
+  //     consultAllReviewsFactory.create(this.userinfo.id)
+  //   },
+  // },
+  // watch: {
+  //   status(newStatus) {
+  //     if (newStatus.key) {
+  //       this.consultAllReviewsHandler()
+  //     }
+  //   },
+  // },
   setup(props, context) {
     const store = useStore()
     const filterValue = ref('Todo')
@@ -99,7 +104,6 @@ export default defineComponent({
     return { items, menu, toggle, filterValue }
   },
   components: {
-    ReviewsCard,
     Menu,
   },
 })

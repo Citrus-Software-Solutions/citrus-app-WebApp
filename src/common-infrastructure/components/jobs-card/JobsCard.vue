@@ -8,15 +8,16 @@
       <h1 class="jobs-card_content_title">{{ title }}</h1>
       <p class="jobs-card_content_description">{{ specialRequirements }}</p>
       <Tag v-if="applicants">{{ applicants }} Aplicantes</Tag>
-      <Tag v-if="status !== null && !isJobDone(status)" :style="(color = blue)">
+      <Tag v-if="status !== null">
         {{ consultStatus(status) }}
       </Tag>
-      <Tag
-        v-else-if="status !== null && isJobDone(status)"
-        :style="(color = red)"
-      >
-        {{ consultStatus(status) }}</Tag
-      >
+      <router-link class="" :to="{ name: 'Reviews', params: { id: id } }">
+        <Button
+          :disabled="!isJobDone(status)"
+          label="Ver Reviews"
+          icon="pi pi-thumbs-up"
+        />
+      </router-link>
     </div>
     <span>
       <i
@@ -34,6 +35,7 @@
 import { defineComponent } from 'vue'
 import Menu from 'primevue/menu'
 import Tag from '../tag/Tag.vue'
+import Button from 'primevue/button'
 import { ref } from 'vue'
 import router from '@/common-infrastructure/router'
 import { ConsultOfferStatusNameFactory } from '@/job/infrastructure/factories/ConsultOfferStatusNameFactory'
@@ -107,6 +109,7 @@ export default defineComponent({
   components: {
     Tag,
     Menu,
+    Button,
   },
 })
 </script>

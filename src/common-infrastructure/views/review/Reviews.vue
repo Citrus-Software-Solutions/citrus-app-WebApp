@@ -7,7 +7,7 @@
     </template>
     <template v-slot:content>
       <h1 class="title">Consulta de reviews</h1>
-      <ReviewsList />
+      <ReviewsList :jobId="jobId" />
     </template>
   </Layout>
 </template>
@@ -16,20 +16,17 @@
 import { defineComponent } from 'vue'
 import Button from 'primevue/button'
 import Layout from '@/common-infrastructure/components/layout/Layout.vue'
-import { breadCrumbTypes } from '../../types/index'
 import ReviewsList from '@/common-infrastructure/components/review/reviews-list/ReviewsList.vue'
 import { ConsultAllReviewsFactory } from '@/job/infrastructure/factories/review/ConsultAllReviewsFactory'
 
-interface JobsStateTypes {
-  breadCrumbLinks: breadCrumbTypes[]
-}
 export default defineComponent({
-  data(): JobsStateTypes {
+  data() {
     return {
       breadCrumbLinks: [
         { label: 'Ofertas', to: '/app/jobs' },
         { label: 'Reviews', to: '/app/reviews' },
       ],
+      jobId: this.$route.params.id,
     }
   },
   mounted() {
