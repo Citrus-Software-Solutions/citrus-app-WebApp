@@ -2,6 +2,7 @@ import { DuplicateOfferPort } from '@/job/application/use-cases/out/DuplicateOff
 import { JobOffer } from '@/job/domain/JobOffer'
 import { req } from '@/shared/infrastructure/http'
 import { DuplicateOfferMapper } from '../../mappers/DuplicateOfferMapper'
+import { store } from '@/common-infrastructure/store'
 
 export class DuplicateOfferAdapter implements DuplicateOfferPort {
   public async requestHandler(
@@ -10,9 +11,9 @@ export class DuplicateOfferAdapter implements DuplicateOfferPort {
     | { status?: never; body?: never; success: boolean; error: Error }
     | { status: number; body: JobOffer; success: boolean; error?: never }
   > {
-    console.log(DuplicateOfferMapper.toPersistence(jobOffer))
+    const { id } = store.getters.getUser
     const response = await req<JobOffer>({
-      url: 'http://localhost:3000/jobs',
+      url: process.env.VUE_APP_BASEURL + `job-offers/${id}`,
       method: 'POST',
       body: DuplicateOfferMapper.toPersistence(jobOffer),
     })

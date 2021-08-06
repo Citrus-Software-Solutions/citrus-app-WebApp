@@ -11,7 +11,6 @@ export class CreateOfferAdapter implements CreateOfferPort {
     | { status: number; body: JobOffer; success: boolean; error?: never }
   > {
     const { employer, ...body } = CreateOfferMapper.toPersistence(jobOffer)
-    console.log(body)
     const response = await req<JobOffer>({
       url: process.env.VUE_APP_BASEURL + `job-offers/${employer.id}`,
       method: 'POST',

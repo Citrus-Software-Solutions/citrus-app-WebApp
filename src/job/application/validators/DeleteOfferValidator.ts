@@ -31,7 +31,7 @@ export class DeleteOfferValidator extends InstancesValidator {
 
     const deadlineOrError = this.instanceCreator<Deadline>(
       Deadline,
-      this._offerFields.deadline
+      this._offerFields.dead_line
     )
 
     const scheduleOrError = this.instanceCreator<Schedules>(

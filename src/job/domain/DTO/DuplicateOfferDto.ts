@@ -15,7 +15,4 @@ export type DuplicateOfferDTOPersistence = {
   special_requirements: any
   duration: any
   hourly_rate: any
-  status: any
-  employer: any
-  employee: any
 }
