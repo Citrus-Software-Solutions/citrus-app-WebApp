@@ -3,11 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "concurrently \"npm run start\" \"npm run springserver\"",
     "serve:dev": "concurrently \"npm run start\" \"npm run jsonserver\"",
     "start": "vue-cli-service serve",
     "jsonserver": "json-server --watch --delay=1000 ./src/common-infrastructure/database/db/db.json",
-    "springserver": "java -jar ./src/common-infrastructure/database/spring-api/spring-api-v-0.0.1.sanpshot.jar",
     "build": "vue-cli-service build",
     "test": "jest",
     "test:unit": "npm run test ./tests/unit",
