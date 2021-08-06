@@ -24,4 +24,8 @@ export class Application {
     this.jobOffer = props.jobOffer
     this.status = props.status
   }
+
+  get _id(): Id {
+    return this.id
+  }
 }

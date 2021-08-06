@@ -1,11 +1,23 @@
 <template>
   <img src="../../../assets/citrus-logo.jpg" alt="" class="jobs-card_img" />
   <div class="jobs-card_content">
-    <h1 class="jobs-card_content_title">{{ employeeName }}</h1>
-    <p class="jobs-card_content_description">{{ employeeLastName }}</p>
-    <!-- <li v-for=""> -->
-    <!-- </li> -->
+    <h1 class="jobs-card_content_title">{{ id }}</h1>
+    <p class="jobs-card_content_description">
+      <bold>Nombre empleado:</bold> {{ employeeName }} {{ employeeLastName }}
+    </p>
+
+    <ul>
+      <li v-for="(question, index) in questions" :key="index">
+        <h1>Pregunta {{ index + 1 }}:</h1>
+        <h3>{{ question.name }}</h3>
+        &nbsp;
+        <h1>Puntuacion pregunta {{ index + 1 }}:</h1>
+        <h3>{{ question.score }}/<bold>5</bold></h3>
+        &nbsp;
+      </li>
+    </ul>
   </div>
+  <hr />
 </template>
 
 <script lang="ts">
@@ -18,7 +30,7 @@ export default defineComponent({
     scores: [],
     totalScore: [],
     employeeName: String,
-    employeeLastname: String,
+    employeeLastName: String,
     employerName: String,
     jobTitle: String,
   },

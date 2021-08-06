@@ -23,7 +23,7 @@ export interface _Employee {
 }
 
 export class Employee {
-  private id
+  public id
   private firstName
   private middleName
   private lastName

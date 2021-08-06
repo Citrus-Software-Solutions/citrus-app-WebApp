@@ -41,6 +41,14 @@ export class Review {
     this.employer = props.employer
   }
 
+  get _id(): Id {
+    return this.id
+  }
+
+  get employeeId(): Id {
+    return this.employee._id
+  }
+
   get _questions(): Question[] {
     return this.questions
   }

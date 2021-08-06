@@ -1,18 +1,13 @@
 <template>
-  <button class="jobs-list_btn" @click.prevent="toggle" label="Toggle">
-    <i type="button" class="pi pi-filter jobs-list_icon" />
-    Filtrar <span class="jobs-list_filter--selected">({{ filterValue }})</span>
-    <Menu id="overlay_menu" ref="menu" :model="items" :popup="true" />
-  </button>
-  <ul class="jobs-list">
-    <li v-for="(review, index) in reviewsData" :key="index">
+  <ul>
+    <li class="jobs-list" v-for="(review, index) in reviewsData" :key="index">
       <ReviewsCard
         :id="review.id"
         :questions="review.questions"
         :scores="review.scores"
         :totalScore="review.totalScore"
         :employeeName="review.employee.first_name"
-        :employeeLastName="revie.employee.last_name"
+        :employeeLastName="review.employee.last_name"
       />
     </li>
   </ul>
@@ -20,10 +15,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import Menu from 'primevue/menu'
-import { ref } from 'vue'
-import { useStore } from 'vuex'
-// import { ConsultAllReviewsFactory } from '@/job/infrastructure/factories/review/ConsultAllReviewsFactory'
+import ReviewsCard from '@/common-infrastructure/components/review/reviews-card/ReviewsCard.vue'
 
 export default defineComponent({
   computed: {
@@ -51,60 +43,8 @@ export default defineComponent({
   props: {
     jobId: Number,
   },
-  // mounted() {
-  //   this.$nextTick(() => {
-  //     this.consultAllReviewsHandler()
-  //   })
-  // },
-  // methods: {
-  //   consultAllReviewsHandler() {
-  //     const consultAllReviewsFactory = new ConsultAllReviewsFactory()
-  //     consultAllReviewsFactory.create(this.userinfo.id)
-  //   },
-  // },
-  // watch: {
-  //   status(newStatus) {
-  //     if (newStatus.key) {
-  //       this.consultAllReviewsHandler()
-  //     }
-  //   },
-  // },
-  setup(props, context) {
-    const store = useStore()
-    const filterValue = ref('Todo')
-    const menu = ref()
-    const items = ref([
-      {
-        label: 'Ver Todo',
-        command: () => {
-          store.commit('setFilterOption', 'all')
-          filterValue.value = 'Todo'
-        },
-      },
-      {
-        label: 'Ver ofertas',
-        command: () => {
-          store.commit('setFilterOption', 'offers')
-          filterValue.value = 'Ofertas'
-        },
-      },
-      {
-        label: 'Ver Trabajos',
-        command: () => {
-          store.commit('setFilterOption', 'jobs')
-          filterValue.value = 'Trabajos'
-        },
-      },
-    ])
-
-    const toggle = (event: any) => {
-      menu.value.toggle(event)
-    }
-
-    return { items, menu, toggle, filterValue }
-  },
   components: {
-    Menu,
+    ReviewsCard,
   },
 })
 </script>

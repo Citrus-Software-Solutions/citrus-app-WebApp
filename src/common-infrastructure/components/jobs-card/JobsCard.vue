@@ -11,13 +11,6 @@
       <Tag v-if="status !== null">
         {{ consultStatus(status) }}
       </Tag>
-      <router-link class="" :to="{ name: 'Reviews', params: { id: id } }">
-        <Button
-          :disabled="!isJobDone(status)"
-          label="Ver Reviews"
-          icon="pi pi-thumbs-up"
-        />
-      </router-link>
     </div>
     <span>
       <i
@@ -35,7 +28,6 @@
 import { defineComponent } from 'vue'
 import Menu from 'primevue/menu'
 import Tag from '../tag/Tag.vue'
-import Button from 'primevue/button'
 import { ref } from 'vue'
 import router from '@/common-infrastructure/router'
 import { ConsultOfferStatusNameFactory } from '@/job/infrastructure/factories/ConsultOfferStatusNameFactory'
@@ -109,7 +101,6 @@ export default defineComponent({
   components: {
     Tag,
     Menu,
-    Button,
   },
 })
 </script>
