@@ -83,6 +83,9 @@ export default defineComponent({
     status(): any {
       return this.$store.getters.getOperationStatus
     },
+    employer(): any {
+      return this.$store.getters.getEmployer
+    },
   },
   components: {
     Button,

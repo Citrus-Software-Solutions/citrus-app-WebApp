@@ -31,8 +31,14 @@
         v-tooltip.right="'Mensajes'"
       ></i>
     </router-link>
-    <router-link class="nav-bar_item" to="/#">
-      <i class="pi pi-user nav-bar_item_icons" v-tooltip.right="'Perfil'"></i>
+    <router-link class="nav-bar_item" to="/app/profile">
+      <i
+        class="pi pi-user nav-bar_item_icons"
+        v-tooltip.right="'Perfil'"
+        v-bind:class="{
+          'nav-bar_item_icons__active': $route.path.includes('/app/profile'),
+        }"
+      ></i>
     </router-link>
   </nav>
 </template>

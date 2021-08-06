@@ -1,5 +1,188 @@
 <template>
   <div class="landing">
+    <!--side bars de registro y login-->
+
+    <!--singup-->
+    <Sidebar v-model:visible="visibleSingUp" :baseZIndex="1000" position="full">
+      <div class="card">
+        <h2>Registro</h2>
+        <br />
+        <h3>Datos de usuario</h3>
+        <br />
+        <div class="p-fluid">
+          <div class="p-field">
+            <label for="user_text">Nombre de usuario</label>
+            &nbsp;
+            <InputText
+              id="user_text"
+              type="text"
+              v-model="singup_body.username"
+            />
+          </div>
+          <div class="p-field">
+            <label for="email">Correo electronico</label>
+            &nbsp;
+            <InputText id="email" type="text" v-model="singup_body.email" />
+          </div>
+          <br />
+          <div class="p-field">
+            <label for="pwd_singup">Contraseña</label>
+            &nbsp;
+            <Password id="pwd_singup" v-model="singup_body.password">
+              <template #header>
+                <h6>Escoge una contraseña</h6>
+              </template>
+              <template #footer>
+                <Divider />
+                <p class="p-mt-2">Sugerencias</p>
+                <ul class="p-pl-2 p-ml-2 p-mt-0" style="line-height: 1.5">
+                  <li>Al menos un caracter minuscula</li>
+                  <li>Al menos un caracter mayúscula</li>
+                  <li>Al menos un caracter numerico</li>
+                  <li>Al menos un caracter especial</li>
+                  <li>Mínimo 8 carácteres</li>
+                </ul>
+              </template>
+            </Password>
+          </div>
+        </div>
+        <br />
+        <h3>Dirección</h3>
+        <br />
+        <div class="p-fluid">
+          <div class="p-field">
+            <label for="street_1">Calle 1</label>
+            &nbsp;
+            <InputText
+              id="street_1"
+              type="text"
+              v-model="singup_body.street1"
+            />
+          </div>
+          <div class="p-field">
+            <label for="street_2">Calle 2</label>
+            &nbsp;
+            <InputText
+              id="street_2"
+              type="text"
+              v-model="singup_body.street2"
+            />
+          </div>
+          <div class="p-field">
+            <label for="city">Ciudad</label>
+            &nbsp;
+            <InputText id="city" type="text" v-model="singup_body.city" />
+          </div>
+          <div class="p-field">
+            <label for="state">Estado</label>
+            &nbsp;
+            <InputText id="state" type="text" v-model="singup_body.state" />
+          </div>
+          <div class="p-field">
+            <label for="zip">Codigo Zip</label>
+            &nbsp;
+            <InputText id="zip" type="text" v-model="singup_body.zip" />
+          </div>
+        </div>
+        <br />
+        <h3>Datos de la compañía</h3>
+        <br />
+        <div class="p-field">
+          <label for="company_name">Nombre de la compañía</label>
+          &nbsp;
+          <InputText
+            id="company_name"
+            type="text"
+            v-model="singup_body.company_name"
+          />
+        </div>
+        <br />
+        <div class="p-field">
+          <label for="requeriments">requerimientos espaciales</label>
+          &nbsp;
+          <Textarea
+            id="requirements"
+            type="text"
+            v-model="singup_body.special_requirements"
+          />
+        </div>
+        <br />
+        <div class="p-grid p-jc-center">
+          <div class="p-col-4">
+            <Button
+              class="p-button"
+              label="Registrar usuario"
+              @click="SingUp(singup_body)"
+            />
+          </div>
+        </div>
+      </div>
+    </Sidebar>
+    <!--login-->
+    <Sidebar
+      v-model:visible="visibleLogin"
+      :baseZIndex="1000"
+      position="right"
+      class="p-sidebar-lg"
+    >
+      <Card>
+        <template #title> Login </template>
+        <template #content>
+          <br />
+          <div class="login_form">
+            <div class="container" style="padding: 15px">
+              <div class="p-grid p-fluid">
+                <div class="p-col-12 p-md-12">
+                  <div class="p-inputgroup">
+                    <span class="p-inputgroup-addon p-button"
+                      ><i class="pi pi-user" style="font-size: 1em"></i>
+                    </span>
+                    <InputText
+                      placeholder="Nombre de usuario"
+                      v-model="user_auth.username"
+                    />
+                  </div>
+                </div>
+                <br />
+                <div class="p-col-12 p-md-12">
+                  <div class="p-inputgroup">
+                    <span class="p-inputgroup-addon p-button">
+                      <i class="pi pi-key" style="font-size: 1em"></i>
+                    </span>
+                    <Password
+                      v-model="user_auth.password"
+                      toggleMask
+                      placeholder="Contraseña"
+                    ></Password>
+                  </div>
+                </div>
+              </div>
+              <br />
+              <div
+                class="container"
+                style="
+                  display: flex;
+                  justify-content: center;
+                  flex-direction: column;
+                "
+              >
+                <Button
+                  label="Iniciar Sesion"
+                  class="p-button"
+                  @click="login(user_auth)"
+                />
+                <br />
+                <a>
+                  <div class="p-mb-3 p-text-light" style="text-align: center">
+                    No tiene una cuenta? registrate
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </template>
+      </Card>
+    </Sidebar>
     <div class="landing_bg__1"></div>
     <div class="landing_bg__2"></div>
     <div class="landing_wrapper">
@@ -9,7 +192,11 @@
           alt=""
           class="landing_header_logo"
         />
-        <Button label="Ingresa" class="landing_header_btn" />
+        <Button
+          label="Ingresa"
+          class="landing_header_btn"
+          @click="visibleLogin = true"
+        />
       </header>
       <section class="landing_hero">
         <h1 class="landing_hero_title">
@@ -20,7 +207,11 @@
           Estamos construyendo el futuro del trabajo remoto, únete y ayudanos a
           hacerlo realidad
         </p>
-        <Button label="Regístrate" class="landing_hero_btn" />
+        <Button
+          label="Regístrate"
+          class="landing_hero_btn"
+          @click="visibleSingUp = true"
+        />
       </section>
       <section class="landing_promo">
         <h2 class="landing_promo_title">La mejor manera de trabajar</h2>
@@ -86,10 +277,78 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import Button from 'primevue/button'
-
+import Password from 'primevue/password'
+import InputText from 'primevue/inputtext'
+import Sidebar from 'primevue/sidebar'
+import Card from 'primevue/card'
+import Textarea from 'primevue/textarea'
+import Divider from 'primevue/divider'
+//singup
+import { SingUpController } from '@/Employer/infraestructure/controllers/SingUpController'
+import { SingUpPersistence } from '@/Employer/domain/DTO/SingUpDTO'
+import { SingUpService } from '@/Employer/application/services/SingUpService'
+import { SingUpAdapter } from '@/Employer/infraestructure/adapters/in/SingUpAdapter'
+import { SingUpStatusAdapter } from '@/Employer/infraestructure/adapters/out/SingUpStatusAdapter'
+//import {} from '@/Employer/infraestructure/adapters/out/SingUpStateAdapter';
+//login
+import { LoginController } from '@/Employer/infraestructure/controllers/LoginController'
+import { LoginAdapter } from '@/Employer/infraestructure/adapters/LoginAdapter'
+import { LoginService } from '@/Employer/application/services/LoginService'
+import { LoginStateAdaptare } from '@/Employer/infraestructure/adapters/out/LoginStateAdapter'
+import { LoginStatusAdapter } from '@/Employer/infraestructure/adapters/out/LoginStatusAdapter'
 export default defineComponent({
+  data() {
+    return {
+      visibleLogin: false,
+      visibleSingUp: false,
+      user_auth: {
+        username: '',
+        password: '',
+      },
+      singup_body: {
+        username: '',
+        email: '',
+        password: '',
+        street1: '',
+        street2: '',
+        city: '',
+        state: '',
+        zip: '',
+        company_name: '',
+        special_requirements: '',
+      },
+    }
+  },
   components: {
     Button,
+    Sidebar,
+    Password,
+    InputText,
+    Textarea,
+    Card,
+    Divider,
+  },
+  methods: {
+    SingUp(sing_up_body: SingUpPersistence) {
+      let adapter = new SingUpAdapter()
+      let statusAdapter = new SingUpStatusAdapter()
+      let service = new SingUpService(adapter, statusAdapter)
+      let controller = new SingUpController(service)
+      controller.executeimpl(sing_up_body)
+    },
+    login(user_auth: { username: string; password: string }) {
+      let adapter = new LoginAdapter()
+      let stateAdapter = new LoginStateAdaptare()
+      let statusAdapter = new LoginStatusAdapter()
+      let service = new LoginService(adapter, stateAdapter, statusAdapter)
+      let controller = new LoginController(service)
+      controller.executeImpl(user_auth)
+    },
+  },
+  computed: {
+    status(): any {
+      return this.$store.getters.getOperationStatus
+    },
   },
 })
 </script>
@@ -273,5 +532,8 @@ export default defineComponent({
       content: 'modelo';
     }
   }
+}
+
+.login_form {
 }
 </style>

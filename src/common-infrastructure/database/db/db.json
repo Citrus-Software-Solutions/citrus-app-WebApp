@@ -363,5 +363,62 @@
       "employee": [],
       "id": "a9T3QC1"
     }
-  ]
+  ],
+  "employer":
+  {
+    "id": 1,
+    "companyName": "Company 1",
+    "address": 
+    [
+      {
+        "street1": "Address Street 1",
+        "street2": "Address Street 2",
+        "city": "San Francisco",
+        "state": "California",
+        "zip": "10406"
+      },
+      {
+        "street1": "Address Street 3",
+        "street2": "Address Street 4",
+        "city": "Montereal",
+        "state": "Quebec",
+        "zip": "10567"
+      }
+    ],
+    "contacts,": 
+    [
+      {
+        "fullName": "Random Dude 1",
+        "jobTitle": "Random Job 1",
+        "phoneNumber": "122333",
+        "email": "somerandomm8@gmail.com"
+      },
+      {
+        "fullName": "Random Dude 2",
+        "jobTitle": "Random Job 2",
+        "phoneNumber": "4445566",
+        "email": "somerandomperson@gmail.com"
+      }
+    ],
+    "logo": "logo",
+    "skills,": 
+    [
+      {
+        "name":" Technology",
+        "category":"1" 
+      },
+      {
+        "name":" Biology",
+        "category":"2" 
+      }
+    ],
+    "user":
+    {
+      "username":"danrivsa",
+      "email":"danielrivero2000@gmail.com",
+      "password":"12345"
+    },
+    "specialRequeriments": "Requirements",
+    "status":0
+  }
 }

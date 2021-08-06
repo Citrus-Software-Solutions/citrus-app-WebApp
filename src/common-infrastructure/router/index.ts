@@ -4,6 +4,7 @@ import AddJob from '../views/AddJob.vue'
 import JobDetails from '../views/JobDetails.vue'
 import ModifyOffer from '../views/ModifyOffer.vue'
 import Landing from '../views/Landing.vue'
+import UserProfile from '../views/UserProfile.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -33,6 +34,11 @@ const routes: Array<RouteRecordRaw> = [
     path: '/app/jobs/modify/:id',
     name: 'ModifyOffer',
     component: ModifyOffer,
+  },
+  {
+    path: '/app/profile',
+    name: 'Profile',
+    component: UserProfile,
   },
 ]
 

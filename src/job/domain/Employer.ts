@@ -14,6 +14,9 @@ export interface _Employer {
   skills: Skill[]
   special_requirements: Text
   status: EmployerStatus
+  username: string
+  token: string
+  email: string
 }
 
 export class Employer {
@@ -25,6 +28,9 @@ export class Employer {
   private skills: Skill[]
   private specialRequeriments: Text
   private status: EmployerStatus
+  private username: string
+  private token: string
+  private email: string
 
   constructor(props: _Employer) {
     this.id = props.id
@@ -35,6 +41,9 @@ export class Employer {
     this.skills = props.skills
     this.specialRequeriments = props.special_requirements
     this.status = props.status
+    this.username = props.username
+    this.token = props.token
+    this.email = props.email
   }
 
   get _specialRequeriments() {
@@ -51,6 +60,14 @@ export class Employer {
       skills: this.skills,
       specialRequeriments: this.specialRequeriments,
       status: this.status,
+    }
+  }
+
+  get _user() {
+    return {
+      username: this.username,
+      token: this.token,
+      email: this.email,
     }
   }
 

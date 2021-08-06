@@ -9,6 +9,7 @@ export const store = createStore({
       },
       allJobOffers: [],
       jobOffer: {},
+      employer: {},
       errors: {
         addJobForm: {},
       },
@@ -33,6 +34,13 @@ export const store = createStore({
     setOperationStatus(state: any, payload) {
       state.operationStatus = payload
     },
+    setEmployer(state: any, payload) {
+      console.log(payload)
+      state.employer = payload
+    },
+    setUser(state: any, payload) {
+      state.user = payload
+    },
     resetErrors(state: any) {
       state.operationStatus = {
         message: '',
@@ -56,6 +64,9 @@ export const store = createStore({
     },
     getOperationStatus(state) {
       return state.operationStatus
+    },
+    getEmployer(state) {
+      return state.employer
     },
     getUser(state) {
       return state.user
