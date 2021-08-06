@@ -10,7 +10,7 @@ export interface _Employer {
   companyName: string
   address: Address
   contacts: ContactInformation[] // al menos 1
-  logo: string // FIXME
+  logo: string
   skills: Skill[]
   special_requirements: Text
   status: EmployerStatus

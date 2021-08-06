@@ -7,7 +7,7 @@ import { ModifyOfferDTO } from '@/job/domain/DTO/ModifyOfferDTO'
 
 export class ModifyOfferFactory {
   public create(payload: ModifyOfferDTO): void {
-    const modifyOfferErrorsAdapter = new CreateOfferErrorsAdapter() //FIXME: generalizar nombre o crear adaptador propio
+    const modifyOfferErrorsAdapter = new CreateOfferErrorsAdapter()
     const modifyOfferAdapter = new ModifyOfferAdapter()
     const modifyStatusAdapter = new ModifyOfferStatusAdapter()
     const modifyOfferService = new ModifyOfferService(

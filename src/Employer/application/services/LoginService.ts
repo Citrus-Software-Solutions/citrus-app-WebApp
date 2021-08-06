@@ -25,8 +25,9 @@ export class LoginService implements LoginUseCase {
     //hacer el set del usuario en el store
     const auth_response = await this.port.requestHandler(payload)
     const id = auth_response.body.id
-    const request_employer_res = await this.port.requestEmployer(id)
+    const request_employer_res = await this.port.requestEmployer(2)
     const request_user_res = await this.port.requestUser(id)
+
     const statePayLoad = {
       employer: request_employer_res.body,
       user: {

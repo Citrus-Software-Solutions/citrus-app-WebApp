@@ -1,7 +1,7 @@
 export interface _WorkExperience {
   jobTitle: string
   companyName: string
-  category: string //FIXME:
+  category: string
 }
 
 export class WorkExperience {

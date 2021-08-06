@@ -6,8 +6,8 @@ export interface _Prescreening {
   employee: Employee
   date: Date
   questions: string[] //max 5
-  video: any // FIXME: tipo video
-  status: number // FIXME:
+  video: any
+  status: number
 }
 
 export class Prescreening {

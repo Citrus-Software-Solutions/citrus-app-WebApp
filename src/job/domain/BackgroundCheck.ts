@@ -2,7 +2,7 @@ import { Id } from './value-objects/Identifier'
 
 export interface _BackgroundCheck {
   id: Id
-  status: number //FIXME:
+  status: number
   statusDetails: string
   reportURL: string
   alerts: string[] // what is this?

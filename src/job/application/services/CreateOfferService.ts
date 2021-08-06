@@ -22,7 +22,7 @@ export class CreateOfferService implements CreateOfferUseCase {
   }
 
   public async execute(createOfferFields: CreateOfferDTOApp): Promise<void> {
-    const offerValidator = new CreateOfferValidator(createOfferFields) //FIXME:pasar esto por constructor ?
+    const offerValidator = new CreateOfferValidator(createOfferFields)
     let jobOffer
     if (!offerValidator.isValid()) {
       this.updateErrorStatePort.setState(offerValidator.errors)

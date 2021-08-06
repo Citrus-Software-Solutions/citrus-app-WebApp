@@ -7,7 +7,7 @@ export interface _Interview {
   startDate: Date //hora y día
   duration: number //expresado en minutos
   accessURL: string //url de la entrevista
-  status: number // FIXME:
+  status: number
 }
 
 export class Interview {

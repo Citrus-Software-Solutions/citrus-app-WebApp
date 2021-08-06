@@ -13,13 +13,13 @@ export interface _Employee {
   dateOfBirth: Date
   address: Address
   ssn: string
-  educationLevel: number //FIXME:
-  workExperience: WorkExperience[] //FIXME: l
-  skills: Skill[] //FIXME: LIST
-  //   trainings: Training[] //FIXME: LIST
-  references: Reference[] //FIXME: LIST
+  educationLevel: number
+  workExperience: WorkExperience[]
+  skills: Skill[]
+  //   trainings: Training[]
+  references: Reference[]
   rating: number
-  status: number //FIXME:
+  status: number
 }
 
 export class Employee {

@@ -7,7 +7,7 @@ export interface _Course {
   title: string
   coverImage: string
   skills: Skill[]
-  status: number //FIXME:
+  status: number
 }
 
 export class Course {

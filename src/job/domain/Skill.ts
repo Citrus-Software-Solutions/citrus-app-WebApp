@@ -3,7 +3,7 @@
 export interface _Skill {
   // id: Id
   name: string
-  category: number //FIXME:
+  category: number
 }
 
 export class Skill {

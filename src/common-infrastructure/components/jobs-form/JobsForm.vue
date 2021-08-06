@@ -256,7 +256,6 @@ export default defineComponent({
   },
   methods: {
     handleSubmit(): void {
-      // FIXME: Definir como se maneja estatus y el type
       const JobOfferData: CreateOfferDTOUi = {
         title: this.title,
         status: 0,

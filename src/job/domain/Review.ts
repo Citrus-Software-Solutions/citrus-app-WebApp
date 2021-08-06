@@ -6,7 +6,7 @@ import { Id } from './value-objects/Identifier'
 export interface _Review {
   id: Id //Added
   questions: string //son 5
-  scores: number //FIXME:
+  scores: number
   totalScore: number
   employee: Employee
   application: Application
