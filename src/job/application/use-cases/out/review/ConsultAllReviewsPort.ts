@@ -6,6 +6,6 @@ export interface ConsultAllReviewsPort {
     employerId: Id
   ): Promise<
     | { status?: never; body?: never; success: boolean; error: Error }
-    | { status: number; body: Review[]; success: boolean; error?: never }
+    | { status: number; body: Review; success: boolean; error?: never }
   >
 }

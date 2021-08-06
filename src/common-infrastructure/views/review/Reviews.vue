@@ -34,8 +34,7 @@ export default defineComponent({
   },
   mounted() {
     this.$nextTick(() => {
-      const data = this.consultReviewsHandler()
-      console.log(data)
+      this.consultReviewsHandler()
     })
   },
   watch: {

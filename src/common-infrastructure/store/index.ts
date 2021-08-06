@@ -71,5 +71,8 @@ export const store = createStore({
     getFilterOption(state: any) {
       return state.filterOption
     },
+    getAllReviews(state: any) {
+      return state.allReviews
+    },
   },
 })
