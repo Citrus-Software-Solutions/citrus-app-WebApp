@@ -18,11 +18,10 @@ export async function req<T>(
       },
       body: props.body ? JSON.stringify(props.body) : null,
     })
-    //TODO:  Validar para cada codigo 200,404, etc
     return {
       status: response.status,
       body: (await response.json()) as T,
-      success: true,
+      success: response.status > 199 && response.status < 399,
     }
   } catch (error) {
     return { success: false, error: error }

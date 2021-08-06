@@ -7,14 +7,8 @@
         class="nav-bar_item_logo"
       />
     </router-link>
-    <router-link class="nav-bar_item" to="/#">
+    <router-link class="nav-bar_item" to="/app/jobs">
       <i class="pi pi-home nav-bar_item_icons" v-tooltip.right="'Inicio'"></i>
-    </router-link>
-    <router-link class="nav-bar_item" to="/#">
-      <i
-        class="pi pi-bell nav-bar_item_icons"
-        v-tooltip.right="'Notificaciones'"
-      ></i>
     </router-link>
     <router-link class="nav-bar_item" to="/app/jobs">
       <i
@@ -23,12 +17,6 @@
         v-bind:class="{
           'nav-bar_item_icons__active': $route.path.includes('/app/jobs'),
         }"
-      ></i>
-    </router-link>
-    <router-link class="nav-bar_item" to="/#">
-      <i
-        class="pi pi-comments nav-bar_item_icons"
-        v-tooltip.right="'Mensajes'"
       ></i>
     </router-link>
     <router-link class="nav-bar_item" to="/app/profile">

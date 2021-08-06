@@ -247,8 +247,10 @@ export default defineComponent({
           ),
       listOfSkills: [
         { name: 'Diseño', value: 'Diseño', category: '1' },
-        { name: 'Desarrollo', value: 'Desarrollo', category: '1' },
-        { name: 'Limpieza', value: 'Limpieza', category: '1' },
+        { name: 'UX', value: 'UX', category: '1' },
+        { name: 'UI', value: 'UI', category: '1' },
+        { name: 'Maquetación', value: 'Maquetación', category: '1' },
+        { name: 'Creativo', value: 'Creativo', category: '1' },
       ],
     }
   },
