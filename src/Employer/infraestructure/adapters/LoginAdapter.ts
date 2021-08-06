@@ -31,14 +31,14 @@ export class LoginAdapter implements LoginPort {
   }
 
   public async requestEmployer(
-    employer_id: number
+    id: number
   ): Promise<
     | { status?: never; body?: never; success: boolean; error: Error }
     | { status: number; body: any; success: boolean; error?: never }
   > {
     const response = await req<any>({
       method: 'GET',
-      url: process.env.VUE_APP_BASEURL + `employers/${employer_id}`,
+      url: process.env.VUE_APP_BASEURL + `employers/byuser/${id}`,
     })
 
     return response
